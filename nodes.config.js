@@ -69,6 +69,12 @@ module.exports = {
           path: '/webhook',
           method: 'POST',
         },
+        register: {
+          type: 'manual',
+        },
+        handler: {
+          name: 'zaloTrigger',
+        },
       }]
     },
   },
