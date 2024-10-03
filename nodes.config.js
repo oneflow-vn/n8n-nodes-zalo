@@ -55,6 +55,23 @@ module.exports = {
       // propertiesOrder: [],
     },
   },
+  triggers: {
+    zaloTrigger: {
+      preset: 'webhook',
+      displayName: 'Zalo Triggers',
+      name: 'ZaloTrigger',
+      description: 'Zalo Triggers API',
+
+      events: [{
+        name: 'message',
+        description: 'Message event',
+        route: {
+          path: '/webhook',
+          method: 'POST',
+        },
+      }]
+    },
+  },
   // Nodes overwrite options
   overwrites: {
     // overwrite operation options

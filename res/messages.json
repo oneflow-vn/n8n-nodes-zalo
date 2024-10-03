@@ -1,10 +1,6 @@
 {
     "success": true,
     "links": [
-        "https://developers.zalo.me/docs/official-account/tin-nhan/tong-quan",
-        "https://developers.zalo.me/docs/official-account/tin-nhan/tong-quan",
-        "https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/dieu-kien-gui-tin-tu-van",
-        "https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/dieu-kien-gui-tin-tu-van",
         "https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/gui-tin-tu-van-dang-van-ban",
         "https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/gui-tin-tu-van-dinh-kem-anh",
         "https://developers.zalo.me/docs/official-account/tin-nhan/tin-tu-van/gui-tin-tu-van-dinh-kem-file",
