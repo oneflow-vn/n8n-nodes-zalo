@@ -1,0 +1,1446 @@
+openapi: 3.0.3
+info:
+  title: Zalo Group Management API
+  version: '3.0'
+servers:
+  - url: https://openapi.zalo.me/v3.0
+paths:
+  /oa/group/listpendinginvite:
+    get:
+      summary: Lấy danh sách thành viên chờ duyệt
+      description: Ứng dụng cần được cấp quyền quản lý thông tin nhóm.
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Token cho phép ứng dụng đại diện OA gọi API.
+          schema:
+            type: string
+        - name: group_id
+          in: query
+          required: true
+          description: ID của nhóm
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: 'Offset muốn query.Mặc định: 0'
+          schema:
+            type: integer
+            default: 0
+        - name: count
+          in: query
+          description: 'Số lượng mong muốn query.Mặc định: 5'
+          schema:
+            type: integer
+            default: 5
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      offset:
+                        type: integer
+                      count:
+                        type: integer
+                      total:
+                        type: integer
+                      member_count:
+                        type: integer
+                      members:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            user_id:
+                              type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              examples:
+                example:
+                  value:
+                    data:
+                      offset: 0
+                      count: 5
+                      total: 1
+                      member_count: 1
+                      members:
+                        - name: Hoàng Trường Phước
+                          user_id: '8756287263669629130'
+                    error: 0
+                    message: Success
+  /oa/group/acceptpendinginvite:
+    post:
+      summary: Accept new member into a group
+      operationId: acceptPendingInvite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                  example: f414c8f76fa586fbdfb4
+                member_user_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of user ids to be approved
+                  example:
+                    - 8756287263669629000
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token allowing the app to represent OA when calling the API
+  /oa/group/rejectpendinginvite:
+    post:
+      summary: Rejects a pending membership invite from a group.
+      operationId: rejectPendingInvite
+      requestBody:
+        description: Params needed to reject the new member
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The group ID
+                member_user_ids:
+                  type: array
+                  description: The list of user IDs to be rejected
+                  items:
+                    type: string
+            example:
+              group_id: f414c8f76fa586fbdfb4
+              member_user_ids:
+                - '8756287263669629130'
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: number
+                  message:
+                    type: string
+                example:
+                  error: 0
+                  message: Success
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Token allows the application represented OA to make API call
+  /v3.0/oa/group/listmember:
+    get:
+      summary: Lấy danh sách thành viên nhóm
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Token cho phép ứng dụng đại diện OA gọi API.
+          schema:
+            type: string
+        - name: group_id
+          in: query
+          required: true
+          description: ID của nhóm
+          schema:
+            type: string
+        - name: offset
+          in: query
+          required: false
+          description: 'Offset muốn query. Mặc định: 0'
+          schema:
+            type: integer
+            default: 0
+        - name: count
+          in: query
+          required: false
+          description: 'Số lượng mong muốn query. Mặc định: 5'
+          schema:
+            type: integer
+            minimum: 0
+            default: 5
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      offset:
+                        type: integer
+                        example: 0
+                      count:
+                        type: integer
+                        example: 5
+                      total:
+                        type: integer
+                        example: 2
+                      member_count:
+                        type: integer
+                        example: 2
+                      members:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            user_id:
+                              type: string
+                              example: '8756287263669629130'
+                            oa_id:
+                              type: string
+                              example: '607812198688816074'
+                            name:
+                              type: string
+                              example: Hoàng Trường Phước
+                            avatar:
+                              type: string
+                              example: >-
+                                https://s120-ava-talk.zadn.vn/8/0/d/7/2/120/59fc092d056c759a71fd16d3bc508458.jpg
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+  /oa/group/addadmins:
+    post:
+      summary: Adds admins to a group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token allowing the application to call the API on behalf of the OA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group
+                member_user_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: The list of user IDs to be added as admins
+              required:
+                - group_id
+                - member_user_ids
+            example:
+              group_id: f414c8f76fa586fbdfb4
+              member_user_ids:
+                - 8756287263669629000
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+  /v3.0/oa/group/removeadmins:
+    post:
+      summary: Delete Subgroup
+      description: >-
+        This operation removes a subgroup identified by the group id and user
+        ids provided.
+      operationId: deleteSubgroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                member_user_ids:
+                  type: string
+                  description: List of the user IDs you want to remove the subgroup
+            example:
+              group_id: f414c8f76fa586fbdfb4
+              member_user_ids:
+                - '8756287263669629130'
+      responses:
+        '200':
+          description: Returns success status
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    description: Error code (0 - success)
+                  message:
+                    type: string
+                    description: Description message of the status
+              examples:
+                successResponse:
+                  value:
+                    error: 0
+                    message: Success
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: >-
+            The access token that allows an application to call API on behalf of
+            OA.
+  /oa/group/delete:
+    post:
+      summary: Disbanding a group
+      description: The application needs to be authorized to manage group information.
+      operationId: groupDelete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group
+                  example: f414c8f76fa586fbdfb4
+        required: true
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: >-
+            The token that allows your application to represent OA in calling
+            the API.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    description: Error code
+                    example: 0
+                  message:
+                    type: string
+                    description: Status message
+                    example: Success
+  /oa/group/getgroupsofoa:
+    get:
+      summary: Fetch the list of OA managed groups
+      operationId: getManagedGroups
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token that allows the app to access the OA API.
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: 'Offset to query. Default: 0'
+          required: false
+        - in: query
+          name: count
+          schema:
+            type: integer
+          description: 'Desired number to query. Default: 5'
+          required: false
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      offset:
+                        type: integer
+                        description: Offset to query
+                      count:
+                        type: integer
+                        description: Number to query
+                      total:
+                        type: integer
+                        description: Total number of OA groups
+                      group_count:
+                        type: integer
+                        description: Number of members returned
+                      groups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              description: Group name
+                            avatar:
+                              type: string
+                              description: Group avatar
+                            group_id:
+                              type: string
+                              description: Group ID
+                            group_link:
+                              type: string
+                              description: Link to join the group
+                            group_description:
+                              type: string
+                              description: Group description
+                            total_member:
+                              type: integer
+                              description: Total number of group members
+                            status:
+                              type: string
+                              description: >-
+                                Group status: enabled: OA can manage and message
+                                the group, disabled: OA can't manage or message
+                                the group
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Response message
+              example:
+                data:
+                  offset: 0
+                  count: 5
+                  total: 2
+                  group_count: 2
+                  groups:
+                    - name: Tư vấn nha khoa nhân viên
+                      avatar: >-
+                        https://ava-grp-talk.zadn.vn/5/4/1/5/2/360/d0971a0b57485397b9f1542af4861f18.jpg
+                      group_id: f414c8f76fa586fbdfb4
+                      group_link: https://zalo.me/g/ikvhur409
+                      group_description: Group tư vấn nha khoa cho các nhân viên
+                      total_member: 2
+                      status: enabled
+                    - name: b53
+                      avatar: http://s120.ava.grp.talk.zdn.vn/default
+                      group_id: aee702d6bc8455da0c95
+                      group_link: https://zalo.me/g/ylegxq050
+                      group_description: Group tư vấn nha khoa cho các nhân viên 2
+                      total_member: 2
+                      status: enabled
+                error: 0
+                message: Success
+  /oa/quota/group:
+    post:
+      summary: Quota check for groups
+      description: >-
+        Check group quota. Note, application needs permission to manage group
+        information.
+      tags:
+        - Quota Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quota_owner:
+                  type: string
+                  description: >-
+                    Quota owner to retrieve. OA for Official Account and APP for
+                    application
+                  required: true
+                product_type:
+                  type: string
+                  description: The product type to retrieve
+                  enum:
+                    - gmf10
+                    - gmf50
+                    - gmf100
+                quota_type:
+                  type: string
+                  description: The type of quota to retrieve
+                  enum:
+                    - sub_quota
+                    - purchase_quota
+                    - reward_quota
+            example:
+              quota_owner: OA
+              product_type: gmf10
+              quota_type: sub_quota
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        product_type:
+                          type: string
+                          description: Product type
+                        quota_type:
+                          type: string
+                          description: The type of quota
+                        asset_id:
+                          type: string
+                          description: GMF package ID, used for group operations
+                        valid_through:
+                          type: string
+                          description: Expiration date of the package
+                        auto_renew:
+                          type: boolean
+                          description: Auto renewal status of the package
+                        status:
+                          type: string
+                          description: Asset status
+                        used_id:
+                          type: string
+                          description: ID of the object that uses the package
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Response message
+              example:
+                data:
+                  - product_type: gmf10
+                    quota_type: sub_quota
+                    asset_id: asset_id
+                    valid_through: 10/10/2024
+                    auto_renew: false
+                    status: available
+                    used_id: group_id
+                error: 0
+                message: Success
+  /oa/group/listrecentchat:
+    get:
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: Offset to query. Default is 0.
+          required: false
+        - name: count
+          in: query
+          schema:
+            type: integer
+          description: The expected number to query. Default is 5.
+          required: false
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          description: >-
+                            The attribute indicates whether the message is sent
+                            from OA or user. Return values: 0: message sent from
+                            OA, 1: message sent from user.
+                        time:
+                          type: integer
+                          format: int64
+                          description: The time the message was sent (in timestamp format).
+                        type:
+                          type: string
+                          description: >-
+                            Type of message. Return values include text: text
+                            message, voice: voice message, photo: photo message,
+                            GIF: GIF message, link: message with link content,
+                            links: message attached with list, sticker: sticker
+                            message, location: share location message.
+                        message:
+                          type: string
+                          description: The content of the message.
+                        message_id:
+                          type: string
+                          description: ID of the message.
+                        from_id:
+                          type: string
+                          description: ID of the sender (can be user_id or oa_id).
+                        from_display_name:
+                          type: string
+                          description: Display name of the sender.
+                        from_avatar:
+                          type: string
+                          description: Path to the avatar of the sender.
+                        group_id:
+                          type: string
+                          description: ID of the group.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  - src: 1
+                    time: 1696317670193
+                    type: text
+                    message: Hello
+                    message_id: acad723242b0faeaa3a5
+                    from_id: '8756287263669629130'
+                    from_display_name: Hoàng Trường Phước
+                    from_avatar: >-
+                      https://s240-ava-talk.zadn.vn/8/0/d/7/2/240/59fc092d056c759a71fd16d3bc508458.jpg
+                    group_id: f414c8f76fa586fbdfb4
+                error: 0
+                message: Success
+      summary: Get a list of recent group messages
+      operationId: listRecentChat
+      description: >
+        This endpoint requires that the application is granted the permission to
+        manage group information.
+      security:
+        - BearerAuth:
+            - access_token
+  /v3.0/oa/group/conversation:
+    get:
+      summary: Retrieve group conversation information
+      operationId: getGroupConversation
+      parameters:
+        - name: group_id
+          in: query
+          description: The ID of the group to query.
+          required: true
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: 'The offset to query. Default: 0'
+          required: false
+          schema:
+            type: integer
+        - name: count
+          in: query
+          description: 'The number of results to query. Default: 5'
+          required: false
+          schema:
+            type: integer
+        - name: access_token
+          in: header
+          description: The access token that allows the application to call the OA API.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of group conversation information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          description: >-
+                            The message was sent from the OA or user. 0: message
+                            from OA, 1: message from user
+                        time:
+                          type: integer
+                          description: The time the message was sent (timestamp format)
+                        type:
+                          type: string
+                          description: The type of the message.
+                        message:
+                          type: string
+                          description: The content of the message.
+                        message_id:
+                          type: string
+                          description: The ID of the message.
+                        from_id:
+                          type: string
+                          description: The ID of the message sender (user_id or oa_id)
+                        from_display_name:
+                          type: string
+                          description: The display name of the message sender.
+                        from_avatar:
+                          type: string
+                          description: The avatar URL of the message sender.
+                        group_id:
+                          type: string
+                          description: The ID of the group.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+  /v3.0/oa/group/message:
+    post:
+      summary: Gửi tin nhắn nhóm dạng Sticker
+      description: Ứng dụng cần được cấp quyền quản lý thông tin nhóm.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    group_id:
+                      type: string
+                      description: ID của nhóm.
+                  required:
+                    - group_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: template
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                              example: media
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                    example: sticker
+                                  attachment_id:
+                                    type: string
+                                    example: bfe458bf64fa8da4d4eb
+                      required:
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message
+      responses:
+        '200':
+          description: Success
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: ID của tin nhắn mới được gửi
+                      group_id:
+                        type: string
+                        description: ID của nhóm
+                  error:
+                    type: number
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+      operationId: sendStickerMessage
+      security:
+        - ApiKeyAuth: []
+  /oa/group/message:
+    post:
+      summary: Send a group message
+      description: >-
+        This endpoint allows sending different types of messages (text, file,
+        image, mention) to a group.
+      operationId: sendGroupMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Text message content
+                      required:
+                        - text
+                  required:
+                    - recipient
+                    - message
+                  example:
+                    recipient:
+                      group_id: f414c8f76fa586fbdfb4
+                    message:
+                      text: hello from Zalo
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              description: Attachment type (must be "file")
+                            payload:
+                              type: object
+                              properties:
+                                token:
+                                  type: string
+                                  description: Token returned from file upload API
+                          required:
+                            - type
+                            - payload
+                      required:
+                        - attachment
+                  required:
+                    - recipient
+                    - message
+                  example:
+                    recipient:
+                      group_id: f414c8f76fa586fbdfb4
+                    message:
+                      attachment:
+                        type: file
+                        payload:
+                          token: >-
+                            12i8LV3BcmmDS4iLfyoU3qKxHXNtpu077ZjA7xRHmmi8EXrEjuR50LHjJXJWWvTQ17OJ7R2Oc5q4SHSJjPoPKmDq5X2tyS4MI78oKexCna1CUJnQyiMvUKmfG7UOX8PYVW5FJAckbWbi1tWbj8BnCNOyTGMBr8mrG5XZ4epkfbD4HczzjUs3FM0QL1ZM
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Optional text
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            payload:
+                              type: object
+                              properties:
+                                template_type:
+                                  type: string
+                                elements:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      media_type:
+                                        type: string
+                                      attachment_id:
+                                        type: string
+                                      url:
+                                        type: string
+                                      width:
+                                        type: integer
+                                      height:
+                                        type: integer
+                  example:
+                    recipient:
+                      group_id: f414c8f76fa586fbdfb4
+                    message:
+                      attachment:
+                        type: image
+                        payload:
+                          template_type: media
+                          elements:
+                            - media_type: image
+                              attachment_id: some_id
+                              url: https://example.com/image.png
+                              width: 300
+                              height: 400
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: >-
+                            Text message with mentions (use **[@user_id]** to
+                            mention users)
+                  example:
+                    recipient:
+                      group_id: f414c8f76fa586fbdfb4
+                    message:
+                      text: >-
+                        hello [@186729651760683225] and [@7967320986128691935]
+                        from GroupAPI
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: ID of the newly sent message
+                      group_id:
+                        type: string
+                        description: ID of the group
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  message_id: 81d74a9cd71d6f473608
+                  group_id: f414c8f76fa586fbdfb4
+                error: 0
+                message: Success
+      parameters:
+        - in: header
+          name: access_token
+          required: true
+          schema:
+            type: string
+          description: The access token allows the app to call the API on behalf of OA
+  /oa/group/creategroupwithoa:
+    post:
+      summary: Tạo nhóm mới
+      operationId: createGroup
+      requestBody:
+        description: Cấu trúc body của request
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_name:
+                  type: string
+                  description: Tên nhóm
+                group_description:
+                  type: string
+                  description: Mô tả nhóm
+                asset_id:
+                  type: string
+                  description: ID gói GMF, sử dụng để làm dịch vụ hoạt động của Nhóm.
+                member_user_ids:
+                  type: array
+                  description: Danh sách các user trong nhóm
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Example respond
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      avatar:
+                        type: string
+                      group_id:
+                        type: string
+                      group_link:
+                        type: string
+                      group_description:
+                        type: string
+                      total_member:
+                        type: integer
+                      status:
+                        type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+  /oa/group/getgroup:
+    get:
+      summary: Retrieve information about a group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token that allows the application to represent OA and call the API.
+        - in: query
+          name: group_id
+          schema:
+            type: string
+          required: true
+          description: Group ID
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        description: Group chat information
+                        properties:
+                          group_id:
+                            type: string
+                            description: Group ID
+                          group_link:
+                            type: string
+                            description: Group join link
+                          name:
+                            type: string
+                            description: Group Name
+                          group_description:
+                            type: string
+                            description: Group Description
+                          avatar:
+                            type: string
+                            description: Group avatar
+                          status:
+                            type: string
+                            description: >-
+                              Group status (enabled: OA can manage and send
+                              messages in the group, disabled: OA cannot manage
+                              and cannot send messages in the group)
+                          total_member:
+                            type: integer
+                            description: Total number of members in the group
+                          max_member:
+                            type: string
+                            description: Maximum number of members in the group
+                      asset_info:
+                        type: object
+                        description: Information about services related to group chat
+                        properties:
+                          asset_id:
+                            type: string
+                            description: GMF package ID, used to perform group services
+                          valid_through:
+                            type: string
+                            description: Package's expiry date
+                          auto_renew:
+                            type: string
+                            description: >-
+                              True: Enable auto-renewal, False: DO NOT enable
+                              auto-renewal
+                      group_setting:
+                        type: object
+                        description: In-group settings
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                            description: >-
+                              Setting the message function of the members, true:
+                              Lock the messaging function of the members in the
+                              group, false: Unlock and allow group members to
+                              message
+                          join_appr:
+                            type: boolean
+                            description: >-
+                              Setting for new member approval, true: New members
+                              must be approved, false: No need to approve new
+                              members
+                          enable_msg_history:
+                            type: boolean
+                            description: >-
+                              Setting to allow new members read recent messages,
+                              true: Allow new members to read recent messages,
+                              false: Do not allow new members read recent
+                              messages
+                          enable_link_join:
+                            type: boolean
+                            description: >-
+                              Setting to turn on/off join the group via a link,
+                              true: Allow joining the group via a link, false:
+                              Do not allow joining the group via a link
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Status message
+  /oa/group/updateinfo:
+    post:
+      summary: Update Group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: >-
+            Access token to allow the application to represent the OA and call
+            the API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                group_name:
+                  type: string
+                  description: Name of the group
+                group_avatar:
+                  type: string
+                  description: Avatar of the group
+                group_description:
+                  type: string
+                  description: Description of the group
+                lock_send_msg:
+                  type: boolean
+                  description: >-
+                    Set the send message functionality of members. 'true': Lock
+                    messaging, 'false': Unlock messaging.
+                join_appr:
+                  type: boolean
+                  description: >-
+                    Set approval mode for new member. 'true': New member must be
+                    approved, 'false': No need to approve new members.
+                enable_msg_history:
+                  type: boolean
+                  description: >-
+                    Allows new member to read the lastest messages of the group.
+                    'true': Enable reading, 'false': Disable reading.
+                enable_link_join:
+                  type: boolean
+                  description: >-
+                    Enable/Disable joining the group using a link. 'true':
+                    Enable, 'false': Disable.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        properties:
+                          group_id:
+                            type: string
+                          group_link:
+                            type: string
+                          name:
+                            type: string
+                          group_description:
+                            type: string
+                          avatar:
+                            type: string
+                          status:
+                            type: string
+                          total_member:
+                            type: integer
+                          max_member:
+                            type: string
+                      asset_info:
+                        type: object
+                        properties:
+                          asset_type:
+                            type: string
+                          asset_id:
+                            type: string
+                          valid_through:
+                            type: string
+                          auto_renew:
+                            type: string
+                      group_setting:
+                        type: object
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                          join_appr:
+                            type: boolean
+                          enable_msg_history:
+                            type: boolean
+                          enable_link_join:
+                            type: boolean
+                  error:
+                    type: integer
+                  message:
+                    type: string
+  /v3.0/oa/group/updateasset:
+    post:
+      summary: Update Group Chat Service
+      description: This endpoint updates the service for a specific Group chat.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group.
+                asset_id:
+                  type: string
+                  description: The ID of the asset limit package.
+            example:
+              group_id: 513c4f117a479319ca56
+              asset_id: asset_id
+      responses:
+        '200':
+          description: A JSON object containing the updated group chat details is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        properties:
+                          group_id:
+                            type: string
+                          group_link:
+                            type: string
+                          name:
+                            type: string
+                          group_description:
+                            type: string
+                          avatar:
+                            type: string
+                          status:
+                            type: string
+                          total_member:
+                            type: integer
+                          max_member:
+                            type: string
+                      asset_info:
+                        type: object
+                        properties:
+                          asset_type:
+                            type: string
+                          asset_id:
+                            type: string
+                          valid_through:
+                            type: string
+                          auto_renew:
+                            type: string
+                      group_setting:
+                        type: object
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                          join_appr:
+                            type: boolean
+                          enable_msg_history:
+                            type: boolean
+                          enable_link_join:
+                            type: boolean
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  group_info:
+                    group_id: a57a91e562b78be9d2a6
+                    group_link: https://zalo.me/g/zkfgeb641
+                    name: b52
+                    group_description: ''
+                    avatar: http://s120.ava.grp.talk.zdn.vn/default
+                    status: enabled
+                    total_member: 2
+                    max_member: '10'
+                  asset_info:
+                    asset_type: gmf10
+                    asset_id: asset_id
+                    valid_through: 10/10/2024
+                    auto_renew: 'true'
+                  group_setting:
+                    lock_send_msg: false
+                    join_appr: true
+                    enable_msg_history: true
+                    enable_link_join: true
+                error: 0
+                message: Success
+  /oa/group/invite:
+    post:
+      summary: Invite Interested People to Group
+      description: >-
+        Used to invite people in a group, the app needs to be granted group
+        information management.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - group_id
+                - member_user_ids
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                member_user_ids:
+                  type: array
+                  description: List of user ids to invite to join the group
+                  items:
+                    type: string
+            example:
+              group_id: f414c8f76fa586fbdfb4
+              member_user_ids:
+                - '8756287263669629130'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: >-
+            The token that allows the app to represent OA call the API. See
+            details on how to get access token.
+          schema:
+            type: string
+          example: <your_access_token>
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

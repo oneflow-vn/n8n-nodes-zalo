@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Memberships API
+  description: API documentation for rejecting new members to a group.
+  version: 3.0.0
+servers:
+  - url: 'https://openapi.zalo.me/v3.0'
+paths:
+  /oa/group/rejectpendinginvite:
+    post:
+      summary: Rejects a pending membership invite from a group.
+      operationId: rejectPendingInvite
+      requestBody:
+        description: Params needed to reject the new member
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The group ID
+                member_user_ids:
+                  type: array
+                  description: The list of user IDs to be rejected
+                  items:
+                    type: string
+            example: 
+              group_id: "f414c8f76fa586fbdfb4"
+              member_user_ids:
+                - "8756287263669629130"
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: number
+                  message:
+                    type: string
+                example: 
+                  error: 0
+                  message: "Success"
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Token allows the application represented OA to make API call

@@ -1,0 +1,204 @@
+openapi: 3.0.3
+info:
+  title: Zalo Group Message API
+  version: 3.0.0
+
+servers:
+  - url: https://openapi.zalo.me/v3.0
+
+paths:
+  /oa/group/message:
+    post:
+      summary: Send a group message
+      description: This endpoint allows sending different types of messages (text, file, image, mention) to a group.
+      operationId: sendGroupMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Text message content
+                      required:
+                        - text
+                  required:
+                    - recipient
+                    - message
+                  example:
+                    recipient:
+                      group_id: "f414c8f76fa586fbdfb4"
+                    message:
+                      text: "hello from Zalo"
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              description: Attachment type (must be "file")
+                            payload:
+                              type: object
+                              properties:
+                                token:
+                                  type: string
+                                  description: Token returned from file upload API
+                          required:
+                            - type
+                            - payload
+                      required:
+                        - attachment
+                  required:
+                    - recipient
+                    - message
+                  example:
+                    recipient:
+                      group_id: "f414c8f76fa586fbdfb4"
+                    message:
+                      attachment:
+                        type: file
+                        payload:
+                          token: "12i8LV3BcmmDS4iLfyoU3qKxHXNtpu077ZjA7xRHmmi8EXrEjuR50LHjJXJWWvTQ17OJ7R2Oc5q4SHSJjPoPKmDq5X2tyS4MI78oKexCna1CUJnQyiMvUKmfG7UOX8PYVW5FJAckbWbi1tWbj8BnCNOyTGMBr8mrG5XZ4epkfbD4HczzjUs3FM0QL1ZM"
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Optional text
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            payload:
+                              type: object
+                              properties:
+                                template_type:
+                                  type: string
+                                elements:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      media_type:
+                                        type: string
+                                      attachment_id:
+                                        type: string
+                                      url:
+                                        type: string
+                                      width:
+                                        type: integer
+                                      height:
+                                        type: integer
+                  example:
+                    recipient:
+                      group_id: "f414c8f76fa586fbdfb4"
+                    message:
+                      attachment:
+                        type: image
+                        payload:
+                          template_type: "media"
+                          elements:
+                            - media_type: "image"
+                              attachment_id: "some_id"
+                              url: "https://example.com/image.png"
+                              width: 300
+                              height: 400
+                - type: object
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        group_id:
+                          type: string
+                          description: ID of the group
+                      required:
+                        - group_id
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: Text message with mentions (use **[@user_id]** to mention users)
+                  example:
+                    recipient:
+                      group_id: "f414c8f76fa586fbdfb4"
+                    message:
+                      text: "hello [@186729651760683225] and [@7967320986128691935] from GroupAPI"
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: ID of the newly sent message
+                      group_id:
+                        type: string
+                        description: ID of the group
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  message_id: "81d74a9cd71d6f473608"
+                  group_id: "f414c8f76fa586fbdfb4"
+                error: 0
+                message: "Success"
+      parameters:
+        - in: header
+          name: access_token
+          required: true
+          schema:
+            type: string
+          description: The access token allows the app to call the API on behalf of OA
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: access_token
+      in: header

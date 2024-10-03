@@ -1,0 +1,2890 @@
+[
+  {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Quota Management",
+        "value": "Quota Management",
+        "description": ""
+      },
+      {
+        "name": "Default",
+        "value": "Default",
+        "description": ""
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "L Y Danh S Ch Th Nh Vi N Ch Duy T",
+        "value": "L Y Danh S Ch Th Nh Vi N Ch Duy T",
+        "action": "L Y Danh S Ch Th Nh Vi N Ch Duy T Default",
+        "description": "Ứng dụng cần được cấp quyền quản lý thông tin nhóm",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/group/listpendinginvite"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Accept New Member Into A Group",
+        "value": "Accept New Member Into A Group",
+        "action": "Accept New Member Into A Group Default",
+        "description": "Accept new member into a group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/acceptpendinginvite"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Rejects A Pending Membership Invite From A Group",
+        "value": "Rejects A Pending Membership Invite From A Group",
+        "action": "Rejects A Pending Membership Invite From A Group Default",
+        "description": "Rejects a pending membership invite from a group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/rejectpendinginvite"
+          }
+        }
+      },
+      {
+        "name": "L Y Danh S Ch Th Nh Vi N Nh M",
+        "value": "L Y Danh S Ch Th Nh Vi N Nh M",
+        "action": "L Y Danh S Ch Th Nh Vi N Nh M Default",
+        "description": "Lấy danh sách thành viên nhóm",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/v3.0/oa/group/listmember"
+          }
+        }
+      },
+      {
+        "name": "Adds Admins To A Group",
+        "value": "Adds Admins To A Group",
+        "action": "Adds Admins To A Group Default",
+        "description": "Adds admins to a group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/addadmins"
+          }
+        }
+      },
+      {
+        "name": "Delete Subgroup",
+        "value": "Delete Subgroup",
+        "action": "Delete Subgroup Default",
+        "description": "This operation removes a subgroup identified by the group id and user ids provided",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/v3.0/oa/group/removeadmins"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Disbanding A Group",
+        "value": "Disbanding A Group",
+        "action": "Disbanding A Group Default",
+        "description": "The application needs to be authorized to manage group information",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/delete"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Fetch The List Of Oa Managed Groups",
+        "value": "Fetch The List Of Oa Managed Groups",
+        "action": "Fetch The List Of Oa Managed Groups Default",
+        "description": "Fetch the list of OA managed groups",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/group/getgroupsofoa"
+          }
+        }
+      },
+      {
+        "name": "Get A List Of Recent Group Messages",
+        "value": "Get A List Of Recent Group Messages",
+        "action": "Get A List Of Recent Group Messages Default",
+        "description": "This endpoint requires that the application is granted the permission to manage group information.",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/group/listrecentchat"
+          }
+        }
+      },
+      {
+        "name": "Retrieve Group Conversation Information",
+        "value": "Retrieve Group Conversation Information",
+        "action": "Retrieve Group Conversation Information Default",
+        "description": "Retrieve group conversation information",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/v3.0/oa/group/conversation"
+          }
+        }
+      },
+      {
+        "name": "G I Tin Nh N Nh M D Ng Sticker",
+        "value": "G I Tin Nh N Nh M D Ng Sticker",
+        "action": "G I Tin Nh N Nh M D Ng Sticker Default",
+        "description": "Ứng dụng cần được cấp quyền quản lý thông tin nhóm",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/v3.0/oa/group/message"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Send A Group Message",
+        "value": "Send A Group Message",
+        "action": "Send A Group Message Default",
+        "description": "This endpoint allows sending different types of messages (text, file, image, mention) to a group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/message"
+          }
+        }
+      },
+      {
+        "name": "T O Nh M M I",
+        "value": "T O Nh M M I",
+        "action": "T O Nh M M I Default",
+        "description": "Tạo nhóm mới",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/creategroupwithoa"
+          }
+        }
+      },
+      {
+        "name": "Retrieve Information About A Group",
+        "value": "Retrieve Information About A Group",
+        "action": "Retrieve Information About A Group Default",
+        "description": "Retrieve information about a group",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/group/getgroup"
+          }
+        }
+      },
+      {
+        "name": "Update Group",
+        "value": "Update Group",
+        "action": "Update Group Default",
+        "description": "Update Group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/updateinfo"
+          }
+        }
+      },
+      {
+        "name": "Update Group Chat Service",
+        "value": "Update Group Chat Service",
+        "action": "Update Group Chat Service Default",
+        "description": "This endpoint updates the service for a specific Group chat",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/v3.0/oa/group/updateasset"
+          }
+        }
+      },
+      {
+        "name": "Invite Interested People To Group",
+        "value": "Invite Interested People To Group",
+        "action": "Invite Interested People To Group Default",
+        "description": "Used to invite people in a group, the app needs to be granted group information management",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/group/invite"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Quota Management"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Quota Check For Groups",
+        "value": "Quota Check For Groups",
+        "action": "Quota Check For Groups Quota Management",
+        "description": "Check group quota. Note, application needs permission to manage group information",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/quota/group"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "GET /oa/group/listpendinginvite",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token cho phép ứng dụng đại diện OA gọi API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "required": true,
+    "description": "ID của nhóm",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "description": "Offset muốn query.Mặc định: 0",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Count",
+    "name": "count",
+    "description": "Số lượng mong muốn query.Mặc định: 5",
+    "default": 5,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "count": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/acceptpendinginvite",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Accept New Member Into A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token allowing the app to represent OA when calling the API",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Accept New Member Into A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "f414c8f76fa586fbdfb4",
+    "description": "ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Accept New Member Into A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of user ids to be approved",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Accept New Member Into A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"f414c8f76fa586fbdfb4\",\n  \"member_user_ids\": [\n    8756287263669629000\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Accept New Member Into A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/rejectpendinginvite",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Rejects A Pending Membership Invite From A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token allows the application represented OA to make API call",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Rejects A Pending Membership Invite From A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "The group ID",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Rejects A Pending Membership Invite From A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "The list of user IDs to be rejected",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Rejects A Pending Membership Invite From A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"member_user_ids\": [\n    \"string\"\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Rejects A Pending Membership Invite From A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /v3.0/oa/group/listmember",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Nh M"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token cho phép ứng dụng đại diện OA gọi API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Nh M"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "required": true,
+    "description": "ID của nhóm",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Nh M"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "description": "Offset muốn query. Mặc định: 0",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Nh M"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Count",
+    "name": "count",
+    "description": "Số lượng mong muốn query. Mặc định: 5",
+    "default": 5,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "count": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "L Y Danh S Ch Th Nh Vi N Nh M"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/addadmins",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Adds Admins To A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token allowing the application to call the API on behalf of the OA",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Adds Admins To A Group"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "The ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Adds Admins To A Group"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "The list of user IDs to be added as admins",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Adds Admins To A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"member_user_ids\": [\n    \"string\"\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Adds Admins To A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /v3.0/oa/group/removeadmins",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Delete Subgroup"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "The access token that allows an application to call API on behalf of OA.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Delete Subgroup"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Delete Subgroup"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "string",
+    "default": "",
+    "description": "List of the user IDs you want to remove the subgroup",
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Delete Subgroup"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"member_user_ids\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Delete Subgroup"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/delete",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Disbanding A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "The token that allows your application to represent OA in calling the API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Disbanding A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "f414c8f76fa586fbdfb4",
+    "description": "The ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Disbanding A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"f414c8f76fa586fbdfb4\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Disbanding A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /oa/group/getgroupsofoa",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Fetch The List Of Oa Managed Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token that allows the app to access the OA API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Fetch The List Of Oa Managed Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "description": "Offset to query. Default: 0",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Fetch The List Of Oa Managed Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Count",
+    "name": "count",
+    "description": "Desired number to query. Default: 5",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "count": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Fetch The List Of Oa Managed Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/quota/group",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Quota Management"
+        ],
+        "operation": [
+          "Quota Check For Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Quota Owner",
+    "name": "quota_owner",
+    "type": "string",
+    "default": "",
+    "description": "Quota owner to retrieve. OA for Official Account and APP for application",
+    "routing": {
+      "request": {
+        "body": {
+          "quota_owner": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Quota Management"
+        ],
+        "operation": [
+          "Quota Check For Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Product Type",
+    "name": "product_type",
+    "type": "options",
+    "default": "gmf10",
+    "description": "The product type to retrieve",
+    "options": [
+      {
+        "name": "gmf10",
+        "value": "gmf10"
+      },
+      {
+        "name": "gmf50",
+        "value": "gmf50"
+      },
+      {
+        "name": "gmf100",
+        "value": "gmf100"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "product_type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Quota Management"
+        ],
+        "operation": [
+          "Quota Check For Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Quota Type",
+    "name": "quota_type",
+    "type": "options",
+    "default": "sub_quota",
+    "description": "The type of quota to retrieve",
+    "options": [
+      {
+        "name": "sub_quota",
+        "value": "sub_quota"
+      },
+      {
+        "name": "purchase_quota",
+        "value": "purchase_quota"
+      },
+      {
+        "name": "reward_quota",
+        "value": "reward_quota"
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "quota_type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Quota Management"
+        ],
+        "operation": [
+          "Quota Check For Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"quota_owner\": \"string\",\n  \"product_type\": \"gmf10\",\n  \"quota_type\": \"sub_quota\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Quota Management"
+        ],
+        "operation": [
+          "Quota Check For Groups"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /oa/group/listrecentchat",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Get A List Of Recent Group Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "description": "Offset to query. Default is 0.",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Get A List Of Recent Group Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Count",
+    "name": "count",
+    "description": "The expected number to query. Default is 5.",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "count": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Get A List Of Recent Group Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /v3.0/oa/group/conversation",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Group Conversation Information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "required": true,
+    "description": "The ID of the group to query.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Group Conversation Information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "description": "The offset to query. Default: 0",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Group Conversation Information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Count",
+    "name": "count",
+    "description": "The number of results to query. Default: 5",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "count": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Group Conversation Information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "The access token that allows the application to call the OA API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Group Conversation Information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /v3.0/oa/group/message",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "G I Tin Nh N Nh M D Ng Sticker"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "ID của nhóm",
+            "name": "group_id",
+            "displayName": "Group Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "G I Tin Nh N Nh M D Ng Sticker"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "template",
+                    "description": "",
+                    "name": "type",
+                    "displayName": "Type"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "string",
+                            "default": "media",
+                            "description": "",
+                            "name": "template_type",
+                            "displayName": "Template Type"
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Elements",
+                            "name": "elements",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "sticker",
+                                    "description": "",
+                                    "name": "media_type",
+                                    "displayName": "Media Type"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "bfe458bf64fa8da4d4eb",
+                                    "description": "",
+                                    "name": "attachment_id",
+                                    "displayName": "Attachment Id"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "payload",
+                    "displayName": "Payload"
+                  }
+                ]
+              }
+            ],
+            "name": "attachment",
+            "displayName": "Attachment"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "G I Tin Nh N Nh M D Ng Sticker"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"group_id\": \"string\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"media\",\n        \"elements\": [\n          {\n            \"media_type\": \"sticker\",\n            \"attachment_id\": \"bfe458bf64fa8da4d4eb\"\n          }\n        ]\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "G I Tin Nh N Nh M D Ng Sticker"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/message",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send A Group Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "The access token allows the app to call the API on behalf of OA",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send A Group Message"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "ID of the group",
+            "name": "group_id",
+            "displayName": "Group Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send A Group Message"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "Text message content",
+            "name": "text",
+            "displayName": "Text"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send A Group Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"group_id\": \"f414c8f76fa586fbdfb4\"\n  },\n  \"message\": {\n    \"text\": \"hello from Zalo\"\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send A Group Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/creategroupwithoa",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Name",
+    "name": "group_name",
+    "type": "string",
+    "default": "",
+    "description": "Tên nhóm",
+    "routing": {
+      "request": {
+        "body": {
+          "group_name": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Description",
+    "name": "group_description",
+    "type": "string",
+    "default": "",
+    "description": "Mô tả nhóm",
+    "routing": {
+      "request": {
+        "body": {
+          "group_description": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Asset Id",
+    "name": "asset_id",
+    "type": "string",
+    "default": "",
+    "description": "ID gói GMF, sử dụng để làm dịch vụ hoạt động của Nhóm",
+    "routing": {
+      "request": {
+        "body": {
+          "asset_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "Danh sách các user trong nhóm",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_name\": \"string\",\n  \"group_description\": \"string\",\n  \"asset_id\": \"string\",\n  \"member_user_ids\": [\n    \"string\"\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "T O Nh M M I"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /oa/group/getgroup",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Information About A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token that allows the application to represent OA and call the API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Information About A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "required": true,
+    "description": "Group ID",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Retrieve Information About A Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/updateinfo",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Access token to allow the application to represent the OA and call the API.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Name",
+    "name": "group_name",
+    "type": "string",
+    "default": "",
+    "description": "Name of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_name": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Avatar",
+    "name": "group_avatar",
+    "type": "string",
+    "default": "",
+    "description": "Avatar of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_avatar": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Description",
+    "name": "group_description",
+    "type": "string",
+    "default": "",
+    "description": "Description of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_description": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Lock Send Msg",
+    "name": "lock_send_msg",
+    "type": "boolean",
+    "default": true,
+    "description": "Set the send message functionality of members. 'true': Lock messaging, 'false': Unlock messaging",
+    "routing": {
+      "request": {
+        "body": {
+          "lock_send_msg": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Join Appr",
+    "name": "join_appr",
+    "type": "boolean",
+    "default": true,
+    "description": "Set approval mode for new member. 'true': New member must be approved, 'false': No need to approve new members",
+    "routing": {
+      "request": {
+        "body": {
+          "join_appr": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Enable Msg History",
+    "name": "enable_msg_history",
+    "type": "boolean",
+    "default": true,
+    "description": "Allows new member to read the lastest messages of the group. 'true': Enable reading, 'false': Disable reading",
+    "routing": {
+      "request": {
+        "body": {
+          "enable_msg_history": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Enable Link Join",
+    "name": "enable_link_join",
+    "type": "boolean",
+    "default": true,
+    "description": "Enable/Disable joining the group using a link. 'true': Enable, 'false': Disable",
+    "routing": {
+      "request": {
+        "body": {
+          "enable_link_join": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"group_name\": \"string\",\n  \"group_avatar\": \"string\",\n  \"group_description\": \"string\",\n  \"lock_send_msg\": true,\n  \"join_appr\": true,\n  \"enable_msg_history\": true,\n  \"enable_link_join\": true\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /v3.0/oa/group/updateasset",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group Chat Service"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "The ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group Chat Service"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Asset Id",
+    "name": "asset_id",
+    "type": "string",
+    "default": "",
+    "description": "The ID of the asset limit package",
+    "routing": {
+      "request": {
+        "body": {
+          "asset_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group Chat Service"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"asset_id\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Update Group Chat Service"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/group/invite",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Invite Interested People To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "The token that allows the app to represent OA call the API. See details on how to get access token.",
+    "default": "<your_access_token>",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Invite Interested People To Group"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Group Id",
+    "name": "group_id",
+    "type": "string",
+    "default": "",
+    "description": "ID of the group",
+    "routing": {
+      "request": {
+        "body": {
+          "group_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Invite Interested People To Group"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Member User Ids",
+    "name": "member_user_ids",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "List of user ids to invite to join the group",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "name": "Item",
+            "displayName": "Item",
+            "type": "string",
+            "default": ""
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "member_user_ids": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Invite Interested People To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"group_id\": \"string\",\n  \"member_user_ids\": [\n    \"string\"\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Invite Interested People To Group"
+        ]
+      }
+    }
+  }
+]

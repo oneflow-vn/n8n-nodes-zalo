@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Group Quota Check API
+paths:
+  /oa/quota/group:
+    post:
+      summary: Quota check for groups
+      description: Check group quota. Note, application needs permission to manage group information.
+      tags: 
+      - Quota Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quota_owner:
+                  type: string
+                  description: Quota owner to retrieve. OA for Official Account and APP for application
+                  required: true
+                product_type:
+                  type: string
+                  description: The product type to retrieve
+                  enum: 
+                    - gmf10
+                    - gmf50
+                    - gmf100
+                quota_type:
+                  type: string
+                  description: The type of quota to retrieve
+                  enum:
+                    - sub_quota
+                    - purchase_quota
+                    - reward_quota
+            example:
+              quota_owner: OA
+              product_type: gmf10
+              quota_type: sub_quota
+      responses:
+        '200':
+          description: A successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        product_type:
+                          type: string
+                          description: Product type
+                        quota_type:
+                          type: string
+                          description: The type of quota
+                        asset_id:
+                          type: string
+                          description: GMF package ID, used for group operations
+                        valid_through:
+                          type: string
+                          description: Expiration date of the package
+                        auto_renew:
+                          type: boolean
+                          description: Auto renewal status of the package
+                        status:
+                          type: string
+                          description: Asset status
+                        used_id:
+                          type: string
+                          description: ID of the object that uses the package
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Response message
+              example:
+                data:
+                - product_type: gmf10
+                  quota_type: sub_quota
+                  asset_id: asset_id
+                  valid_through: "10/10/2024"
+                  auto_renew: false
+                  status: available
+                  used_id: group_id
+                error: 0
+                message: Success

@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: "1.0"
+paths:
+  /v3.0/oa/group/listmember:
+    get:
+      summary: 'Lấy danh sách thành viên nhóm'
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: 'Token cho phép ứng dụng đại diện OA gọi API.'
+          schema:
+            type: string
+        - name: group_id
+          in: query
+          required: true
+          description: 'ID của nhóm'
+          schema:
+            type: string
+        - name: offset
+          in: query
+          required: false
+          description: 'Offset muốn query. Mặc định: 0'
+          schema:
+            type: integer
+            default: 0
+        - name: count
+          in: query
+          required: false
+          description: 'Số lượng mong muốn query. Mặc định: 5'
+          schema:
+            type: integer
+            minimum: 0
+            default: 5
+      responses:
+        '200':
+          description: 'Successful Operation'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data: 
+                    type: object
+                    properties:
+                      offset: 
+                        type: integer
+                        example: 0
+                      count: 
+                        type: integer
+                        example: 5
+                      total:
+                        type: integer
+                        example: 2
+                      member_count:
+                        type: integer
+                        example: 2
+                      members:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            user_id:
+                              type: string
+                              example: '8756287263669629130'
+                            oa_id:
+                              type: string
+                              example: '607812198688816074'
+                            name:
+                              type: string
+                              example: 'Hoàng Trường Phước'
+                            avatar:
+                              type: string
+                              example: 'https://s120-ava-talk.zadn.vn/8/0/d/7/2/120/59fc092d056c759a71fd16d3bc508458.jpg'
+                  error: 
+                    type: integer
+                    example: 0
+                  message: 
+                    type: string
+                    example: 'Success'

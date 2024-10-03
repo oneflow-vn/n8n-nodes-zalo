@@ -1,0 +1,29 @@
+[
+    {
+        "success": true,
+        "links": [
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/tin-nhan/text_message",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/tin-nhan/file_message",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/tin-nhan/image_message",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/tin-nhan/sticker_message",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/tin-nhan/mention_uid",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/create_group",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/get_group_info",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/update_group_info",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/update_asset",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/invite_member",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/getlistpendingmember",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/accept_member",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/reject_member",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/get_list_member",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/add_admins",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/remove_admins",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/remove_members",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/delete_group",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/get_group_of_oa",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/quota",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/list_recent_chat",
+            "https://stc-developers.zdn.vn/docs/v2/official-account/nhom-chat-gmf/quan-ly/group_conversation"
+        ]
+    }
+]

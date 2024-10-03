@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info: 
+  version: 3.0.0 
+  title: Zalo API 
+  description: This API allows to add admins to a group
+
+paths:
+  /oa/group/addadmins:
+    post:
+      summary: Adds admins to a group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token allowing the application to call the API on behalf of the OA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group
+                member_user_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: The list of user IDs to be added as admins
+              required:
+                - group_id
+                - member_user_ids
+            example:
+              group_id: f414c8f76fa586fbdfb4
+              member_user_ids: 
+                - 8756287263669629130
+        required: true
+      responses:
+        '200':
+          description: Success 
+          content:
+            application/json:    
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success

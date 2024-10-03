@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: Get Group Information
+  version: "1.0"
+
+paths:
+  /oa/group/getgroup:
+    get:
+      summary: Retrieve information about a group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token that allows the application to represent OA and call the API.
+        - in: query
+          name: group_id
+          schema:
+            type: string
+          required: true
+          description: Group ID
+
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        description: Group chat information
+                        properties:
+                          group_id:
+                            type: string
+                            description: Group ID
+                          group_link:
+                            type: string
+                            description: Group join link
+                          name:
+                            type: string
+                            description: Group Name
+                          group_description:
+                            type: string
+                            description: Group Description
+                          avatar:
+                            type: string
+                            description: Group avatar
+                          status:
+                            type: string
+                            description: "Group status (enabled: OA can manage and send messages in the group, disabled: OA cannot manage and cannot send messages in the group)"
+                          total_member:
+                            type: integer
+                            description: Total number of members in the group
+                          max_member:
+                            type: string
+                            description: Maximum number of members in the group
+                      asset_info:
+                        type: object
+                        description: Information about services related to group chat
+                        properties:
+                          asset_id:
+                            type: string
+                            description: GMF package ID, used to perform group services
+                          valid_through:
+                            type: string
+                            description: Package's expiry date
+                          auto_renew:
+                            type: string
+                            description: "True: Enable auto-renewal, False: DO NOT enable auto-renewal"
+                      group_setting:
+                        type: object
+                        description: In-group settings
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                            description: "Setting the message function of the members, true: Lock the messaging function of the members in the group, false: Unlock and allow group members to message"
+                          join_appr:
+                            type: boolean
+                            description: "Setting for new member approval, true: New members must be approved, false: No need to approve new members"
+                          enable_msg_history:
+                            type: boolean
+                            description: "Setting to allow new members read recent messages, true: Allow new members to read recent messages, false: Do not allow new members read recent messages"
+                          enable_link_join:
+                            type: boolean
+                            description: "Setting to turn on/off join the group via a link, true: Allow joining the group via a link, false: Do not allow joining the group via a link"
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Status message

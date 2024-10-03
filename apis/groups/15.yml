@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: Delete Subgroup API
+  version: '1.0'
+paths:
+  /v3.0/oa/group/removeadmins:
+    post:
+      summary: Delete Subgroup
+      description: This operation removes a subgroup identified by the group id and user ids provided.
+      operationId: deleteSubgroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                member_user_ids:
+                  type: string
+                  description: List of the user IDs you want to remove the subgroup
+            example:
+              group_id: "f414c8f76fa586fbdfb4"
+              member_user_ids:
+                - "8756287263669629130"
+      responses:
+        '200':
+          description: Returns success status
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    description: Error code (0 - success)  
+                  message:
+                    type: string
+                    description: Description message of the status
+              examples:
+                successResponse:
+                  value:
+                    error: 0
+                    message: "Success"
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: The access token that allows an application to call API on behalf of OA.

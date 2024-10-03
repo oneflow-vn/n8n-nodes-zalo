@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API Documentation
+
+paths:
+  /v3.0/oa/group/message:
+    post:
+      summary: Gửi tin nhắn nhóm dạng Sticker
+      description: Ứng dụng cần được cấp quyền quản lý thông tin nhóm.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    group_id:
+                      type: string
+                      description: ID của nhóm.
+                  required: 
+                    - group_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: "template"
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                              example: "media"
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                    example: "sticker"
+                                  attachment_id:
+                                    type: string
+                                    example: "bfe458bf64fa8da4d4eb"
+                      required:
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message  
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: "ID của tin nhắn mới được gửi"
+                      group_id:
+                        type: string
+                        description: "ID của nhóm"
+                  error:
+                    type: number
+                    example: 0
+                  message:
+                    type: string
+                    example: "Success"
+
+      operationId: sendStickerMessage
+      security:
+      - ApiKeyAuth: []
+  
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: access_token

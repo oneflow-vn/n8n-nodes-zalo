@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Zalo API
+  version: "3.0"
+paths:
+  /oa/group/listrecentchat:
+    get:
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: Offset to query. Default is 0.
+          required: false
+        - name: count
+          in: query
+          schema:
+            type: integer
+          description: The expected number to query. Default is 5.
+          required: false
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          description: "The attribute indicates whether the message is sent from OA or user. Return values: 0: message sent from OA, 1: message sent from user."
+                        time:
+                          type: integer
+                          format: int64
+                          description: The time the message was sent (in timestamp format).
+                        type:
+                          type: string
+                          description: "Type of message. Return values include text: text message, voice: voice message, photo: photo message, GIF: GIF message, link: message with link content, links: message attached with list, sticker: sticker message, location: share location message."
+                        message:
+                          type: string
+                          description: The content of the message.
+                        message_id:
+                          type: string
+                          description: ID of the message.
+                        from_id:
+                          type: string
+                          description: ID of the sender (can be user_id or oa_id).
+                        from_display_name:
+                          type: string
+                          description: Display name of the sender.
+                        from_avatar:
+                          type: string
+                          description: Path to the avatar of the sender.
+                        group_id:
+                          type: string
+                          description: ID of the group.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  - src: 1
+                    time: 1696317670193
+                    type: "text"
+                    message: "Hello"
+                    message_id: "acad723242b0faeaa3a5"
+                    from_id: "8756287263669629130"
+                    from_display_name: "Hoàng Trường Phước"
+                    from_avatar: "https://s240-ava-talk.zadn.vn/8/0/d/7/2/240/59fc092d056c759a71fd16d3bc508458.jpg"
+                    group_id: "f414c8f76fa586fbdfb4"
+                error: 0
+                message: "Success"
+      summary: Get a list of recent group messages
+      operationId: listRecentChat
+      description: >
+        This endpoint requires that the application is granted the permission to manage group information.
+      security:
+        - BearerAuth: ["access_token"]
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,109 @@
+openapi: "3.0.0"
+info:
+  title: "Lấy danh sách nhóm OA đang quản lý API"
+  version: "1.0"
+
+paths:
+  /oa/group/getgroupsofoa:
+    get:
+      summary: "Fetch the list of OA managed groups"
+      operationId: "getManagedGroups"
+      parameters:
+        - in: "header"
+          name: "access_token"
+          schema:
+            type: "string"
+          required: true
+          description: "Token that allows the app to access the OA API."
+        - in: "query"
+          name: "offset"
+          schema:
+            type: "integer"
+          description: "Offset to query. Default: 0"
+          required: false
+        - in: "query"
+          name: "count"
+          schema:
+            type: "integer"
+          description: "Desired number to query. Default: 5"
+          required: false
+      responses:
+        '200':
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      offset:
+                        type: "integer"
+                        description: "Offset to query"
+                      count:
+                        type: "integer"
+                        description: "Number to query"
+                      total:
+                        type: "integer"
+                        description: "Total number of OA groups"
+                      group_count:
+                        type: "integer"
+                        description: "Number of members returned"
+                      groups:
+                        type: "array"
+                        items:
+                          type: "object"
+                          properties:
+                            name:
+                              type: "string"
+                              description: "Group name"
+                            avatar:
+                              type: "string"
+                              description: "Group avatar"
+                            group_id:
+                              type: "string"
+                              description: "Group ID"
+                            group_link:
+                              type: "string"
+                              description: "Link to join the group"
+                            group_description:
+                              type: "string"
+                              description: "Group description"
+                            total_member:
+                              type: "integer"
+                              description: "Total number of group members"
+                            status:
+                              type: "string"
+                              description: "Group status: enabled: OA can manage and message the group, disabled: OA can't manage or message the group"
+                  error:
+                    type: "integer"
+                    description: "Error code"
+                  message:
+                    type: "string"
+                    description: "Response message"
+              example:
+                "data": 
+                  "offset": 0
+                  "count": 5
+                  "total": 2
+                  "group_count": 2
+                  "groups":
+                    - 
+                      "name": "Tư vấn nha khoa nhân viên"
+                      "avatar": "https://ava-grp-talk.zadn.vn/5/4/1/5/2/360/d0971a0b57485397b9f1542af4861f18.jpg"
+                      "group_id": "f414c8f76fa586fbdfb4"
+                      "group_link": "https://zalo.me/g/ikvhur409"
+                      "group_description": "Group tư vấn nha khoa cho các nhân viên"
+                      "total_member": 2
+                      "status": "enabled"
+                    -
+                      "name": "b53"
+                      "avatar": "http://s120.ava.grp.talk.zdn.vn/default"
+                      "group_id": "aee702d6bc8455da0c95"
+                      "group_link": "https://zalo.me/g/ylegxq050"
+                      "group_description": "Group tư vấn nha khoa cho các nhân viên 2"
+                      "total_member": 2
+                      "status": "enabled"
+                "error": 0
+                "message": "Success"

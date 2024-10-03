@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: OA Group Disbanding
+  version: 3.0.0
+servers:
+  - url: https://openapi.zalo.me/v3.0
+paths:
+  /oa/group/delete:
+    post:
+      summary: Disbanding a group
+      description: The application needs to be authorized to manage group information.
+      operationId: groupDelete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group
+                  example: f414c8f76fa586fbdfb4
+        required: true
+      parameters:
+        - name: access_token
+          in: header
+          required: true 
+          description: The token that allows your application to represent OA in calling the API.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    description: Error code
+                    example: 0
+                  message:
+                    type: string
+                    description: Status message
+                    example: "Success"

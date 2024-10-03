@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Zalo API
+  version: v3.0
+paths:
+  /oa/group/creategroupwithoa:
+    post:
+      summary: Tạo nhóm mới
+      operationId: createGroup
+      requestBody:
+        description: Cấu trúc body của request
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_name:
+                  type: string
+                  description: Tên nhóm
+                group_description:
+                  type: string
+                  description: Mô tả nhóm
+                asset_id:
+                  type: string
+                  description: ID gói GMF, sử dụng để làm dịch vụ hoạt động của Nhóm.
+                member_user_ids:
+                  type: array
+                  description: Danh sách các user trong nhóm
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: Example respond
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      avatar:
+                        type: string
+                      group_id:
+                        type: string
+                      group_link:
+                        type: string
+                      group_description:
+                        type: string
+                      total_member:
+                        type: integer
+                      status:
+                        type: string                  
+                  error:
+                    type: integer
+                  message:
+                    type: string

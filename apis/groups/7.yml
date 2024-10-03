@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: Zalo Group Update Info API
+  version: "3.0"
+
+servers:
+  - url: https://openapi.zalo.me/v3.0
+
+paths:
+  /oa/group/updateinfo:
+    post:
+      summary: Update Group
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Access token to allow the application to represent the OA and call the API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                group_name:
+                  type: string
+                  description: Name of the group
+                group_avatar:
+                  type: string
+                  description: Avatar of the group
+                group_description:
+                  type: string
+                  description: Description of the group
+                lock_send_msg:
+                  type: boolean
+                  description: "Set the send message functionality of members. 'true': Lock messaging, 'false': Unlock messaging."
+                join_appr:
+                  type: boolean
+                  description: "Set approval mode for new member. 'true': New member must be approved, 'false': No need to approve new members."
+                enable_msg_history:
+                  type: boolean
+                  description: "Allows new member to read the lastest messages of the group. 'true': Enable reading, 'false': Disable reading."
+                enable_link_join:
+                  type: boolean
+                  description: "Enable/Disable joining the group using a link. 'true': Enable, 'false': Disable."
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        properties:
+                          group_id:
+                            type: string
+                          group_link:
+                            type: string
+                          name:
+                            type: string
+                          group_description:
+                            type: string
+                          avatar:
+                            type: string
+                          status:
+                            type: string
+                          total_member:
+                            type: integer
+                          max_member:
+                            type: string
+                      asset_info:
+                        type: object
+                        properties:
+                          asset_type:
+                            type: string
+                          asset_id:
+                            type: string
+                          valid_through:
+                            type: string
+                          auto_renew:
+                            type: string
+                      group_setting:
+                        type: object
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                          join_appr:
+                            type: boolean
+                          enable_msg_history:
+                            type: boolean
+                          enable_link_join:
+                            type: boolean
+                  error:
+                    type: integer
+                  message:
+                    type: string

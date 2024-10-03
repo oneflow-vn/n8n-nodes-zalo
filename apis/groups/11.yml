@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Zalo API
+  version: 3.0.0
+paths:
+  /oa/group/acceptpendinginvite:
+    post:
+      summary: Accept new member into a group
+      operationId: acceptPendingInvite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: ID of the group
+                  example: f414c8f76fa586fbdfb4
+                member_user_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of user ids to be approved
+                  example: [8756287263669629130]
+      responses:
+        200:
+          description: Successful operation
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: "Success"
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token allowing the app to represent OA when calling the API

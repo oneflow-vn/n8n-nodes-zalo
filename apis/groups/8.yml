@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: Group Chat Service
+  description: 'This API allows an Official Account to: Update group chat packages (increasing member limit); Renew group chat packages after expiry.'
+  version: 1.0.0
+paths:
+  /v3.0/oa/group/updateasset:
+    post:
+      summary: Update Group Chat Service
+      description: This endpoint updates the service for a specific Group chat.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group_id:
+                  type: string
+                  description: The ID of the group.
+                asset_id:
+                  type: string
+                  description: The ID of the asset limit package.
+            example:
+              group_id: "513c4f117a479319ca56"
+              asset_id: "asset_id"
+      responses:
+        200:
+          description: A JSON object containing the updated group chat details is returned.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      group_info:
+                        type: object
+                        properties:
+                          group_id:
+                            type: string
+                          group_link:
+                            type: string
+                          name:
+                            type: string
+                          group_description:
+                            type: string
+                          avatar:
+                            type: string
+                          status:
+                            type: string
+                          total_member:
+                            type: integer
+                          max_member:
+                            type: string
+                      asset_info:
+                        type: object
+                        properties:
+                          asset_type:
+                            type: string
+                          asset_id:
+                            type: string
+                          valid_through:
+                            type: string
+                          auto_renew:
+                            type: string
+                      group_setting:
+                        type: object
+                        properties:
+                          lock_send_msg:
+                            type: boolean
+                          join_appr:
+                            type: boolean 
+                          enable_msg_history:
+                            type: boolean
+                          enable_link_join:
+                            type: boolean
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  group_info:
+                    group_id: "a57a91e562b78be9d2a6"
+                    group_link: "https://zalo.me/g/zkfgeb641"
+                    name: "b52"
+                    group_description: ""
+                    avatar: "http://s120.ava.grp.talk.zdn.vn/default"
+                    status: "enabled"
+                    total_member: 2
+                    max_member: "10"
+                  asset_info:
+                    asset_type: "gmf10"
+                    asset_id: "asset_id"
+                    valid_through: "10/10/2024"
+                    auto_renew: "true"
+                  group_setting:
+                    lock_send_msg: false
+                    join_appr: true
+                    enable_msg_history: true
+                    enable_link_join: true
+                error: 0
+                message: "Success"
