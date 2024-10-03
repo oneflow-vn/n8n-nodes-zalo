@@ -65,14 +65,14 @@ module.exports = {
       events: [{
         name: 'message',
         description: 'Message event',
-        route: {
-          path: '/webhook',
-          method: 'POST',
-        },
         register: {
           type: 'manual',
         },
         handler: {
+          route: {
+            path: '/webhook',
+            method: 'POST',
+          },
           name: 'zaloTrigger',
         },
       }]
