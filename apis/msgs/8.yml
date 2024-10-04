@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Gửi tin giao dịch
+  version: 1.0.0
+paths:
+  /oa/message/transaction:
+    post:
+      summary: Gửi tin giao dịch
+      description: >
+        Gửi tin giao dịch
+      operationId: sendTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  required:
+                    - user_id
+                  properties:
+                    user_id:
+                      type: string
+                      example: "5373093274852641073"
+                message:
+                  type: object
+                  required:
+                    - attachment
+                  properties:
+                    attachment:
+                      type: object
+                      required:
+                        - type
+                        - payload
+                      properties:
+                        type:
+                          type: string
+                          example: template
+                        payload:
+                          type: object
+                          required:
+                            - template_type
+                            - elements
+                          properties:
+                            template_type:
+                              type: string
+                              example: transaction_order
+                            language:
+                              type: string
+                              example: VI
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  attachment_id:
+                                    type: string
+                                  type:
+                                    type: string
+                                  content:
+                                    type: string
+                            buttons:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                  image_icon:
+                                    type: string
+                                  type:
+                                    type: string
+                                  payload:
+                                    type: object
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                      quota:
+                        type: object
+                        properties:
+                          quota_type:
+                            type: string
+                          owner_type:
+                            type: string
+                          owner_id:
+                            type: string

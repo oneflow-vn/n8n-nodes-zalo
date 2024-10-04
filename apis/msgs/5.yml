@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Gửi tin tư vấn kèm Sticker
+  version: '3.0'
+
+servers:
+  - url: https://openapi.zalo.me
+
+paths:
+  /v3.0/oa/message/cs:
+    post:
+      summary: Gửi tin tư vấn kèm Sticker
+      operationId: sendSticker
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  required:
+                    - user_id
+                  properties:
+                    user_id:
+                      type: string
+                message:
+                  type: object
+                  required:
+                    - attachment
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        payload:
+                          type: object
+                          required:
+                            - template_type
+                            - elements
+                          properties:
+                            template_type:
+                              type: string
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                  attachment_id:
+                                    type: array
+                                    items:  # Define the type of items in the array
+                                      type: string  # For example, if the array holds strings
+                                required:
+                                  - media_type
+                                  - attachment_id
+
+
+      responses:
+        '200':
+          description: Successful message sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                      quota:
+                        type: string
+                        properties:
+                          quota_type:
+                            type: string
+                          remain:
+                            type: string
+                          total:
+                            type: string
+                          expired_date:
+                            type: string
+                          owner_type:
+                            type: string
+                          owner_id:
+                            type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                example:
+                  data:
+                    message_id: "63ecf43f0df7dba892e6"
+                    user_id: "2512523625412515"
+                    quota:
+                      quota_type: "sub_quota"
+                      remain: "1990"
+                      total: "2000"
+                      expired_date: "11/02/2023"
+                  error: 0
+                  message: "Success"

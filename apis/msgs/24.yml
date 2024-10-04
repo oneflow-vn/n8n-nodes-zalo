@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: Zalo Image Upload API
+  version: v2.0.0
+
+paths:
+  /oa/upload/image:
+    post:
+      summary: Upload image
+      description: "Use this API to upload an image. After upload, the image will need to be sent to the user and will be stored on the server for a maximum of 7 days. Quota for the API is 5000 requests per day/week/month. Required permissions: Ability to send messages and notifications via OA. operationId: uploadImage"
+      requestBody:
+        description: Image to upload
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: "The binary content of the image file. Supported formats: jpg and png. Maximum size: 1MB."
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      attachment_id:
+                        type: string
+                        description: ID of the uploaded image
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Status message
+              example:
+                  data:
+                    attachment_id: "wESbL53O_shdvIPILC7iR_JpC552r_fjukKg"
+                  error: 0
+                  message: "Success"

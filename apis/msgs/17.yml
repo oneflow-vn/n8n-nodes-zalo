@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: Send sticker message to anonymous user
+  version: 1.0.0
+paths:
+  /message:
+    post:
+      summary: Send sticker message
+      tags:
+        - messaging
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    anonymous_id:
+                      type: string
+                      description: Id represents the anonymous user.
+                    conversation_id:
+                      type: string
+                      description: Id of the conversation.
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: Attachment type. The value received is obligatory:type = template
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                  attachment_id:
+                                    type: string
+            example:
+              recipient:
+                anonymous_id: '5443873f256ecc30957f'
+                conversation_id: '2c298a21b4645d3a0475'
+              message:
+                attachment:
+                  type: template
+                  payload:
+                    template_type: media
+                    elements:
+                      - media_type: sticker
+                        attachment_id: 'bfe458bf64fa8da4d4eb'
+      responses:
+        '200':
+          description: message successfully sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: Message Id
+                      anonymous_id:
+                        type: string
+                        description: Id represents anonymous user
+                      conversation_id:
+                        type: string
+                        description: Id of the conversation
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  message_id: '92abd4e6156c8333da7c'
+                  anonymous_id: '1ffedc467f179649cf06'
+                  conversation_id: 'fa8f3f8701c2e89cb1d3'
+                error: 0
+                message: 'Success'

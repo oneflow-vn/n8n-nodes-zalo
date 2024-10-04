@@ -35,28 +35,6 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Access Token',
-    name: 'access_token',
-    required: true,
-    description:
-      'Token that allows the application to represent OA and call the API.',
-    default: '',
-    type: 'string',
-    routing: {
-      request: {
-        headers: {
-          access_token: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      show: {
-        resource: ['Default'],
-        operation: ['Retrieve Information About A Group'],
-      },
-    },
-  },
-  {
     displayName: 'Group Id',
     name: 'group_id',
     required: true,

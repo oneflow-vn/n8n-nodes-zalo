@@ -35,27 +35,6 @@ export const properties: INodeProperties[] = [
     },
   },
   {
-    displayName: 'Access Token',
-    name: 'access_token',
-    required: true,
-    description: 'Token that allows the app to access the OA API.',
-    default: '',
-    type: 'string',
-    routing: {
-      request: {
-        headers: {
-          access_token: '={{ $value }}',
-        },
-      },
-    },
-    displayOptions: {
-      show: {
-        resource: ['Default'],
-        operation: ['Fetch The List Of Oa Managed Groups'],
-      },
-    },
-  },
-  {
     displayName: 'Offset',
     name: 'offset',
     description: 'Offset to query. Default: 0',

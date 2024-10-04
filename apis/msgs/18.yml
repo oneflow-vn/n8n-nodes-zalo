@@ -1,0 +1,176 @@
+openapi: 3.0.0
+info:
+  title: Zalo OA API - Combined
+  version: '2.0'
+
+paths:
+  /oa/message:
+    post:
+      summary: Multiple message sending options via Zalo OA API
+      operationId: multiSendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  description: "Send Broadcast Message"
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        target:
+                          type: object
+                          properties:
+                            ages:
+                              type: string
+                              example: "0"
+                            gender:
+                              type: string
+                              example: "0"
+                            locations:
+                              type: string
+                              example: "4"
+                            cities:
+                              type: string
+                              example: "4"
+                            platform:
+                              type: string
+                              example: "1"
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              example: "template"
+                            payload:
+                              type: object
+                              properties:
+                                template_type:
+                                  type: string
+                                  example: "media"
+                                elements:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      media_type:
+                                        type: string
+                                        example: "article"
+                                      attachment_id:
+                                        type: string
+                                        example: "bd5ea46bb32e5a0033f"
+                - type: object
+                  description: "Send a text message to an anonymous user"
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        anonymous_id:
+                          type: string
+                          description: 'Id đại diện cho người dùng ẩn danh.'
+                        conversation_id:
+                          type: string
+                          description: 'Id của cuộc hội thoại.'
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: 'Nội dung văn bản gửi cho người dùng. Giới hạn tối đa là 2000 kí tự.'
+                - type: object
+                  description: "Send file type message to an anonymous user"
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        anonymous_id:
+                          type: string
+                          description: "Id representing the anonymous user."
+                        conversation_id:
+                          type: string
+                          description: "Id of the conversation."
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              enum: [file]
+                              description: "Type of attachment. Value: type = file"
+                            payload:
+                              type: object
+                              properties:
+                                token:
+                                  type: string
+                                  description: "Token string returned when using the file upload API."
+                - type: object
+                  description: "Drop an emotion icon on a message"
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                          description: "Id of the user receiving the reaction."
+                    sender_action:
+                      type: object
+                      properties:
+                        react_icon:
+                          type: string
+                          description: "The reaction icon (e.g., '/-strong')."
+                        react_message_id:
+                          type: string
+                          description: "The ID of the message being reacted to."
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: "The token that allows the application to represent the OA in the API call."
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: "Id of the message."
+                      anonymous_id:
+                        type: string
+                        description: "Id representing the anonymous user."
+                      conversation_id:
+                        type: string
+                        description: "Id of the conversation."
+                      user_id:
+                        type: string
+                        description: "Id of the user."
+                  error:
+                    type: integer
+                    description: Error code. 0 indicates success.
+                  message:
+                    type: string
+                    description: "Error message. 'Success' indicates the operation was successful."
+
+components:
+  securitySchemes:
+    API_KEY:
+      name: access_token
+      type: apiKey
+      in: header
+
+security:
+  - API_KEY: []

@@ -16,42 +16,68 @@
 import { INodeProperties, INodePropertyOptions } from 'n8n-workflow'
 import { runHooks } from './hooks'
 
-import * as lYDanhSChThNhViNChDuyT from './l-y-danh-s-ch-th-nh-vi-n-ch-duy-t'
+import * as layDanhSachThanhVienChoDuyet from './lay-danh-sach-thanh-vien-cho-duyet'
 import * as acceptNewMemberIntoAGroup from './accept-new-member-into-a-group'
 import * as rejectsAPendingMembershipInviteFromAGroup from './rejects-a-pending-membership-invite-from-a-group'
-import * as lYDanhSChThNhViNNhM from './l-y-danh-s-ch-th-nh-vi-n-nh-m'
+import * as layDanhSachThanhVienNhom from './lay-danh-sach-thanh-vien-nhom'
 import * as addsAdminsToAGroup from './adds-admins-to-a-group'
 import * as deleteSubgroup from './delete-subgroup'
 import * as disbandingAGroup from './disbanding-a-group'
 import * as fetchTheListOfOaManagedGroups from './fetch-the-list-of-oa-managed-groups'
 import * as getAListOfRecentGroupMessages from './get-a-list-of-recent-group-messages'
 import * as retrieveGroupConversationInformation from './retrieve-group-conversation-information'
-import * as gITinNhNNhMDNgSticker from './g-i-tin-nh-n-nh-m-d-ng-sticker'
+import * as guiTinNhanNhomDangSticker from './gui-tin-nhan-nhom-dang-sticker'
 import * as sendAGroupMessage from './send-a-group-message'
-import * as tONhMMI from './t-o-nh-m-m-i'
+import * as taoNhomMoi from './tao-nhom-moi'
 import * as retrieveInformationAboutAGroup from './retrieve-information-about-a-group'
 import * as updateGroup from './update-group'
 import * as updateGroupChatService from './update-group-chat-service'
 import * as inviteInterestedPeopleToGroup from './invite-interested-people-to-group'
+import * as guiTinTuVanDangVanBan from './gui-tin-tu-van-dang-van-ban'
+import * as guiTinTuVanDinhKemAnh from './gui-tin-tu-van-dinh-kem-anh'
+import * as sendPersonalMediaMessages from './send-personal-media-messages'
+import * as message from './message'
+import * as multipleMessageSendingOptionsViaZaloOaApi from './multiple-message-sending-options-via-zalo-oa-api'
+import * as sendminiappmessage from './sendminiappmessage'
+import * as checkTheSpecificUserSMessageSendLimit from './check-the-specific-user-s-message-send-limit'
+import * as oaListrecentchat from './oa-listrecentchat'
+import * as getConversationMessages from './get-conversation-messages'
+import * as uploadImage from './upload-image'
+import * as uploadAFile from './upload-a-file'
+import * as uploadsAGifImage from './uploads-a-gif-image'
+import * as guiTinGiaoDich from './gui-tin-giao-dich'
 
 const operations: INodePropertyOptions[] = [
-  lYDanhSChThNhViNChDuyT.option,
+  layDanhSachThanhVienChoDuyet.option,
   acceptNewMemberIntoAGroup.option,
   rejectsAPendingMembershipInviteFromAGroup.option,
-  lYDanhSChThNhViNNhM.option,
+  layDanhSachThanhVienNhom.option,
   addsAdminsToAGroup.option,
   deleteSubgroup.option,
   disbandingAGroup.option,
   fetchTheListOfOaManagedGroups.option,
   getAListOfRecentGroupMessages.option,
   retrieveGroupConversationInformation.option,
-  gITinNhNNhMDNgSticker.option,
+  guiTinNhanNhomDangSticker.option,
   sendAGroupMessage.option,
-  tONhMMI.option,
+  taoNhomMoi.option,
   retrieveInformationAboutAGroup.option,
   updateGroup.option,
   updateGroupChatService.option,
   inviteInterestedPeopleToGroup.option,
+  guiTinTuVanDangVanBan.option,
+  guiTinTuVanDinhKemAnh.option,
+  sendPersonalMediaMessages.option,
+  message.option,
+  multipleMessageSendingOptionsViaZaloOaApi.option,
+  sendminiappmessage.option,
+  checkTheSpecificUserSMessageSendLimit.option,
+  oaListrecentchat.option,
+  getConversationMessages.option,
+  uploadImage.option,
+  uploadAFile.option,
+  uploadsAGifImage.option,
+  guiTinGiaoDich.option,
 ]
 
 export const name = 'Default'
@@ -77,23 +103,36 @@ operationSelect.default = operations.length > 0 ? operations[0].value : ''
 
 export const rawProperties: INodeProperties[] = [
   operationSelect,
-  ...lYDanhSChThNhViNChDuyT.properties,
+  ...layDanhSachThanhVienChoDuyet.properties,
   ...acceptNewMemberIntoAGroup.properties,
   ...rejectsAPendingMembershipInviteFromAGroup.properties,
-  ...lYDanhSChThNhViNNhM.properties,
+  ...layDanhSachThanhVienNhom.properties,
   ...addsAdminsToAGroup.properties,
   ...deleteSubgroup.properties,
   ...disbandingAGroup.properties,
   ...fetchTheListOfOaManagedGroups.properties,
   ...getAListOfRecentGroupMessages.properties,
   ...retrieveGroupConversationInformation.properties,
-  ...gITinNhNNhMDNgSticker.properties,
+  ...guiTinNhanNhomDangSticker.properties,
   ...sendAGroupMessage.properties,
-  ...tONhMMI.properties,
+  ...taoNhomMoi.properties,
   ...retrieveInformationAboutAGroup.properties,
   ...updateGroup.properties,
   ...updateGroupChatService.properties,
   ...inviteInterestedPeopleToGroup.properties,
+  ...guiTinTuVanDangVanBan.properties,
+  ...guiTinTuVanDinhKemAnh.properties,
+  ...sendPersonalMediaMessages.properties,
+  ...message.properties,
+  ...multipleMessageSendingOptionsViaZaloOaApi.properties,
+  ...sendminiappmessage.properties,
+  ...checkTheSpecificUserSMessageSendLimit.properties,
+  ...oaListrecentchat.properties,
+  ...getConversationMessages.properties,
+  ...uploadImage.properties,
+  ...uploadAFile.properties,
+  ...uploadsAGifImage.properties,
+  ...guiTinGiaoDich.properties,
 ]
 
 const { properties, methods } = runHooks(rawProperties)

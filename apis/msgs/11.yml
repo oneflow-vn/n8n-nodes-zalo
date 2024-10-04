@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: API Gửi tin Truyền thông cá nhân
+  version: "1.0"
+servers:
+  - url: https://openapi.zalo.me/v3.0/oa
+paths:
+  /message/promotion:
+    post:
+      summary: Send personal media messages
+      operationId: sendMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                  required:
+                    - user_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                            elements:
+                              type: array
+                            buttons:
+                              type: array
+                      required:
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+      parameters:
+        - name: access_token
+          in: header
+          schema:
+            type: string
+          required: true
+          description: Token that allows the application to represent OA call API.

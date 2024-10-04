@@ -32,9 +32,9 @@
     },
     "options": [
       {
-        "name": "L Y Danh S Ch Th Nh Vi N Ch Duy T",
-        "value": "L Y Danh S Ch Th Nh Vi N Ch Duy T",
-        "action": "L Y Danh S Ch Th Nh Vi N Ch Duy T Default",
+        "name": "Lay Danh Sach Thanh Vien Cho Duyet",
+        "value": "Lay Danh Sach Thanh Vien Cho Duyet",
+        "action": "Lay Danh Sach Thanh Vien Cho Duyet Default",
         "description": "Ứng dụng cần được cấp quyền quản lý thông tin nhóm",
         "routing": {
           "request": {
@@ -88,9 +88,9 @@
         }
       },
       {
-        "name": "L Y Danh S Ch Th Nh Vi N Nh M",
-        "value": "L Y Danh S Ch Th Nh Vi N Nh M",
-        "action": "L Y Danh S Ch Th Nh Vi N Nh M Default",
+        "name": "Lay Danh Sach Thanh Vien Nhom",
+        "value": "Lay Danh Sach Thanh Vien Nhom",
+        "action": "Lay Danh Sach Thanh Vien Nhom Default",
         "description": "Lấy danh sách thành viên nhóm",
         "routing": {
           "request": {
@@ -192,9 +192,9 @@
         }
       },
       {
-        "name": "G I Tin Nh N Nh M D Ng Sticker",
-        "value": "G I Tin Nh N Nh M D Ng Sticker",
-        "action": "G I Tin Nh N Nh M D Ng Sticker Default",
+        "name": "Gui Tin Nhan Nhom Dang Sticker",
+        "value": "Gui Tin Nhan Nhom Dang Sticker",
+        "action": "Gui Tin Nhan Nhom Dang Sticker Default",
         "description": "Ứng dụng cần được cấp quyền quản lý thông tin nhóm",
         "routing": {
           "request": {
@@ -226,9 +226,9 @@
         }
       },
       {
-        "name": "T O Nh M M I",
-        "value": "T O Nh M M I",
-        "action": "T O Nh M M I Default",
+        "name": "Tao Nhom Moi",
+        "value": "Tao Nhom Moi",
+        "action": "Tao Nhom Moi Default",
         "description": "Tạo nhóm mới",
         "routing": {
           "request": {
@@ -284,6 +284,192 @@
             "url": "=/oa/group/invite"
           }
         }
+      },
+      {
+        "name": "Gui Tin Tu Van Dang Van Ban",
+        "value": "Gui Tin Tu Van Dang Van Ban",
+        "action": "Gui Tin Tu Van Dang Van Ban Default",
+        "description": "Gửi tin Tư vấn dạng văn bản",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/message/cs"
+          }
+        }
+      },
+      {
+        "name": "Gui Tin Tu Van Dinh Kem Anh",
+        "value": "Gui Tin Tu Van Dinh Kem Anh",
+        "action": "Gui Tin Tu Van Dinh Kem Anh Default",
+        "description": "Gửi tin Tư vấn đính kèm ảnh",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/v3.0/oa/message/cs"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Send Personal Media Messages",
+        "value": "Send Personal Media Messages",
+        "action": "Send Personal Media Messages Default",
+        "description": "Send personal media messages",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/message/promotion"
+          }
+        }
+      },
+      {
+        "name": "Message",
+        "value": "Message",
+        "action": " Default",
+        "description": "Send image messages to anonymous users",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/message"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Multiple Message Sending Options Via Zalo Oa Api",
+        "value": "Multiple Message Sending Options Via Zalo Oa Api",
+        "action": "Multiple Message Sending Options Via Zalo Oa Api Default",
+        "description": "Multiple message sending options via Zalo OA API",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/message"
+          }
+        }
+      },
+      {
+        "name": "Sendminiappmessage",
+        "value": "Sendminiappmessage",
+        "action": "Sendminiappmessage Default",
+        "description": "Gửi tin nhắn miniapp đến người dùng",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/message/cs/miniapp"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Check The Specific User S Message Send Limit",
+        "value": "Check The Specific User S Message Send Limit",
+        "action": "Check The Specific User S Message Send Limit Default",
+        "description": "Check the specific User's message send limit",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/quota/message"
+          }
+        }
+      },
+      {
+        "name": "Oa Listrecentchat",
+        "value": "Oa Listrecentchat",
+        "action": " Default",
+        "description": "API to get at most 10 most recent messages between an OA and a user",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/listrecentchat"
+          }
+        }
+      },
+      {
+        "name": "Get Conversation Messages",
+        "value": "Get Conversation Messages",
+        "action": "Get Conversation Messages Default",
+        "description": "API supports retrieving message information between OA and a specific user. Each request retrieves a maximum of 10 messages",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/oa/conversation"
+          }
+        }
+      },
+      {
+        "name": "Upload Image",
+        "value": "Upload Image",
+        "action": "Upload Image Default",
+        "description": "Use this API to upload an image. After upload, the image will need to be sent to the user and will be stored on the server for a maximum of 7 days. Quota for the API is 5000 requests per day/week/month. Required permissions: Ability to send messages and notifications via OA. operationId: uploadImage",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/upload/image"
+          }
+        }
+      },
+      {
+        "name": "Upload A File",
+        "value": "Upload A File",
+        "action": "Upload A File Default",
+        "description": "Use this API endpoint to upload and send files to users. Once uploaded and sent to the user, the file will be stored on the server for a maximum of 7 days. After this period, the user will be notified that the file no longer exists",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/upload/file"
+          }
+        }
+      },
+      {
+        "name": "Uploads A Gif Image",
+        "value": "Uploads A Gif Image",
+        "action": "Uploads A Gif Image Default",
+        "description": "Make a POST request to this API to upload a GIF image",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/upload/gif"
+          }
+        }
+      },
+      {
+        "name": "Gui Tin Giao Dich",
+        "value": "Gui Tin Giao Dich",
+        "action": "Gui Tin Giao Dich Default",
+        "description": "Gửi tin giao dịch",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/oa/message/transaction"
+          }
+        }
       }
     ],
     "default": ""
@@ -330,32 +516,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token cho phép ứng dụng đại diện OA gọi API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+          "Lay Danh Sach Thanh Vien Cho Duyet"
         ]
       }
     }
@@ -380,7 +541,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+          "Lay Danh Sach Thanh Vien Cho Duyet"
         ]
       }
     }
@@ -404,7 +565,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+          "Lay Danh Sach Thanh Vien Cho Duyet"
         ]
       }
     }
@@ -428,7 +589,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Ch Duy T"
+          "Lay Danh Sach Thanh Vien Cho Duyet"
         ]
       }
     }
@@ -441,31 +602,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Accept New Member Into A Group"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token allowing the app to represent OA when calling the API",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -605,31 +741,6 @@
     }
   },
   {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token allows the application represented OA to make API call",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Rejects A Pending Membership Invite From A Group"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "Group Id",
     "name": "group_id",
     "type": "string",
@@ -751,32 +862,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Nh M"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token cho phép ứng dụng đại diện OA gọi API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "L Y Danh S Ch Th Nh Vi N Nh M"
+          "Lay Danh Sach Thanh Vien Nhom"
         ]
       }
     }
@@ -801,7 +887,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Nh M"
+          "Lay Danh Sach Thanh Vien Nhom"
         ]
       }
     }
@@ -825,7 +911,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Nh M"
+          "Lay Danh Sach Thanh Vien Nhom"
         ]
       }
     }
@@ -849,7 +935,7 @@
           "Default"
         ],
         "operation": [
-          "L Y Danh S Ch Th Nh Vi N Nh M"
+          "Lay Danh Sach Thanh Vien Nhom"
         ]
       }
     }
@@ -862,31 +948,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Adds Admins To A Group"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token allowing the application to call the API on behalf of the OA",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -1028,31 +1089,6 @@
     }
   },
   {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "The access token that allows an application to call API on behalf of OA.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Delete Subgroup"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "Group Id",
     "name": "group_id",
     "type": "string",
@@ -1162,31 +1198,6 @@
     }
   },
   {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "The token that allows your application to represent OA in calling the API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Disbanding A Group"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "Group Id",
     "name": "group_id",
     "type": "string",
@@ -1255,31 +1266,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Fetch The List Of Oa Managed Groups"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token that allows the app to access the OA API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -1665,31 +1651,6 @@
     }
   },
   {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "The access token that allows the application to call the OA API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Retrieve Group Conversation Information"
-        ]
-      }
-    }
-  },
-  {
     "displayName": "POST /v3.0/oa/group/message",
     "name": "operation",
     "type": "notice",
@@ -1703,7 +1664,7 @@
           "Default"
         ],
         "operation": [
-          "G I Tin Nh N Nh M D Ng Sticker"
+          "Gui Tin Nhan Nhom Dang Sticker"
         ]
       }
     }
@@ -1747,7 +1708,7 @@
           "Default"
         ],
         "operation": [
-          "G I Tin Nh N Nh M D Ng Sticker"
+          "Gui Tin Nhan Nhom Dang Sticker"
         ]
       }
     }
@@ -1861,7 +1822,7 @@
           "Default"
         ],
         "operation": [
-          "G I Tin Nh N Nh M D Ng Sticker"
+          "Gui Tin Nhan Nhom Dang Sticker"
         ]
       }
     }
@@ -1893,7 +1854,7 @@
           "Default"
         ],
         "operation": [
-          "G I Tin Nh N Nh M D Ng Sticker"
+          "Gui Tin Nhan Nhom Dang Sticker"
         ]
       }
     }
@@ -1906,31 +1867,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Send A Group Message"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "The access token allows the app to call the API on behalf of OA",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -2076,7 +2012,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2105,7 +2041,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2134,7 +2070,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2163,7 +2099,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2210,7 +2146,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2242,7 +2178,7 @@
           "Default"
         ],
         "operation": [
-          "T O Nh M M I"
+          "Tao Nhom Moi"
         ]
       }
     }
@@ -2255,31 +2191,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Retrieve Information About A Group"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Token that allows the application to represent OA and call the API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -2324,31 +2235,6 @@
       "theme": "info"
     },
     "default": "",
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Update Group"
-        ]
-      }
-    }
-  },
-  {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "Access token to allow the application to represent the OA and call the API.",
-    "default": "",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
     "displayOptions": {
       "show": {
         "resource": [
@@ -2753,31 +2639,6 @@
     }
   },
   {
-    "displayName": "Access Token",
-    "name": "access_token",
-    "required": true,
-    "description": "The token that allows the app to represent OA call the API. See details on how to get access token.",
-    "default": "<your_access_token>",
-    "type": "string",
-    "routing": {
-      "request": {
-        "headers": {
-          "access_token": "={{ $value }}"
-        }
-      }
-    },
-    "displayOptions": {
-      "show": {
-        "resource": [
-          "Default"
-        ],
-        "operation": [
-          "Invite Interested People To Group"
-        ]
-      }
-    }
-  },
-  {
     "required": true,
     "displayName": "Group Id",
     "name": "group_id",
@@ -2883,6 +2744,1730 @@
         ],
         "operation": [
           "Invite Interested People To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/message/cs",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dang Van Ban"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "ID của người dùng",
+            "name": "user_id",
+            "displayName": "User Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dang Van Ban"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "Nội dung văn bản muốn gửi cho người dùng",
+            "name": "text",
+            "displayName": "Text"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dang Van Ban"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"user_id\": \"string\"\n  },\n  \"message\": {\n    \"text\": \"string\"\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dang Van Ban"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /v3.0/oa/message/cs",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dinh Kem Anh"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "ID người nhận",
+            "name": "user_id",
+            "displayName": "User Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dinh Kem Anh"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "Tiêu đề của ảnh",
+            "name": "text",
+            "displayName": "Text"
+          },
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "Loại attachment. type = template",
+                    "name": "type",
+                    "displayName": "Type"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "Loại template. template_type = media",
+                            "name": "template_type",
+                            "displayName": "Template Type"
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Elements",
+                            "name": "elements",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Loại media. media_type = image/gif",
+                                    "name": "media_type",
+                                    "displayName": "Media Type"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "ID ảnh",
+                                    "name": "attachment_id",
+                                    "displayName": "Attachment Id"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Đường dẫn đến ảnh",
+                                    "name": "url",
+                                    "displayName": "Url"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "payload",
+                    "displayName": "Payload"
+                  }
+                ]
+              }
+            ],
+            "name": "attachment",
+            "displayName": "Attachment"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dinh Kem Anh"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"user_id\": \"string\"\n  },\n  \"message\": {\n    \"text\": \"string\",\n    \"attachment\": {\n      \"type\": \"string\",\n      \"payload\": {\n        \"template_type\": \"string\",\n        \"elements\": [\n          {\n            \"media_type\": \"string\",\n            \"attachment_id\": \"string\",\n            \"url\": \"string\"\n          }\n        ]\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Tu Van Dinh Kem Anh"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /message/promotion",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send Personal Media Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /message/promotion<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send Personal Media Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"user_id\": \"string\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"string\",\n      \"payload\": {\n        \"template_type\": \"string\",\n        \"elements\": [],\n        \"buttons\": []\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Send Personal Media Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /message",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "Id representing anonymous user",
+            "name": "anonymous_id",
+            "displayName": "Anonymous Id"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "Id of the conversation",
+            "name": "conversation_id",
+            "displayName": "Conversation Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "",
+                    "description": "Attachment type must be: type = template",
+                    "name": "type",
+                    "displayName": "Type"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "string",
+                            "default": "",
+                            "description": "Template type for image attachment should be: template_type = media",
+                            "name": "template_type",
+                            "displayName": "Template Type"
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Elements",
+                            "name": "elements",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Media type, supported values: image",
+                                    "name": "media_type",
+                                    "displayName": "Media Type"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "Path to the image. Supported format: jpg and png. Maximum size: 1MB",
+                                    "name": "url",
+                                    "displayName": "Url"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "payload",
+                    "displayName": "Payload"
+                  }
+                ]
+              }
+            ],
+            "name": "attachment",
+            "displayName": "Attachment"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"anonymous_id\": \"string\",\n    \"conversation_id\": \"string\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"string\",\n      \"payload\": {\n        \"template_type\": \"string\",\n        \"elements\": [\n          {\n            \"media_type\": \"string\",\n            \"url\": \"string\"\n          }\n        ]\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/message",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Multiple Message Sending Options Via Zalo Oa Api"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "0",
+                    "description": "",
+                    "name": "ages",
+                    "displayName": "Ages"
+                  },
+                  {
+                    "type": "string",
+                    "default": "0",
+                    "description": "",
+                    "name": "gender",
+                    "displayName": "Gender"
+                  },
+                  {
+                    "type": "string",
+                    "default": "4",
+                    "description": "",
+                    "name": "locations",
+                    "displayName": "Locations"
+                  },
+                  {
+                    "type": "string",
+                    "default": "4",
+                    "description": "",
+                    "name": "cities",
+                    "displayName": "Cities"
+                  },
+                  {
+                    "type": "string",
+                    "default": "1",
+                    "description": "",
+                    "name": "platform",
+                    "displayName": "Platform"
+                  }
+                ]
+              }
+            ],
+            "name": "target",
+            "displayName": "Target"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Multiple Message Sending Options Via Zalo Oa Api"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "template",
+                    "description": "",
+                    "name": "type",
+                    "displayName": "Type"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "string",
+                            "default": "media",
+                            "description": "",
+                            "name": "template_type",
+                            "displayName": "Template Type"
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Elements",
+                            "name": "elements",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "article",
+                                    "description": "",
+                                    "name": "media_type",
+                                    "displayName": "Media Type"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "bd5ea46bb32e5a0033f",
+                                    "description": "",
+                                    "name": "attachment_id",
+                                    "displayName": "Attachment Id"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "payload",
+                    "displayName": "Payload"
+                  }
+                ]
+              }
+            ],
+            "name": "attachment",
+            "displayName": "Attachment"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Multiple Message Sending Options Via Zalo Oa Api"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"target\": {\n      \"ages\": \"0\",\n      \"gender\": \"0\",\n      \"locations\": \"4\",\n      \"cities\": \"4\",\n      \"platform\": \"1\"\n    }\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"media\",\n        \"elements\": [\n          {\n            \"media_type\": \"article\",\n            \"attachment_id\": \"bd5ea46bb32e5a0033f\"\n          }\n        ]\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Multiple Message Sending Options Via Zalo Oa Api"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /message/cs/miniapp",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Sendminiappmessage"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "ID của người nhận",
+            "name": "user_id",
+            "displayName": "User Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Sendminiappmessage"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "Token được sinh ra từ miniapp, đại diện cho miniapp của bạn",
+            "name": "template_type",
+            "displayName": "Template Type"
+          },
+          {
+            "type": "json",
+            "default": "{}",
+            "description": "Các thuộc tính của mẫu tin",
+            "name": "template_data",
+            "displayName": "Template Data"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Sendminiappmessage"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"user_id\": \"string\"\n  },\n  \"message\": {\n    \"template_type\": \"string\",\n    \"template_data\": {}\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Sendminiappmessage"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/quota/message",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Check The Specific User S Message Send Limit"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "User Id",
+    "name": "user_id",
+    "type": "string",
+    "default": "",
+    "description": "The User ID of the user you want to check the information for",
+    "routing": {
+      "request": {
+        "body": {
+          "user_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Check The Specific User S Message Send Limit"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"user_id\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Check The Specific User S Message Send Limit"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /oa/listrecentchat",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Oa Listrecentchat"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Data",
+    "name": "data",
+    "required": true,
+    "description": "Information to fetch the message",
+    "default": {},
+    "type": "fixedCollection",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The order of the first message in the returned list. The most recent message has an order of 0",
+            "name": "offset",
+            "displayName": "Offset"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The number of messages to fetch. Note: each request is limited to fetching at most 10 messages",
+            "name": "count",
+            "displayName": "Count"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "qs": {
+          "data": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Oa Listrecentchat"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /oa/conversation",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Get Conversation Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Data",
+    "name": "data",
+    "required": true,
+    "description": "Information passed to retrieve messages",
+    "default": {},
+    "type": "fixedCollection",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "number",
+            "default": 0,
+            "description": "ID of the user to get the conversation list",
+            "name": "user_id",
+            "displayName": "User Id"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The order of the first message in the returned list",
+            "name": "offset",
+            "displayName": "Offset"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "The number of messages to get",
+            "name": "count",
+            "displayName": "Count"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "qs": {
+          "data": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Get Conversation Messages"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/image",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/image<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"file\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/file",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload A File"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/file<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload A File"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"file\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Upload A File"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/gif",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Uploads A Gif Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/upload/gif<br/><br/>There's no body available for request, kindly use HTTP Request node to send body",
+    "name": "operation",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Uploads A Gif Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"file\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Uploads A Gif Image"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /oa/message/transaction",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Giao Dich"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Recipient",
+    "name": "recipient",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "5373093274852641073",
+            "description": "",
+            "name": "user_id",
+            "displayName": "User Id"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "recipient": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Giao Dich"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message",
+    "name": "message",
+    "type": "fixedCollection",
+    "default": {},
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "fixedCollection",
+            "default": {},
+            "description": "",
+            "options": [
+              {
+                "name": "items",
+                "displayName": "Items",
+                "values": [
+                  {
+                    "type": "string",
+                    "default": "template",
+                    "description": "",
+                    "name": "type",
+                    "displayName": "Type"
+                  },
+                  {
+                    "type": "fixedCollection",
+                    "default": {},
+                    "description": "",
+                    "options": [
+                      {
+                        "name": "items",
+                        "displayName": "Items",
+                        "values": [
+                          {
+                            "type": "string",
+                            "default": "transaction_order",
+                            "description": "",
+                            "name": "template_type",
+                            "displayName": "Template Type"
+                          },
+                          {
+                            "type": "string",
+                            "default": "VI",
+                            "description": "",
+                            "name": "language",
+                            "displayName": "Language"
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Elements",
+                            "name": "elements",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "attachment_id",
+                                    "displayName": "Attachment Id"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "type",
+                                    "displayName": "Type"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "content",
+                                    "displayName": "Content"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "fixedCollection",
+                            "default": [],
+                            "typeOptions": {
+                              "multipleValues": true
+                            },
+                            "displayName": "Buttons",
+                            "name": "buttons",
+                            "description": "",
+                            "placeholder": "Add item",
+                            "options": [
+                              {
+                                "name": "items",
+                                "displayName": "Items",
+                                "values": [
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "title",
+                                    "displayName": "Title"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "image_icon",
+                                    "displayName": "Image Icon"
+                                  },
+                                  {
+                                    "type": "string",
+                                    "default": "",
+                                    "description": "",
+                                    "name": "type",
+                                    "displayName": "Type"
+                                  },
+                                  {
+                                    "type": "json",
+                                    "default": "{}",
+                                    "description": "",
+                                    "name": "payload",
+                                    "displayName": "Payload"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "name": "payload",
+                    "displayName": "Payload"
+                  }
+                ]
+              }
+            ],
+            "name": "attachment",
+            "displayName": "Attachment"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "message": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Giao Dich"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"recipient\": {\n    \"user_id\": \"5373093274852641073\"\n  },\n  \"message\": {\n    \"attachment\": {\n      \"type\": \"template\",\n      \"payload\": {\n        \"template_type\": \"transaction_order\",\n        \"language\": \"VI\",\n        \"elements\": [\n          {\n            \"attachment_id\": \"string\",\n            \"type\": \"string\",\n            \"content\": \"string\"\n          }\n        ],\n        \"buttons\": [\n          {\n            \"title\": \"string\",\n            \"image_icon\": \"string\",\n            \"type\": \"string\",\n            \"payload\": {}\n          }\n        ]\n      }\n    }\n  }\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Default"
+        ],
+        "operation": [
+          "Gui Tin Giao Dich"
         ]
       }
     }

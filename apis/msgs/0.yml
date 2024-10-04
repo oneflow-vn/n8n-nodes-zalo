@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+ title: Zalo API
+ version: 3.0.0
+paths:
+ /oa/message/cs:
+   post:
+    summary: Gửi tin Tư vấn dạng văn bản
+    description: Gửi tin Tư vấn dạng văn bản
+    consumes:
+    - application/json
+    produces:
+    - text/json
+    parameters:
+    - in: header
+      name: access_token
+      required: true
+      description: Token cho phép ứng dụng đại diện OA gọi API
+      schema:
+        type: string
+    requestBody:
+      content:
+        application/json:  
+          schema:
+            type: object
+            properties:
+              recipient:
+                type: object
+                properties:
+                  user_id:
+                    type: string
+                    description: ID của người dùng
+              message:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    description: Nội dung văn bản muốn gửi cho người dùng
+    responses:
+      200:
+        description: Example Response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    message_id:
+                      type: string
+                      description: ID của thông báo
+                    user_id:
+                      type: string
+                      description: ID của người nhận
+                    quota:
+                      type: object
+                      properties:
+                        quota_type:
+                          type: string
+                          description: Nguồn quota sử dụng
+                        remain:
+                          type: string
+                          description: Số lượt gửi tin còn lại
+                        total:
+                          type: string
+                          description: Tổng số lượng gửi tin 
+                        expired_date:
+                          type: string
+                          description: Ngày hết hạn sử dụng
+                        owner_type:
+                          type: string
+                          description: Thực thể sở hữu Quota Package
+                        owner_id:
+                          type: string
+                          description: ID thực thể sở hữu Quota Package
+                error:
+                  type: integer
+                  description: Error code
+                message:
+                  type: string
+                  description: Status message

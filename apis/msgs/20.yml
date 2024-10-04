@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  version: 3.0.0
+  title: OA Quota Message
+  description: 'API to check the last interaction time of the User with OA, the usage limit of free Consultation messages in 48 hours, and the daily/monthly message delivery limit.'
+paths:
+  /oa/quota/message:
+    post:
+      summary: Check the specific User's message send limit
+      operationId: checkUserSendLimit
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: 'user_id is required'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user_id
+              properties:
+                user_id:
+                  type: string
+                  description: The User ID of the user you want to check the information for.
+            example:
+              user_id: "3665924733554159312"
+      responses:
+        '200':
+          description: successful operation
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      last_interaction:
+                        type: string
+                        description: The last interaction time of the user with OA (in unix milliseconds format).
+                      cs_reply:
+                        type: object
+                        properties:
+                          remain:
+                            type: integer
+                            description: The remaining number of free Consultation messages that can be sent to this User within 48 hours.
+                          total:
+                            type: integer
+                            description: The total number of free Consultation messages that can be sent to this User within 48 hours.
+                      promotion:
+                        type: object
+                        properties:
+                          daily_remain:
+                            type: integer
+                            description: The remaining number of promotional messages that can be sent to this User today.
+                          daily_total:
+                            type: integer
+                            description: The total number of promotional messages that can be sent to this User today.
+                          monthly_remain:
+                            type: integer
+                            description: The remaining number of promotional messages that can be sent to this User this month.
+                          monthly_total:
+                            type: integer
+                            description: The total number of promotional messages that can be sent to this User this month.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  last_interaction: "1690184100000"
+                  cs_reply:
+                    remain: 6
+                    total: 8
+                  promotion:
+                    daily_remain: 0
+                    daily_total: 1
+                    monthly_remain: 4
+                    monthly_total: 6
+                error: 0
+                message: "Success"
+      servers:
+        - url: 'https://openapi.zalo.me/v3.0'
+          description: Zalo Open API Server
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      in: header
+      bearerFormat: JWT

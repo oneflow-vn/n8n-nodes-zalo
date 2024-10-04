@@ -226,7 +226,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Default'],
-        operation: ['G I Tin Nh N Nh M D Ng Sticker'],
+        operation: ['Gui Tin Nhan Nhom Dang Sticker'],
       },
     },
   },
@@ -276,7 +276,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Default'],
-        operation: ['T O Nh M M I'],
+        operation: ['Tao Nhom Moi'],
       },
     },
   },
@@ -351,6 +351,277 @@ const extraProperties: INodeProperties[] = [
         useCustomBody: [true],
         resource: ['Default'],
         operation: ['Invite Interested People To Group'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "user_id": "string"\n  },\n  "message": {\n    "text": "string"\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Gui Tin Tu Van Dang Van Ban'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "user_id": "string"\n  },\n  "message": {\n    "text": "string",\n    "attachment": {\n      "type": "string",\n      "payload": {\n        "template_type": "string",\n        "elements": [\n          {\n            "media_type": "string",\n            "attachment_id": "string",\n            "url": "string"\n          }\n        ]\n      }\n    }\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Gui Tin Tu Van Dinh Kem Anh'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "user_id": "string"\n  },\n  "message": {\n    "attachment": {\n      "type": "string",\n      "payload": {\n        "template_type": "string",\n        "elements": [],\n        "buttons": []\n      }\n    }\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Send Personal Media Messages'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "anonymous_id": "string",\n    "conversation_id": "string"\n  },\n  "message": {\n    "attachment": {\n      "type": "string",\n      "payload": {\n        "template_type": "string",\n        "elements": [\n          {\n            "media_type": "string",\n            "url": "string"\n          }\n        ]\n      }\n    }\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Message'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "target": {\n      "ages": "0",\n      "gender": "0",\n      "locations": "4",\n      "cities": "4",\n      "platform": "1"\n    }\n  },\n  "message": {\n    "attachment": {\n      "type": "template",\n      "payload": {\n        "template_type": "media",\n        "elements": [\n          {\n            "media_type": "article",\n            "attachment_id": "bd5ea46bb32e5a0033f"\n          }\n        ]\n      }\n    }\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Multiple Message Sending Options Via Zalo Oa Api'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "user_id": "string"\n  },\n  "message": {\n    "template_type": "string",\n    "template_data": {}\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Sendminiappmessage'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default: '{\n  "user_id": "string"\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Check The Specific User S Message Send Limit'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default: '{\n  "file": "string"\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Upload Image'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default: '{\n  "file": "string"\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Upload A File'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default: '{\n  "file": "string"\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Uploads A Gif Image'],
+      },
+    },
+  },
+  {
+    displayName: 'Custom Body',
+    name: 'customBody',
+    type: 'json',
+    default:
+      '{\n  "recipient": {\n    "user_id": "5373093274852641073"\n  },\n  "message": {\n    "attachment": {\n      "type": "template",\n      "payload": {\n        "template_type": "transaction_order",\n        "language": "VI",\n        "elements": [\n          {\n            "attachment_id": "string",\n            "type": "string",\n            "content": "string"\n          }\n        ],\n        "buttons": [\n          {\n            "title": "string",\n            "image_icon": "string",\n            "type": "string",\n            "payload": {}\n          }\n        ]\n      }\n    }\n  }\n}',
+    description: 'Custom body to send',
+    routing: {
+      request: {
+        body: {
+          customBody: '={{JSON.parse($value)}}',
+        },
+      },
+      send: {
+        preSend: [helpers.hooks.preSendActionCustonBody],
+      },
+    },
+    displayOptions: {
+      show: {
+        useCustomBody: [true],
+        resource: ['Default'],
+        operation: ['Gui Tin Giao Dich'],
       },
     },
   },

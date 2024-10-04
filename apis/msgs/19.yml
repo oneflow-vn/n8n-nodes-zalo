@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Zalo OA API
+  version: 3.0.0
+paths:
+  /message/cs/miniapp:
+    post:
+      description: Gửi tin nhắn miniapp đến người dùng
+      operationId: sendMiniappMessage
+      requestBody:
+        description: Message information
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                      description: ID của người nhận
+                message:
+                  type: object
+                  properties:
+                    template_type:
+                      type: string
+                      description: Token được sinh ra từ miniapp, đại diện cho miniapp của bạn.
+                    template_data:
+                      type: object
+                      description: Các thuộc tính của mẫu tin.
+              required:
+                - recipient
+                - message
+      responses:
+        '200':
+          description: Message sent
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      quota:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          quota_type:
+                            type: string
+                          remain:
+                            type: string
+                          total:
+                            type: string
+                          owner_type:
+                            type: string
+                          owner_id:
+                            type: string
+                          expired_date:
+                            type: string
+                      message_id:
+                        type: string
+                        description: ID của thông báo
+                      user_id:
+                        type: string
+                        description: ID của người nhận
+                  error:
+                    type: integer
+                  message:
+                    type: string

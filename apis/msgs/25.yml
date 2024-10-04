@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: File Upload API
+  description: This API allows you to upload and send files to users.
+paths:
+  /oa/upload/file:
+    post:
+      summary: Upload a File
+      description: Use this API endpoint to upload and send files to users. Once uploaded and sent to the user, the file will be stored on the server for a maximum of 7 days. After this period, the user will be notified that the file no longer exists.
+      operationId: uploadFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Binary content of the file.
+      responses:
+        '200':
+          description: Upload Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        description: Token of the file, used for sending notifications with attached files.
+                  error:
+                    type: integer
+                    description: Error status code.
+                  message:
+                    type: string
+                    description: Status message.
+              example:
+                data:
+                  token: "hDtMfuo7XKzhraJb6jm53AiDncIQ1aSOQp9FHOROFisDP7m64BxCKe"
+                error: 0
+                message: "Success"
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: 'Token allowing the application to represent OA in calling the API.'
+          schema:
+            type: string

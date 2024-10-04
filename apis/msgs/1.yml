@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: API Document
+  version: 1.0.0
+servers:
+  - url: https://openapi.zalo.me
+paths:
+  /v3.0/oa/message/cs:
+    post:
+      summary: Gửi tin Tư vấn đính kèm ảnh
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  required: ["user_id"]
+                  properties:
+                    user_id:
+                      type: string
+                      description: ID người nhận
+                message:
+                  type: object
+                  required: ["attachment"]
+                  properties:
+                    text:
+                      type: string
+                      description: Tiêu đề của ảnh
+                    attachment:
+                      type: object
+                      required: ["type", "payload"]
+                      properties:
+                        type:
+                          type: string
+                          description: Loại attachment. type = template
+                        payload:
+                          type: object
+                          required: ["template_type", "elements"]
+                          properties:
+                            template_type:
+                              type: string
+                              description: Loại template. template_type = media
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                required: ["media_type", "attachment_id", "url"]
+                                properties:
+                                  media_type:
+                                    type: string
+                                    description: Loại media. media_type = image/gif
+                                  attachment_id:
+                                    type: string
+                                    description: ID ảnh
+                                  url:
+                                    type: string
+                                    description: Đường dẫn đến ảnh
+
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      quota:
+                        type: object
+                        properties:
+                          quota_type:
+                            type: string
+                            description: Nguồn quota sử dụng
+                          remain:
+                            type: string
+                            description: Số lượt gửi tin còn lại
+                          total:
+                            type: string
+                            description: Tổng số lượng gửi tin
+                          expired_date:
+                            type: string
+                            description: Ngày hết hạn sử dụng tin
+                          owner_type:
+                            type: string
+                            description: Thực thể sở hữu Quota Package
+                          owner_id:
+                            type: string
+                            description: ID thực thể sở hữu Quota Package
+                      user_id:
+                        type: string
+                        description: ID người nhận
+                      message_id:
+                        type: string
+                        description: ID thông báo
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Message

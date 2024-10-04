@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  title: User Message Limit Check API
+  version: "3.0"
+paths:
+  /oa/quota/message:
+    post:
+      summary: Check for specific user's messaging quota
+      description: This API is used to check the last interaction time of the User with OA, check the usage of free Consultation messages within 48 hours and, check the daily/monthly limit of sending Communication messages.
+      operationId: quotaMessage
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: Token allowing the application representative OA to call API.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  required: true
+                  description: The User ID of the user who needs to check the information.
+            examples:
+              quotaMessage:
+                value:
+                  user_id: "3665924733554159312"
+      responses:
+        "200":
+          description: Operation is successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      last_interaction:
+                        type: string
+                        description: The last interaction time of the user with OA (unix milliseconds format)
+                      cs_reply:
+                        type: object
+                        properties:
+                          remain:
+                            type: integer
+                            description: The remaining advising message in the 48 hours free period sent to this user
+                          total:
+                            type: integer
+                            description: Total advising messages sent to the user in the 48 hours free period
+                      promotion:
+                        type: object
+                        properties:
+                          daily_remain:
+                            type: integer
+                            description: The remaining number of daily communication messages that can be sent to the user
+                          daily_total:
+                            type: integer
+                            description: The total number of daily communication messages that have been sent to the user
+                          monthly_remain:
+                            type: integer
+                            description: The remaining number of monthly communication messages that can be sent to the user
+                          monthly_total:
+                            type: integer
+                            description: The total number of monthly communication messages that have been sent to the user
+                  error:
+                    type: integer
+                    description: Error code, 0 for success
+                  message:
+                    type: string
+                    description: Operation status message
+              examples:
+                response:
+                  value:
+                    data:
+                      last_interaction: "1690184100000"
+                      cs_reply:
+                        remain: 6
+                        total: 8
+                      promotion:
+                        daily_remain: 0
+                        daily_total: 1
+                        monthly_remain: 4
+                        monthly_total: 6
+                    error: 0
+                    message: "Success"

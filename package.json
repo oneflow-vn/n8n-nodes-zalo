@@ -57,5 +57,10 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0",
+    "remove-vietnamese-accents": "^1.0.7"
   }
 }

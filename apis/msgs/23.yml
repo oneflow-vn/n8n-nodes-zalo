@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Zalo OA API Documentation
+  version: "2.0"
+paths:
+  /oa/conversation:
+    get:
+      summary: Get conversation messages
+      description: API supports retrieving message information between OA and a specific user. Each request retrieves a maximum of 10 messages.
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: The token that allows the application to call API on behalf of OA.
+        - in: query
+          name: data
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: integer
+                format: int64
+                description: ID of the user to get the conversation list
+              offset:
+                type: integer
+                format: int32
+                description: The order of the first message in the returned list.
+              count:
+                type: integer
+                format: int32
+                description: The number of messages to get
+          required: true
+          description: Information passed to retrieve messages
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          format: int32
+                        time:
+                          type: integer
+                          format: int64
+                        type:
+                          type: string
+                        message:
+                          type: string
+                        message_id:
+                          type: string
+                        from_id:
+                          type: integer
+                          format: int64
+                        to_id:
+                          type: integer
+                          format: int64
+                        from_display_name:
+                          type: string
+                        from_avatar:
+                          type: string
+                        to_display_name:
+                          type: string
+                        to_avatar:
+                          type: string
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+              example:
+                data:
+                  - src: 1
+                    time: 1619401853770
+                    type: "text"
+                    message: "Chào shop"
+                    message_id: "92e5d851aa8178dd2192"
+                    from_id: 2512523625412515
+                    to_id: 3120036654733951760
+                    from_display_name: "Khoa Pham"
+                    from_avatar: "https://s240-ava-talk.zadn.vn/e185bc8ca29ec5d79.jpg"
+                    to_display_name: "OA"
+                    to_avatar: "https://s240-ava-talk.zadn.vn/b07fb3e228e448c53d3e.jpg"
+                error: 0
+                message: "Success"

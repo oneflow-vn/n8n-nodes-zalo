@@ -1,0 +1,78 @@
+openapi: 3.0.0
+info:
+  title: Anonymous user image message API
+  version: 1.0.0
+servers:
+  - url: https://openapi.zalo.me/v2.0/oa
+paths:
+  /message:
+    post:
+      description: Send image messages to anonymous users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    anonymous_id:
+                      type: string
+                      description: Id representing anonymous user.
+                    conversation_id:
+                      type: string
+                      description: Id of the conversation.
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: "Attachment type must be: type = template"
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                              description: "Template type for image attachment should be: template_type = media"
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                    description: "Media type, supported values: image"
+                                  url:
+                                    type: string
+                                    description: "Path to the image. Supported format: jpg and png. Maximum size: 1MB."
+      responses:
+        '200':
+          description: Success
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: Id of the message
+                      anonymous_id:
+                        type: string
+                        description: Id representing anonymous user.
+                      conversation_id:
+                        type: string
+                        description: Id of the conversation.
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Response message

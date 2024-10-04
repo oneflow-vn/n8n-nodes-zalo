@@ -1,0 +1,1120 @@
+openapi: 3.0.3
+info:
+  title: Zalo API
+  version: 3.0.0
+servers:
+  - url: https://openapi.zalo.me
+security:
+  - API_KEY: []
+paths:
+  /oa/message/cs:
+    post:
+      summary: Gửi tin Tư vấn dạng văn bản
+      description: Gửi tin Tư vấn dạng văn bản
+      consumes:
+        - application/json
+      produces:
+        - text/json
+      parameters:
+        - in: header
+          name: access_token
+          required: true
+          description: Token cho phép ứng dụng đại diện OA gọi API
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                      description: ID của người dùng
+                message:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+                      description: Nội dung văn bản muốn gửi cho người dùng
+      responses:
+        '200':
+          description: Example Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: ID của thông báo
+                      user_id:
+                        type: string
+                        description: ID của người nhận
+                      quota:
+                        type: object
+                        properties:
+                          quota_type:
+                            type: string
+                            description: Nguồn quota sử dụng
+                          remain:
+                            type: string
+                            description: Số lượt gửi tin còn lại
+                          total:
+                            type: string
+                            description: Tổng số lượng gửi tin
+                          expired_date:
+                            type: string
+                            description: Ngày hết hạn sử dụng
+                          owner_type:
+                            type: string
+                            description: Thực thể sở hữu Quota Package
+                          owner_id:
+                            type: string
+                            description: ID thực thể sở hữu Quota Package
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Status message
+  /v3.0/oa/message/cs:
+    post:
+      summary: Gửi tin Tư vấn đính kèm ảnh
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  required:
+                    - user_id
+                  properties:
+                    user_id:
+                      type: string
+                      description: ID người nhận
+                message:
+                  type: object
+                  required:
+                    - attachment
+                  properties:
+                    text:
+                      type: string
+                      description: Tiêu đề của ảnh
+                    attachment:
+                      type: object
+                      required:
+                        - type
+                        - payload
+                      properties:
+                        type:
+                          type: string
+                          description: Loại attachment. type = template
+                        payload:
+                          type: object
+                          required:
+                            - template_type
+                            - elements
+                          properties:
+                            template_type:
+                              type: string
+                              description: Loại template. template_type = media
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                required:
+                                  - media_type
+                                  - attachment_id
+                                  - url
+                                properties:
+                                  media_type:
+                                    type: string
+                                    description: Loại media. media_type = image/gif
+                                  attachment_id:
+                                    type: string
+                                    description: ID ảnh
+                                  url:
+                                    type: string
+                                    description: Đường dẫn đến ảnh
+      responses:
+        '200':
+          description: Successful Operation
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      quota:
+                        type: object
+                        properties:
+                          quota_type:
+                            type: string
+                            description: Nguồn quota sử dụng
+                          remain:
+                            type: string
+                            description: Số lượt gửi tin còn lại
+                          total:
+                            type: string
+                            description: Tổng số lượng gửi tin
+                          expired_date:
+                            type: string
+                            description: Ngày hết hạn sử dụng tin
+                          owner_type:
+                            type: string
+                            description: Thực thể sở hữu Quota Package
+                          owner_id:
+                            type: string
+                            description: ID thực thể sở hữu Quota Package
+                      user_id:
+                        type: string
+                        description: ID người nhận
+                      message_id:
+                        type: string
+                        description: ID thông báo
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Message
+  /message/promotion:
+    post:
+      summary: Send personal media messages
+      operationId: sendMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                  required:
+                    - user_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                            elements:
+                              type: array
+                            buttons:
+                              type: array
+                      required:
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+      parameters:
+        - name: access_token
+          in: header
+          schema:
+            type: string
+          required: true
+          description: Token that allows the application to represent OA call API.
+  /message:
+    post:
+      description: Send image messages to anonymous users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    anonymous_id:
+                      type: string
+                      description: Id representing anonymous user.
+                    conversation_id:
+                      type: string
+                      description: Id of the conversation.
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          description: 'Attachment type must be: type = template'
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                              description: >-
+                                Template type for image attachment should be:
+                                template_type = media
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  media_type:
+                                    type: string
+                                    description: 'Media type, supported values: image'
+                                  url:
+                                    type: string
+                                    description: >-
+                                      Path to the image. Supported format: jpg
+                                      and png. Maximum size: 1MB.
+      responses:
+        '200':
+          description: Success
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: Id of the message
+                      anonymous_id:
+                        type: string
+                        description: Id representing anonymous user.
+                      conversation_id:
+                        type: string
+                        description: Id of the conversation.
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Response message
+  /oa/message:
+    post:
+      summary: Multiple message sending options via Zalo OA API
+      operationId: multiSendMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  description: Send Broadcast Message
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        target:
+                          type: object
+                          properties:
+                            ages:
+                              type: string
+                              example: '0'
+                            gender:
+                              type: string
+                              example: '0'
+                            locations:
+                              type: string
+                              example: '4'
+                            cities:
+                              type: string
+                              example: '4'
+                            platform:
+                              type: string
+                              example: '1'
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              example: template
+                            payload:
+                              type: object
+                              properties:
+                                template_type:
+                                  type: string
+                                  example: media
+                                elements:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      media_type:
+                                        type: string
+                                        example: article
+                                      attachment_id:
+                                        type: string
+                                        example: bd5ea46bb32e5a0033f
+                - type: object
+                  description: Send a text message to an anonymous user
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        anonymous_id:
+                          type: string
+                          description: Id đại diện cho người dùng ẩn danh.
+                        conversation_id:
+                          type: string
+                          description: Id của cuộc hội thoại.
+                    message:
+                      type: object
+                      properties:
+                        text:
+                          type: string
+                          description: >-
+                            Nội dung văn bản gửi cho người dùng. Giới hạn tối đa
+                            là 2000 kí tự.
+                - type: object
+                  description: Send file type message to an anonymous user
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        anonymous_id:
+                          type: string
+                          description: Id representing the anonymous user.
+                        conversation_id:
+                          type: string
+                          description: Id of the conversation.
+                    message:
+                      type: object
+                      properties:
+                        attachment:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              enum:
+                                - file
+                              description: 'Type of attachment. Value: type = file'
+                            payload:
+                              type: object
+                              properties:
+                                token:
+                                  type: string
+                                  description: >-
+                                    Token string returned when using the file
+                                    upload API.
+                - type: object
+                  description: Drop an emotion icon on a message
+                  properties:
+                    recipient:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                          description: Id of the user receiving the reaction.
+                    sender_action:
+                      type: object
+                      properties:
+                        react_icon:
+                          type: string
+                          description: The reaction icon (e.g., '/-strong').
+                        react_message_id:
+                          type: string
+                          description: The ID of the message being reacted to.
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: >-
+            The token that allows the application to represent the OA in the API
+            call.
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        description: Id of the message.
+                      anonymous_id:
+                        type: string
+                        description: Id representing the anonymous user.
+                      conversation_id:
+                        type: string
+                        description: Id of the conversation.
+                      user_id:
+                        type: string
+                        description: Id of the user.
+                  error:
+                    type: integer
+                    description: Error code. 0 indicates success.
+                  message:
+                    type: string
+                    description: >-
+                      Error message. 'Success' indicates the operation was
+                      successful.
+  /message/cs/miniapp:
+    post:
+      description: Gửi tin nhắn miniapp đến người dùng
+      operationId: sendMiniappMessage
+      requestBody:
+        description: Message information
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                      description: ID của người nhận
+                message:
+                  type: object
+                  properties:
+                    template_type:
+                      type: string
+                      description: >-
+                        Token được sinh ra từ miniapp, đại diện cho miniapp của
+                        bạn.
+                    template_data:
+                      type: object
+                      description: Các thuộc tính của mẫu tin.
+              required:
+                - recipient
+                - message
+      responses:
+        '200':
+          description: Message sent
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      quota:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          quota_type:
+                            type: string
+                          remain:
+                            type: string
+                          total:
+                            type: string
+                          owner_type:
+                            type: string
+                          owner_id:
+                            type: string
+                          expired_date:
+                            type: string
+                      message_id:
+                        type: string
+                        description: ID của thông báo
+                      user_id:
+                        type: string
+                        description: ID của người nhận
+                  error:
+                    type: integer
+                  message:
+                    type: string
+  /oa/quota/message:
+    post:
+      summary: Check the specific User's message send limit
+      operationId: checkUserSendLimit
+      security:
+        - BearerAuth: []
+      requestBody:
+        description: user_id is required
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user_id
+              properties:
+                user_id:
+                  type: string
+                  description: >-
+                    The User ID of the user you want to check the information
+                    for.
+            example:
+              user_id: '3665924733554159312'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      last_interaction:
+                        type: string
+                        description: >-
+                          The last interaction time of the user with OA (in unix
+                          milliseconds format).
+                      cs_reply:
+                        type: object
+                        properties:
+                          remain:
+                            type: integer
+                            description: >-
+                              The remaining number of free Consultation messages
+                              that can be sent to this User within 48 hours.
+                          total:
+                            type: integer
+                            description: >-
+                              The total number of free Consultation messages
+                              that can be sent to this User within 48 hours.
+                      promotion:
+                        type: object
+                        properties:
+                          daily_remain:
+                            type: integer
+                            description: >-
+                              The remaining number of promotional messages that
+                              can be sent to this User today.
+                          daily_total:
+                            type: integer
+                            description: >-
+                              The total number of promotional messages that can
+                              be sent to this User today.
+                          monthly_remain:
+                            type: integer
+                            description: >-
+                              The remaining number of promotional messages that
+                              can be sent to this User this month.
+                          monthly_total:
+                            type: integer
+                            description: >-
+                              The total number of promotional messages that can
+                              be sent to this User this month.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  last_interaction: '1690184100000'
+                  cs_reply:
+                    remain: 6
+                    total: 8
+                  promotion:
+                    daily_remain: 0
+                    daily_total: 1
+                    monthly_remain: 4
+                    monthly_total: 6
+                error: 0
+                message: Success
+      servers:
+        - url: https://openapi.zalo.me/v3.0
+          description: Zalo Open API Server
+  /oa/listrecentchat:
+    get:
+      description: API to get at most 10 most recent messages between an OA and a user
+      parameters:
+        - name: access_token
+          in: header
+          description: >-
+            Token that allows an application to impersonate an OA to call the
+            API
+          required: true
+          schema:
+            type: string
+        - name: data
+          in: query
+          description: Information to fetch the message
+          required: true
+          schema:
+            type: object
+            properties:
+              offset:
+                type: integer
+                description: >-
+                  The order of the first message in the returned list. The most
+                  recent message has an order of 0.
+              count:
+                type: integer
+                description: >-
+                  The number of messages to fetch. Note: each request is limited
+                  to fetching at most 10 messages.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          description: >-
+                            The source of the message. Can be 0 (from OA to
+                            user) or 1 (from user to OA).
+                        time:
+                          type: number
+                          description: The time the message was sent (in timestamp format).
+                        type:
+                          type: string
+                          description: >-
+                            The type of the message. Can be text, voice, photo,
+                            GIF, link, links, sticker, or location.
+                        message:
+                          type: string
+                          description: The content of the message.
+                        links:
+                          type: array
+                          items:
+                            type: string
+                          description: The list of links attached in the message.
+                        thumb:
+                          type: string
+                          description: The URL of the image or GIF.
+                        url:
+                          type: string
+                          description: >-
+                            The path to the audio (when the type is voice) or
+                            the image/GIF/sticker.
+                        description:
+                          type: string
+                          description: The description of the image.
+                        from_id:
+                          type: number
+                          description: The ID of the sender (can be user_id or oa_id).
+                        to_id:
+                          type: number
+                          description: The ID of the receiver (can be user_id or oa_id).
+                        from_display_name:
+                          type: string
+                          description: The display name of the sender.
+                        from_avatar:
+                          type: string
+                          description: The path to the avatar of the sender.
+                        to_display_name:
+                          type: string
+                          description: The display name of the receiver.
+                        to_avatar:
+                          type: string
+                          description: The path to the avatar of the receiver.
+                  error:
+                    type: integer
+                    description: >-
+                      The error code. If the request is successful, it will be
+                      0.
+                  message:
+                    type: string
+                    description: >-
+                      The response message. If the request is successful, it is
+                      "Success".
+  /oa/conversation:
+    get:
+      summary: Get conversation messages
+      description: >-
+        API supports retrieving message information between OA and a specific
+        user. Each request retrieves a maximum of 10 messages.
+      parameters:
+        - in: header
+          name: access_token
+          schema:
+            type: string
+          required: true
+          description: The token that allows the application to call API on behalf of OA.
+        - in: query
+          name: data
+          schema:
+            type: object
+            properties:
+              user_id:
+                type: integer
+                format: int64
+                description: ID of the user to get the conversation list
+              offset:
+                type: integer
+                format: int32
+                description: The order of the first message in the returned list.
+              count:
+                type: integer
+                format: int32
+                description: The number of messages to get
+          required: true
+          description: Information passed to retrieve messages
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          format: int32
+                        time:
+                          type: integer
+                          format: int64
+                        type:
+                          type: string
+                        message:
+                          type: string
+                        message_id:
+                          type: string
+                        from_id:
+                          type: integer
+                          format: int64
+                        to_id:
+                          type: integer
+                          format: int64
+                        from_display_name:
+                          type: string
+                        from_avatar:
+                          type: string
+                        to_display_name:
+                          type: string
+                        to_avatar:
+                          type: string
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+              example:
+                data:
+                  - src: 1
+                    time: 1619401853770
+                    type: text
+                    message: Chào shop
+                    message_id: 92e5d851aa8178dd2192
+                    from_id: 2512523625412515
+                    to_id: 3120036654733952000
+                    from_display_name: Khoa Pham
+                    from_avatar: https://s240-ava-talk.zadn.vn/e185bc8ca29ec5d79.jpg
+                    to_display_name: OA
+                    to_avatar: https://s240-ava-talk.zadn.vn/b07fb3e228e448c53d3e.jpg
+                error: 0
+                message: Success
+  /oa/upload/image:
+    post:
+      summary: Upload image
+      description: >-
+        Use this API to upload an image. After upload, the image will need to be
+        sent to the user and will be stored on the server for a maximum of 7
+        days. Quota for the API is 5000 requests per day/week/month. Required
+        permissions: Ability to send messages and notifications via OA.
+        operationId: uploadImage
+      requestBody:
+        description: Image to upload
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: >-
+                    The binary content of the image file. Supported formats: jpg
+                    and png. Maximum size: 1MB.
+      responses:
+        '200':
+          description: Request was successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      attachment_id:
+                        type: string
+                        description: ID of the uploaded image
+                  error:
+                    type: integer
+                    description: Error code
+                  message:
+                    type: string
+                    description: Status message
+              example:
+                data:
+                  attachment_id: wESbL53O_shdvIPILC7iR_JpC552r_fjukKg
+                error: 0
+                message: Success
+  /oa/upload/file:
+    post:
+      summary: Upload a File
+      description: >-
+        Use this API endpoint to upload and send files to users. Once uploaded
+        and sent to the user, the file will be stored on the server for a
+        maximum of 7 days. After this period, the user will be notified that the
+        file no longer exists.
+      operationId: uploadFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Binary content of the file.
+      responses:
+        '200':
+          description: Upload Successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        description: >-
+                          Token of the file, used for sending notifications with
+                          attached files.
+                  error:
+                    type: integer
+                    description: Error status code.
+                  message:
+                    type: string
+                    description: Status message.
+              example:
+                data:
+                  token: hDtMfuo7XKzhraJb6jm53AiDncIQ1aSOQp9FHOROFisDP7m64BxCKe
+                error: 0
+                message: Success
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Token allowing the application to represent OA in calling the API.
+          schema:
+            type: string
+  /oa/upload/gif:
+    post:
+      summary: Uploads a GIF image
+      description: Make a POST request to this API to upload a GIF image.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: 'Binary content of the GIF file. Maximum size: 5MB.'
+              required:
+                - file
+      responses:
+        '200':
+          description: upload was successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      attachment_id:
+                        type: string
+                        description: >-
+                          ID of the uploaded image, useful for the notification
+                          APIs that attach images.
+                  error:
+                    type: integer
+                    description: >-
+                      Error code. An error value of 0 means that the upload was
+                      successful.
+                  message:
+                    type: string
+                    description: Success message
+    parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: >-
+          Access token granting the application the ability to represent the OA
+          in API calls. Refer to the link in the original document for obtaining
+          the access token.
+        schema:
+          type: string
+  /oa/message/transaction:
+    post:
+      summary: Gửi tin giao dịch
+      description: |
+        Gửi tin giao dịch
+      operationId: sendTransaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  required:
+                    - user_id
+                  properties:
+                    user_id:
+                      type: string
+                      example: '5373093274852641073'
+                message:
+                  type: object
+                  required:
+                    - attachment
+                  properties:
+                    attachment:
+                      type: object
+                      required:
+                        - type
+                        - payload
+                      properties:
+                        type:
+                          type: string
+                          example: template
+                        payload:
+                          type: object
+                          required:
+                            - template_type
+                            - elements
+                          properties:
+                            template_type:
+                              type: string
+                              example: transaction_order
+                            language:
+                              type: string
+                              example: VI
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  attachment_id:
+                                    type: string
+                                  type:
+                                    type: string
+                                  content:
+                                    type: string
+                            buttons:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                  image_icon:
+                                    type: string
+                                  type:
+                                    type: string
+                                  payload:
+                                    type: object
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                      quota:
+                        type: object
+                        properties:
+                          quota_type:
+                            type: string
+                          owner_type:
+                            type: string
+                          owner_id:
+                            type: string
+components:
+  securitySchemes:
+    API_KEY:
+      name: access_token
+      type: apiKey
+      in: header

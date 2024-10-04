@@ -1,4 +1,7 @@
 const path = require('path');
+const { RemoveVietnameseAccents } = require('remove-vietnamese-accents');
+const removeVietnameseAccents = new RemoveVietnameseAccents()
+
 
 module.exports = {
   packageName: 'n8n-nodes-zalo',
@@ -82,18 +85,20 @@ module.exports = {
   overwrites: {
     // overwrite operation options
     operations: [
-      // {
-      //   match: {
-      //     name: 'randomOperation',
-      //     set: {
-      //       type: "string",
-      //     }
-      //   }
-      // }
+      {
+        match: {
+          name: 'access_token',
+        },
+				set: false,
+      }
     ],
   },
 
-  // Folders to delete when generating the nodes 
-  deleteFolders: ['']
-};
+  // Folders to delete when generating the nodes
+  deleteFolders: [''],
+
+	normalizeFn: (name)  => {
+		return removeVietnameseAccents.remove(name);
+	}
+}
 

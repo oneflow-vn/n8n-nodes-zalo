@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info: 
+  title: Send Consultation Message With File Attachment API
+  version: 1.0.0
+paths:
+  /oa/message/cs:
+    post:
+      summary: Sends a consultation message with a file attachment using the access token.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                  required:
+                    - user_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        payload:
+                          type: object
+                          properties:
+                            token:
+                              type: string
+                          required:
+                            - token
+                      required:
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message
+      responses:
+        200: 
+          description: Message sent successfully
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      quota:
+                        type: object
+                        properties:
+                          remain:
+                            type: string
+                          total:
+                            type: string
+                          expired_date:
+                            type: string
+                            nullable: true
+                          quota_type:
+                            type: string
+                            nullable: true
+                          owner_type:
+                            type: string
+                            nullable: true
+                          owner_id:
+                            type: string
+                            nullable: true
+                      message_id:
+                        type: string
+                      user_id:
+                        type: string
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                required:
+                  - data
+                  - error
+                  - message

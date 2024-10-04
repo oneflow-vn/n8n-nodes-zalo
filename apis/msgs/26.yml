@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  title: Upload GIF Image API
+  version: v2.0
+paths:
+  /oa/upload/gif:
+    post:
+      summary: Uploads a GIF image
+      description: "Make a POST request to this API to upload a GIF image."
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: "Binary content of the GIF file. Maximum size: 5MB."
+              required:
+                - file
+      responses:
+        '200':
+          description: upload was successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      attachment_id:
+                        type: string
+                        description: "ID of the uploaded image, useful for the notification APIs that attach images."
+                  error:
+                    type: integer
+                    description: "Error code. An error value of 0 means that the upload was successful."
+                  message:
+                    type: string
+                    description: Success message
+
+    parameters:
+      - name: access_token
+        in: header
+        required: true
+        description: "Access token granting the application the ability to represent the OA in API calls. Refer to the link in the original document for obtaining the access token."
+        schema:
+          type: string

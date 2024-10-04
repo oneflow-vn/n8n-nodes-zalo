@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Zalo listrecentchat API
+  version: 2.0.0
+
+paths:
+  /oa/listrecentchat:
+    get:
+      description: API to get at most 10 most recent messages between an OA and a user
+      parameters:
+      - name: access_token
+        in: header
+        description: Token that allows an application to impersonate an OA to call the API
+        required: true
+        schema:
+          type: string
+      - name: data
+        in: query
+        description: Information to fetch the message
+        required: true
+        schema:
+          type: object
+          properties:
+            offset:
+              type: integer
+              description: The order of the first message in the returned list. The most recent message has an order of 0.
+            count:
+              type: integer
+              description: "The number of messages to fetch. Note: each request is limited to fetching at most 10 messages."
+
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        src:
+                          type: integer
+                          description: The source of the message. Can be 0 (from OA to user) or 1 (from user to OA).
+                        time:
+                          type: number
+                          description: The time the message was sent (in timestamp format).
+                        type:
+                          type: string
+                          description: The type of the message. Can be text, voice, photo, GIF, link, links, sticker, or location.
+                        message:
+                          type: string
+                          description: The content of the message.
+                        links:
+                          type: array
+                          items:
+                            type: string
+                          description: The list of links attached in the message.
+                        thumb:
+                          type: string
+                          description: The URL of the image or GIF.
+                        url:
+                          type: string
+                          description: The path to the audio (when the type is voice) or the image/GIF/sticker.
+                        description:
+                          type: string
+                          description: The description of the image.
+                        from_id:
+                          type: number
+                          description: The ID of the sender (can be user_id or oa_id).
+                        to_id:
+                          type: number
+                          description: The ID of the receiver (can be user_id or oa_id).
+                        from_display_name:
+                          type: string
+                          description: The display name of the sender.
+                        from_avatar:
+                          type: string
+                          description: The path to the avatar of the sender.
+                        to_display_name:
+                          type: string
+                          description: The display name of the receiver.
+                        to_avatar:
+                          type: string
+                          description: The path to the avatar of the receiver.
+                  error:
+                    type: integer
+                    description: The error code. If the request is successful, it will be 0.
+                  message:
+                    type: string
+                    description: The response message. If the request is successful, it is "Success".

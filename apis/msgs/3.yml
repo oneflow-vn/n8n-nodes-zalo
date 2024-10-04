@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info: 
+  title: Gửi tin Tư vấn theo mẫu yêu cầu thông tin người dùng
+  version: '3.0'
+paths:
+  /oa/message/cs:
+    post:
+      summary: Send a message with user information request template
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                recipient:
+                  type: object
+                  properties:
+                    user_id:
+                      type: string
+                      example: "2468458835296117922"
+                  required:
+                    - user_id
+                message:
+                  type: object
+                  properties:
+                    attachment:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: "template"
+                        payload:
+                          type: object
+                          properties:
+                            template_type:
+                              type: string
+                              example: "request_user_info"
+                            elements:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  title:
+                                    type: string
+                                    example: 'OA Chatbot (Testing)'
+                                  subtitle:
+                                    type: string
+                                    example: 'Đang yêu cầu thông tin từ bạn'
+                                  image_url:
+                                    type: string
+                                    example: 'https://developers.zalo.me/web/static/zalo.png'
+                                required:
+                                  - title
+                                  - subtitle
+                                  - image_url
+                          required:
+                            - template_type
+                            - elements
+                      required: 
+                        - type
+                        - payload
+                  required:
+                    - attachment
+              required:
+                - recipient
+                - message  
+      responses:
+        200:
+          description: Operation successful
+          content:
+            text/json:
+              schema:
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message_id:
+                        type: string
+                        example: '63ecf43f0df7dba892e6'
+                      user_id:
+                        type: string
+                        example: '2512523625412515'
+                      quota:
+                        type: object
+                        oneOf:
+                          - properties:
+                              quota_type:
+                                type: string
+                                example: 'reply'
+                              remain:
+                                type: string
+                                example: '7'
+                              total:
+                                type: string
+                                example: '8'
+                            required:
+                              - quota_type
+                              - remain
+                              - total
+                          - properties:
+                              quota_type:
+                                type: string
+                                example: 'sub_quota'
+                              remain:
+                                type: string
+                                example: '1990'
+                              total:
+                                type: string
+                                example: '2000'
+                              expired_date:
+                                type: string
+                                example: '11/02/2023'
+                            required:
+                              - quota_type
+                              - remain
+                              - total
+                              - expired_date
+                          - properties:
+                              quota_type:
+                                type: string
+                                example: 'purchase_quota'
+                              owner_type:
+                                type: string
+                                example: 'OA'
+                              owner_id:
+                                type: string
+                                example: '4462152339089565647'
+                            required:
+                              - quota_type
+                              - owner_type
+                              - owner_id
+                          - properties:
+                              quota_type:
+                                type: string
+                                example: 'reward_quota'
+                              owner_type:
+                                type: string
+                                example: 'OA'
+                              owner_id:
+                                type: string
+                                example: '4462152339089565647'
+                            required:
+                              - quota_type
+                              - owner_type
+                              - owner_id
+                    required:
+                      - message_id
+                      - user_id
+                  error: 
+                    type: number
+                    example: 0
+                  message:
+                    type: string
+                    example: 'Success'
+                required:
+                  - data
+                  - error
+                  - message

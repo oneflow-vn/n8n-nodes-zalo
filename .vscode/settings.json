@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "openapi:v3": "file:///Users/minh/Documents/n8n/generator-n8n-nodes/packages/n8n-nodes-zalo/apis/msns/22.yml"
+    }
+}
