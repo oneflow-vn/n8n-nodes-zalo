@@ -4,7 +4,7 @@ info:
   version: "1.0"
 
 paths:
-  /oa/group/getgroupsofoa:
+  /v3.0/oa/group/getgroupsofoa:
     get:
       summary: "Fetch the list of OA managed groups"
       operationId: "getManagedGroups"

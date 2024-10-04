@@ -3,7 +3,7 @@ info:
   version: 1.0.0
   title: Group Quota Check API
 paths:
-  /oa/quota/group:
+  /v3.0/oa/quota/group:
     post:
       summary: Quota check for groups
       description: Check group quota. Note, application needs permission to manage group information.

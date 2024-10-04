@@ -3,7 +3,7 @@ info:
   title: Zalo API
   version: 3.0.0
 paths:
-  /oa/group/acceptpendinginvite:
+  /v3.0/oa/group/acceptpendinginvite:
     post:
       summary: Accept new member into a group
       operationId: acceptPendingInvite

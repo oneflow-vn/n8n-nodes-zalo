@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://openapi.zalo.me/v3.0
 paths:
-  /oa/group/delete:
+  /v3.0/oa/group/delete:
     post:
       summary: Disbanding a group
       description: The application needs to be authorized to manage group information.

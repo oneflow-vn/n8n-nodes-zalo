@@ -1,0 +1,1499 @@
+[
+  {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Groups",
+        "value": "Groups",
+        "description": ""
+      },
+      {
+        "name": "Expense",
+        "value": "Expense",
+        "description": ""
+      },
+      {
+        "name": "Zalo Api",
+        "value": "Zalo Api",
+        "description": ""
+      }
+    ],
+    "default": "",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${async function (this: any, options) {\n\t\t\t\t\t// @ts-ignore\n\t\t\t\t\tconst credentials = await this.getCredentials('zaloOath2Api');\n\n\t\t\t\t\toptions.headers = {\n\t\t\t\t\t\t...options.headers,\n\t\t\t\t\t\taccess_token: credentials.oauthTokenData.access_token,\n\t\t\t\t\t};\n\n\t\t\t\t\treturn Promise.resolve(options);\n\t\t\t\t}}"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Get All Groups By User",
+        "value": "Get All Groups By User",
+        "action": "Get All Groups By User Groups",
+        "description": "get all groups by user",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/api/v1/groups"
+          }
+        }
+      },
+      {
+        "name": "Create Group",
+        "value": "Create Group",
+        "action": "Create Group Groups",
+        "description": "Create group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/v1/groups"
+          }
+        }
+      },
+      {
+        "name": "Add Members To Group",
+        "value": "Add Members To Group",
+        "action": "Add Members To Group Groups",
+        "description": "add members to group",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/api/v1/groups/members"
+          }
+        }
+      },
+      {
+        "name": "Report Detail",
+        "value": "Report Detail",
+        "action": "Report Detail Groups",
+        "description": "report detail",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/api/v1/groups/2/reports/detailed"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Create Expense",
+        "value": "Create Expense",
+        "action": "Create Expense Expense",
+        "description": "create expense",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/api/v1/expenses/groups/2"
+          }
+        }
+      },
+      {
+        "name": "Get All Expenses By Group Id",
+        "value": "Get All Expenses By Group Id",
+        "action": "Get All Expenses By Group Id Expense",
+        "description": "Get all expenses by group id",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/api/v1/expenses/groups/2"
+          }
+        }
+      },
+      {
+        "name": "Update Expense",
+        "value": "Update Expense",
+        "action": "Update Expense Expense",
+        "description": "update expense",
+        "routing": {
+          "request": {
+            "method": "PUT",
+            "url": "=/api/v1/expenses/11"
+          }
+        }
+      },
+      {
+        "name": "Update Expense Copy",
+        "value": "Update Expense Copy",
+        "action": "Update Expense Copy Expense",
+        "description": "update expense Copy",
+        "routing": {
+          "request": {
+            "method": "DELETE",
+            "url": "=/api/v1/expenses/10"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Zalo Api"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Get User Info By Access Token",
+        "value": "Get User Info By Access Token",
+        "action": "Get User Info By Access Token Zalo Api",
+        "description": "Get user info by access token",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/v2.0/me"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "GET /api/v1/groups",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Get All Groups By User"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Get All Groups By User"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "100",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Get All Groups By User"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /v1/groups",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "111",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Content Type",
+    "name": "Content-Type",
+    "default": "application/json",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "Content-Type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Category",
+    "name": "category",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "category": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Name",
+    "name": "name",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "name": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"category\": \"string\",\n  \"name\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Create Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /api/v1/groups/members",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Current User Id",
+    "name": "current_user_id",
+    "default": "1150533156686834759",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "current_user_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Content Type",
+    "name": "Content-Type",
+    "default": "application/json",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "Content-Type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Group Id",
+    "name": "groupId",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "groupId": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Members",
+    "name": "members",
+    "type": "fixedCollection",
+    "default": [],
+    "typeOptions": {
+      "multipleValues": true
+    },
+    "description": "",
+    "placeholder": "Add item",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "avatarUrl",
+            "displayName": "Avatarurl"
+          },
+          {
+            "type": "number",
+            "default": 0,
+            "description": "",
+            "name": "id",
+            "displayName": "Id"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "name",
+            "displayName": "Name"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "members": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"groupId\": 0,\n  \"members\": [\n    {\n      \"avatarUrl\": \"string\",\n      \"id\": 0,\n      \"name\": \"string\"\n    }\n  ]\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Add Members To Group"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /api/v1/groups/2/reports/detailed",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Report Detail"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Report Detail"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "111",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Groups"
+        ],
+        "operation": [
+          "Report Detail"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /api/v1/expenses/groups/2",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "111",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Content Type",
+    "name": "Content-Type",
+    "default": "application/json",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "Content-Type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Amount",
+    "name": "amount",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "amount": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Id",
+    "name": "userId",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "userId": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Participants",
+    "name": "participants",
+    "type": "json",
+    "default": "[\n  null\n]",
+    "routing": {
+      "request": {
+        "body": {
+          "participants": "={{ JSON.parse($value) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Category",
+    "name": "category",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "category": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Title",
+    "name": "title",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "title": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Date",
+    "name": "date",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "date": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"amount\": 0,\n  \"userId\": 0,\n  \"participants\": [\n    0\n  ],\n  \"category\": \"string\",\n  \"title\": \"string\",\n  \"date\": \"1970-01-01T00:00:00.000Z\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Create Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /api/v1/expenses/groups/2",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Get All Expenses By Group Id"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Get All Expenses By Group Id"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "111",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Get All Expenses By Group Id"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "PUT /api/v1/expenses/11",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "101",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Content Type",
+    "name": "Content-Type",
+    "default": "application/json",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "Content-Type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Amount",
+    "name": "amount",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "amount": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Category",
+    "name": "category",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "category": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Date",
+    "name": "date",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "date": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Participants",
+    "name": "participants",
+    "type": "json",
+    "default": "[\n  null\n]",
+    "routing": {
+      "request": {
+        "body": {
+          "participants": "={{ JSON.parse($value) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Title",
+    "name": "title",
+    "type": "string",
+    "default": "",
+    "routing": {
+      "request": {
+        "body": {
+          "title": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "User Id",
+    "name": "userId",
+    "type": "number",
+    "default": 0,
+    "routing": {
+      "request": {
+        "body": {
+          "userId": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"amount\": 0,\n  \"category\": \"string\",\n  \"date\": \"1970-01-01T00:00:00.000Z\",\n  \"participants\": [\n    0\n  ],\n  \"title\": \"string\",\n  \"userId\": 0\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "DELETE /api/v1/expenses/10",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense Copy"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Accept",
+    "name": "accept",
+    "default": "*/*",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "accept": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense Copy"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Authorization",
+    "name": "Authorization",
+    "default": "101",
+    "type": "number",
+    "routing": {
+      "request": {
+        "headers": {
+          "Authorization": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense Copy"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Content Type",
+    "name": "Content-Type",
+    "default": "application/json",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "Content-Type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Expense"
+        ],
+        "operation": [
+          "Update Expense Copy"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /v2.0/me",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Zalo Api"
+        ],
+        "operation": [
+          "Get User Info By Access Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Zalo Api"
+        ],
+        "operation": [
+          "Get User Info By Access Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Fields",
+    "name": "fields",
+    "default": "id,name,birthday,picture",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "fields": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "Zalo Api"
+        ],
+        "operation": [
+          "Get User Info By Access Token"
+        ]
+      }
+    }
+  }
+]

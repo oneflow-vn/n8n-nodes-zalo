@@ -7,7 +7,7 @@ servers:
   - url: https://openapi.zalo.me/v3.0
 
 paths:
-  /oa/group/updateinfo:
+  /v3.0/oa/group/updateinfo:
     post:
       summary: Update Group
       parameters:

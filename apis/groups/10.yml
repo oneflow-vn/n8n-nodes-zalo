@@ -5,7 +5,7 @@
     "version": "3.0"
   },
   "paths": {
-    "/oa/group/listpendinginvite": {
+    "/v3.0/oa/group/listpendinginvite": {
       "get": {
         "summary": "Lấy danh sách thành viên chờ duyệt",
         "description": "Ứng dụng cần được cấp quyền quản lý thông tin nhóm.",

@@ -1,11 +1,11 @@
 openapi: 3.0.0
 info:
   title: Invite Interested People to Group API
-  version: '1.0'
+  version: "1.0"
 servers:
-  - url: https://openapi.zalo.me/v3.0
+  - url: https://openapi.zalo.me
 paths:
-  /oa/group/invite:
+  /v3.0/oa/group/invite:
     post:
       summary: Invite Interested People to Group
       description: Used to invite people in a group, the app needs to be granted group information management.
@@ -28,11 +28,11 @@ paths:
                     type: string
             example:
               group_id: "f414c8f76fa586fbdfb4"
-              member_user_ids: 
+              member_user_ids:
                 - "8756287263669629130"
         required: true
       responses:
-        '200':
+        "200":
           description: Success
           content:
             application/json:

@@ -1,0 +1,779 @@
+openapi: 3.0.0
+info:
+  title: Zalo
+  version: 1.0.0
+servers:
+  - url: http://{{host}}
+  - url: http://{{8080}}
+  - url: http://{{8080}}api
+  - url: http://localhost:8080
+  - url: https://oauth.zaloapp.com
+  - url: https://graph.zalo.me
+tags:
+  - name: authentication
+  - name: Groups
+  - name: Expense
+  - name: Zalo API
+paths:
+  /api/v1/groups:
+    get:
+      tags:
+        - Groups
+      summary: get all groups by user
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "100"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 01:34:39 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  - id: 1
+                    name: "share tien "
+                    numberOfMembers: 4
+                    category: TRIP
+                    status: ACTIVE
+                    owner:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    members:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      - id: "333"
+                        name: han han
+                        avatarUrl: url
+                      - id: "444"
+                        name: loc loc
+                        avatarUrl: url
+  /v1/groups:
+    post:
+      tags:
+        - Groups
+      summary: Create group
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: >-
+                "{\n    \"category\": \"TRIP\",\n    \"name\": \"share tien
+                \"\n}"
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "111"
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 02:25:08 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  id: 2
+                  name: share tien demo
+                  numberOfMembers: 1
+                  category: TRIP
+                  status: ACTIVE
+                  owner:
+                    id: "111"
+                    name: tuan anh
+                    avatarUrl: url
+                  members:
+                    - id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+  /api/v1/groups/members:
+    post:
+      tags:
+        - Groups
+      summary: add members to group
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: >-
+                "{\n    \"groupId\": 4,\n    \"members\": [\n       
+                {\n            \"avatarUrl\": \"string\",\n            \"id\":
+                1111111111111111111,\n            \"name\": \"Tuấn Anh
+                Tass\"\n        },\n        {\n            \"avatarUrl\":
+                \"string\",\n            \"id\":
+                1111111111111111112,\n            \"name\": \"Dương
+                Dương\"\n        }\n    ]\n}"
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: current_user_id
+          in: header
+          schema:
+            type: integer
+          example: "1150533156686834759"
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 02:25:40 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  id: 2
+                  name: share tien demo
+                  numberOfMembers: 5
+                  category: TRIP
+                  status: ACTIVE
+                  owner:
+                    id: "111"
+                    name: tuan anh
+                    avatarUrl: url
+                  members:
+                    - id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    - id: "222"
+                      name: giang giang
+                      avatarUrl: url
+                    - id: "333"
+                      name: han han
+                      avatarUrl: url
+                    - id: "444"
+                      name: loc loc
+                      avatarUrl: url
+                    - id: "555"
+                      name: duong duong
+                      avatarUrl: url
+  /api/v1/groups/2/reports/detailed:
+    get:
+      tags:
+        - Groups
+      summary: report detail
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "111"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 04:39:45 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  totalAmount: 520000
+                  members:
+                    - user:
+                        id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      paid: 220000
+                      amount: 130000
+                      balance: -90000
+                    - user:
+                        id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      paid: 100000
+                      amount: 130000
+                      balance: 30000
+                    - user:
+                        id: "333"
+                        name: han han
+                        avatarUrl: url
+                      paid: 200000
+                      amount: 120000
+                      balance: -80000
+                    - user:
+                        id: "444"
+                        name: loc loc
+                        avatarUrl: url
+                      paid: 0
+                      amount: 70000
+                      balance: 70000
+                    - user:
+                        id: "555"
+                        name: duong duong
+                        avatarUrl: url
+                      paid: 0
+                      amount: 70000
+                      balance: 70000
+  /api/v1/expenses/groups/2:
+    post:
+      tags:
+        - Expense
+      summary: create expense
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: >-
+                "{\n    \"amount\": 2000000,\n    \"userId\": 111,\n   
+                \"participants\": [\n        111,\n        222,\n       
+                333,\n        555\n    ],\n    \"category\": \"FOOD\",\n   
+                \"title\": \"an uong nhieu\",\n    \"date\":
+                \"2023-08-11T20:34:11.827Z\"\n}"
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "111"
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 04:27:19 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  id: 10
+                  title: an uong nhieu
+                  amount: 2000000
+                  category: FOOD
+                  participants:
+                    - id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    - id: "222"
+                      name: giang giang
+                      avatarUrl: url
+                    - id: "333"
+                      name: han han
+                      avatarUrl: url
+                    - id: "555"
+                      name: duong duong
+                      avatarUrl: url
+                  user:
+                    id: "111"
+                    name: tuan anh
+                    avatarUrl: url
+                  createdBy:
+                    id: "111"
+                    name: tuan anh
+                    avatarUrl: url
+                  date: "2023-08-12T04:27:19.802+00:00"
+    get:
+      tags:
+        - Expense
+      summary: Get all expenses by group id
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "111"
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 04:35:36 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  - id: 6
+                    title: an uong
+                    amount: 20000
+                    category: FOOD
+                    participants:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                    user:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    createdBy:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    date: "2023-08-12T02:27:11.000+00:00"
+                  - id: 7
+                    title: an uong
+                    amount: 100000
+                    category: FOOD
+                    participants:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      - id: "333"
+                        name: han han
+                        avatarUrl: url
+                      - id: "444"
+                        name: loc loc
+                        avatarUrl: url
+                      - id: "555"
+                        name: duong duong
+                        avatarUrl: url
+                    user:
+                      id: "222"
+                      name: giang giang
+                      avatarUrl: url
+                    createdBy:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    date: "2023-08-12T02:27:34.000+00:00"
+                  - id: 8
+                    title: an uong
+                    amount: 200000
+                    category: FOOD
+                    participants:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      - id: "333"
+                        name: han han
+                        avatarUrl: url
+                      - id: "444"
+                        name: loc loc
+                        avatarUrl: url
+                    user:
+                      id: "333"
+                      name: han han
+                      avatarUrl: url
+                    createdBy:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    date: "2023-08-12T02:27:54.000+00:00"
+                  - id: 9
+                    title: an uong
+                    amount: 200000
+                    category: FOOD
+                    participants:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      - id: "333"
+                        name: han han
+                        avatarUrl: url
+                      - id: "555"
+                        name: duong duong
+                        avatarUrl: url
+                    user:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    createdBy:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    date: "2023-08-12T02:28:11.000+00:00"
+                  - id: 10
+                    title: di lai 2
+                    amount: 850000
+                    category: OTHER
+                    participants:
+                      - id: "111"
+                        name: tuan anh
+                        avatarUrl: url
+                      - id: "222"
+                        name: giang giang
+                        avatarUrl: url
+                      - id: "444"
+                        name: loc loc
+                        avatarUrl: url
+                    user:
+                      id: "222"
+                      name: giang giang
+                      avatarUrl: url
+                    createdBy:
+                      id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    date: "2023-08-11T20:34:12.000+00:00"
+  /api/v1/expenses/11:
+    put:
+      tags:
+        - Expense
+      summary: update expense
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              example: >-
+                "{\n    \"amount\": 850000,\n    \"category\": \"OTHER\",\n   
+                \"date\": \"2023-08-11T20:34:11.827Z\",\n    \"participants\":
+                [\n        111,\n        444,\n        555\n    ],\n   
+                \"title\": \"di lai 2\",\n    \"userId\": 222\n}"
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "101"
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 04:50:46 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data:
+                  id: 11
+                  title: di lai 2
+                  amount: 850000
+                  category: OTHER
+                  participants:
+                    - id: "111"
+                      name: tuan anh
+                      avatarUrl: url
+                    - id: "555"
+                      name: duong duong
+                      avatarUrl: url
+                    - id: "444"
+                      name: loc loc
+                      avatarUrl: url
+                  createdBy:
+                    id: "111"
+                    name: tuan anh
+                    avatarUrl: url
+                  date: "2023-08-11T20:34:11.827+00:00"
+  /api/v1/expenses/10:
+    delete:
+      tags:
+        - Expense
+      summary: update expense Copy
+      parameters:
+        - name: accept
+          in: header
+          schema:
+            type: string
+          example: "*/*"
+        - name: Authorization
+          in: header
+          schema:
+            type: integer
+          example: "101"
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        "200":
+          description: OK
+          headers:
+            Vary:
+              schema:
+                type: string
+                example: Access-Control-Request-Headers
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Transfer-Encoding:
+              schema:
+                type: string
+                example: chunked
+            Date:
+              schema:
+                type: string
+                example: Sat, 12 Aug 2023 04:50:52 GMT
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=60
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: 200
+                data: 11
+  /v2.0/me:
+    get:
+      tags:
+        - Zalo API
+      summary: Get user info by access token
+      parameters:
+        - name: access_token
+          in: header
+          schema:
+            type: string
+          example: >-
+            12Qc7-LNvae19weLwb3dGG4aenlbJ-uTUqp-8jvPxtX1MV0jyNN_65flmng-KjicNYJ_3yKNsZn92_WJgm7xIqW8-6BQFki-Gnh8FFyDwYPsCjKomqNXD5bGynVm9k1CIb3ZSC1iv7vWUjXV-bB9LcT7_Nc1CRr-6nwWVemqjdOz4x9BcJwoRIqKyLlJFE9KJ1MdUj8TfrTcDuHvW1cTSnyNc2UR0Bex4HUdPV5ZksH1R_fPmtZ9Udz7_KR6STzTO6xpOjLnv3vn3UGmmolW5rO3tWomD_m2CDD5TMpZJU13
+        - name: fields
+          in: query
+          schema:
+            type: string
+          example: id,name,birthday,picture
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json: {}

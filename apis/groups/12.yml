@@ -4,9 +4,9 @@ info:
   description: API documentation for rejecting new members to a group.
   version: 3.0.0
 servers:
-  - url: 'https://openapi.zalo.me/v3.0'
+  - url: "https://openapi.zalo.me/v3.0"
 paths:
-  /oa/group/rejectpendinginvite:
+  /v3.0/oa/group/rejectpendinginvite:
     post:
       summary: Rejects a pending membership invite from a group.
       operationId: rejectPendingInvite
@@ -26,12 +26,12 @@ paths:
                   description: The list of user IDs to be rejected
                   items:
                     type: string
-            example: 
+            example:
               group_id: "f414c8f76fa586fbdfb4"
               member_user_ids:
                 - "8756287263669629130"
       responses:
-        '200':
+        "200":
           description: Successful response.
           content:
             application/json:
@@ -42,7 +42,7 @@ paths:
                     type: number
                   message:
                     type: string
-                example: 
+                example:
                   error: 0
                   message: "Success"
       parameters:

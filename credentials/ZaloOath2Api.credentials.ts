@@ -1,4 +1,9 @@
-import type { ICredentialType, INodeProperties } from 'n8n-workflow';
+import type {
+	IAuthenticateGeneric,
+	ICredentialTestRequest,
+	ICredentialType,
+	INodeProperties,
+} from 'n8n-workflow';
 
 export class ZaloOath2Api implements ICredentialType {
 	name = 'zaloOath2Api';
@@ -35,7 +40,7 @@ export class ZaloOath2Api implements ICredentialType {
 			displayName: 'Grant Type',
 			name: 'grantType',
 			type: 'hidden',
-			default: 'authorizationCode',
+			default: 'pkce',
 		},
 		{
 			displayName: 'Authorization URL',
@@ -48,7 +53,15 @@ export class ZaloOath2Api implements ICredentialType {
 			displayName: 'Access Token URL',
 			name: 'accessTokenUrl',
 			type: 'hidden',
-			default: 'https://oauth.zaloapp.com/v4/access_token',
+
+			/**
+			 * The following url is the proxy url to add the app_id query parameter into the request's body.
+			 * since Zalo OAuth2 API requires the app_id to be in the request's body, we need to use a proxy to add the app_id query parameter into the request's body.
+			 *
+			 * TODO: Wait for the n8n team to add the ability to add extra body parameters to the request.
+			 */
+			default:
+				'={{"https://edge.oneflow.vn/zalo-auth?url=https://oauth.zaloapp.com/v4/access_token&app_id="+$self["appId"]}}',
 			required: true,
 		},
 		{
@@ -70,4 +83,26 @@ export class ZaloOath2Api implements ICredentialType {
 			default: '={{"app_id="+$self["appId"]}}',
 		},
 	];
+
+	// This credential is currently not used by any node directly
+	// but the HTTP Request node can use it to make requests.
+	// The credential is also testable due to the `test` property below
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
+			headers: {
+				access_token: '={{$credentials.accessToken}}',
+			},
+		},
+	};
+
+	// curl \
+	// -X GET \
+	// -H 'access_token: <your_access_token>' \
+	// "https://graph.zalo.me/v2.0/me?fields=id,name,picture"
+	test?: ICredentialTestRequest | undefined = {
+		request: {
+			url: 'https://graph.zalo.me/v2.0/me?fields=id,name,picture',
+		},
+	};
 }

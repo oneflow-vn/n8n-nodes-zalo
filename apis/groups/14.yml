@@ -5,7 +5,7 @@ info:
   description: This API allows to add admins to a group
 
 paths:
-  /oa/group/addadmins:
+  /v3.0/oa/group/addadmins:
     post:
       summary: Adds admins to a group
       parameters:

@@ -31,7 +31,7 @@
     "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
     "merge:api": "create-n8n-nodes merge -i ./apis/groups -o ./openapi.yml -p ymls",
     "split:api": "create-n8n-nodes split -i ./res/api.json -o ./apis/groups",
-    "p2o": "p2o ./collection.json -f ./openapi.yml",
+    "p2o": "p2o ./collection.json -f ./social.yml",
     "codegen": "create-n8n-nodes generate -o . -c nodes.config.js -a ./openapi.yml -t ../../templates/n8n-nodes"
   },
   "files": [
@@ -43,7 +43,8 @@
       "dist/credentials/ZaloOath2Api.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/zaloGroups/zaloGroups.node.js"
+      "dist/nodes/zaloOA/zaloOA.node.js",
+      "dist/nodes/zalo/zalo.node.js"
     ]
   },
   "devDependencies": {

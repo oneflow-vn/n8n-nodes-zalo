@@ -3,7 +3,7 @@ info:
   title: Zalo API
   version: "3.0"
 paths:
-  /oa/group/listrecentchat:
+  /v3.0/oa/group/listrecentchat:
     get:
       parameters:
         - name: offset

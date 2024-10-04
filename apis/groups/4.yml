@@ -4,10 +4,10 @@ info:
   version: 3.0.0
 
 servers:
-  - url: https://openapi.zalo.me/v3.0
+  - url: https://openapi.zalo.me/
 
 paths:
-  /oa/group/message:
+  v3.0/oa/group/message:
     post:
       summary: Send a group message
       description: This endpoint allows sending different types of messages (text, file, image, mention) to a group.

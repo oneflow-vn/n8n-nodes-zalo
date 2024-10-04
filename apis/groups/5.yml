@@ -3,7 +3,7 @@ info:
   title: Zalo API
   version: v3.0
 paths:
-  /oa/group/creategroupwithoa:
+  /v3.0/oa/group/creategroupwithoa:
     post:
       summary: Tạo nhóm mới
       operationId: createGroup
@@ -53,7 +53,7 @@ paths:
                       total_member:
                         type: integer
                       status:
-                        type: string                  
+                        type: string
                   error:
                     type: integer
                   message:

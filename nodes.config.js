@@ -2,6 +2,18 @@ const path = require('path');
 const { RemoveVietnameseAccents } = require('remove-vietnamese-accents');
 const removeVietnameseAccents = new RemoveVietnameseAccents()
 
+const mockPresend = `async function (this: any, options) {
+					// @ts-ignore
+					const credentials = await this.getCredentials('zaloOath2Api');
+
+					options.headers = {
+						...options.headers,
+						access_token: credentials.oauthTokenData.access_token,
+					};
+
+					return Promise.resolve(options);
+				}`;
+
 
 module.exports = {
   packageName: 'n8n-nodes-zalo',
@@ -13,13 +25,13 @@ module.exports = {
     },
   },
   nodes: {
-    zaloGroups: {
+    zaloOA: {
       // Preset selection, simple | versioned
       preset: 'simple',
 
-      displayName: 'Zalo Groups',
-      name: 'zaloGroups',
-      description: 'Zalo Groups API',
+      displayName: 'Zalo OA',
+      name: 'zaloOA',
+      description: 'Zalo OA API',
 
       // Openapi file path
       api: path.resolve(__dirname, 'openapi.yml'),
@@ -34,7 +46,7 @@ module.exports = {
       // tags: [],
 
       // Operation selection, enable if needed to filter operations
-      // operations: [],
+      // operations: ['/oa/listrecentchat'],
 
       // Nodes credentials
       credentials: [{
@@ -56,6 +68,52 @@ module.exports = {
 
       // Nodes options order, enable if needed to set options order
       // propertiesOrder: [],
+    },
+    zalo: {
+      // Preset selection, simple | versioned
+      preset: 'simple',
+
+      displayName: 'Zalo',
+      name: 'zalo',
+      description: 'Zalo API',
+
+      // Openapi file path
+      api: path.resolve(__dirname, 'social.yml'),
+
+      // Icon could be a URL or a path fa:iconName or file:iconName
+      icon: './icons/zalo.svg',
+
+      // By default the version is 1
+      version: 1,
+
+      // Tags selection, enable if needed to filter tags
+      // tags: [],
+
+      // Operation selection, enable if needed to filter operations
+      // operations: [],
+
+      // Nodes credentials
+      credentials: [{
+        displayName: 'Zalo Oath2 API',
+        name: 'zaloOath2Api',
+        required: true,
+      }],
+
+      // Nodes base URL
+      // baseUrl: 'https://graph.zalo.me',
+
+      // Nodes default options
+      requestDefaults: {
+        headers: {
+          'Content-Type': 'application/json',
+          access_token: '=\{\{$credentials.oauthTokenData.accessToken\}\}',
+        },
+        baseURL: 'https://graph.zalo.me',
+      },
+
+      // Nodes options order, enable if needed to set options order
+      // propertiesOrder: [],
+
     },
   },
   triggers: {
@@ -89,7 +147,24 @@ module.exports = {
         match: {
           name: 'access_token',
         },
-        set: false,
+        set: {
+          type: 'hidden',
+          default: '=\{\{$credentials.oauthTokenData.accessToken\}\}',
+        }
+      },
+      {
+        match: {
+          name: 'resource',
+        },
+        set: {
+          routing: {
+            send: {
+              preSend: [
+                '${' + mockPresend + '}',
+              ],
+            }
+          }
+        }
       }
     ],
   },

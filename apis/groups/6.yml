@@ -4,7 +4,7 @@ info:
   version: "1.0"
 
 paths:
-  /oa/group/getgroup:
+  /v3.0/oa/group/getgroup:
     get:
       summary: Retrieve information about a group
       parameters:
