@@ -25,7 +25,7 @@ module.exports = {
       api: path.resolve(__dirname, 'openapi.yml'),
 
       // Icon could be a URL or a path fa:iconName or file:iconName
-      icon: 'fa:comments',
+      icon: './icons/zalo.svg',
 
       // By default the version is 1
       version: 1,
@@ -89,7 +89,7 @@ module.exports = {
         match: {
           name: 'access_token',
         },
-				set: false,
+        set: false,
       }
     ],
   },
@@ -97,8 +97,8 @@ module.exports = {
   // Folders to delete when generating the nodes
   deleteFolders: [''],
 
-	normalizeFn: (name)  => {
-		return removeVietnameseAccents.remove(name);
-	}
+  normalizeFn: (name) => {
+    return removeVietnameseAccents.remove(name);
+  }
 }
 

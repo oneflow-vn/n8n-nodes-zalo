@@ -9,8 +9,11 @@ export class ZaloOath2Api implements ICredentialType {
 
 	documentationUrl = 'https://developers.zalo.me/docs/official-account/bat-dau/kham-pha';
 
+	// Authorization URL
 	// https://oauth.zaloapp.com/v4/permission?app_id=<APP_ID>&redirect_uri=<CALLBACK_URL>&code_challenge=<CODE_CHALLENGE>&state=<STATE>
+	// code_challenge = Base64.encode(SHA-256.hash(ASCII(code_verifier)))
 
+	// Access Token URL
 	// curl \
 	// -X POST \
 	// -H "Content-Type: application/x-www-form-urlencoded" \
@@ -23,10 +26,10 @@ export class ZaloOath2Api implements ICredentialType {
 
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Code Verifier',
-			name: 'codeVerifier',
+			displayName: 'APP ID',
+			name: 'appId',
 			type: 'string',
-			default: 'codeVerifier',
+			default: '',
 		},
 		{
 			displayName: 'Grant Type',
@@ -38,7 +41,7 @@ export class ZaloOath2Api implements ICredentialType {
 			displayName: 'Authorization URL',
 			name: 'authUrl',
 			type: 'hidden',
-			default: 'https://passport.larksuite.com/suite/passport/oauth/authorize',
+			default: 'https://oauth.zaloapp.com/v4/permission',
 			required: true,
 		},
 		{
@@ -64,7 +67,7 @@ export class ZaloOath2Api implements ICredentialType {
 			displayName: 'Auth URI Query Parameters',
 			name: 'authQueryParameters',
 			type: 'hidden',
-			default: 'code_challenge=code_verifier',
+			default: '={{"app_id="+$self["appId"]}}',
 		},
 	];
 }

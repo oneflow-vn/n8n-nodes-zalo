@@ -6,7 +6,7 @@ export class zaloGroups implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Zalo Groups',
     name: 'zaloGroups',
-    icon: 'fa:comments',
+    icon: 'file:zalo.svg',
     group: ['transform'],
     version: 1,
     subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
