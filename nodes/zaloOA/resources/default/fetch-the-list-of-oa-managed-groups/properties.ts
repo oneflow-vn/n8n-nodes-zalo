@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Fetch The List Of Oa Managed Groups'],
+        resource: ['default'],
+        operation: ['Fetch the list of OA managed groups'],
       },
     },
   },
@@ -50,8 +50,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Fetch The List Of Oa Managed Groups'],
+        resource: ['default'],
+        operation: ['Fetch the list of OA managed groups'],
       },
     },
   },
@@ -70,8 +70,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Fetch The List Of Oa Managed Groups'],
+        resource: ['default'],
+        operation: ['Fetch the list of OA managed groups'],
       },
     },
   },
@@ -90,8 +90,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Fetch The List Of Oa Managed Groups'],
+        resource: ['default'],
+        operation: ['Fetch the list of OA managed groups'],
       },
     },
   },

@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Retrieve Information About A Group'
+export const name = 'Retrieve information about a group'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Retrieve Information About A Group',
-  value: 'Retrieve Information About A Group',
+  name: 'Retrieve information about a group',
+  value: 'Retrieve information about a group',
   action: 'Retrieve Information About A Group Default',
   description: 'Retrieve information about a group',
   routing: {

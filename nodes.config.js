@@ -115,28 +115,169 @@ module.exports = {
       // propertiesOrder: [],
 
     },
+    zaloZNS: {
+      // Preset selection, simple | versioned
+      preset: 'simple',
+
+      displayName: 'Zalo ZNS',
+      name: 'ZaloZNS',
+      description: 'Zalo ZNS API',
+
+      // Openapi file path
+      api: path.resolve(__dirname, 'zns.yml'),
+
+      // Icon could be a URL or a path fa:iconName or file:iconName
+      icon: './icons/zalo.svg',
+
+      // By default the version is 1
+      version: 1,
+
+      // Tags selection, enable if needed to filter tags
+      // tags: [],
+
+      // Operation selection, enable if needed to filter operations
+      // operations: [],
+
+      // Nodes credentials
+      credentials: [{
+        displayName: 'Zalo Oath2 API',
+        name: 'zaloOath2Api',
+        required: true,
+      }],
+
+      // Nodes base URL
+      // baseUrl: 'https://business.openapi.zalo.me',
+
+      // Nodes default options
+      requestDefaults: {
+        headers: {
+          'Content-Type': 'application/json',
+          access_token: '=\{\{$credentials.oauthTokenData.accessToken\}\}',
+        },
+        baseURL: 'https://business.openapi.zalo.me',
+      },
+
+      // Nodes options order, enable if needed to set options order
+      // propertiesOrder: [],
+    }
   },
   triggers: {
-    zaloTrigger: {
+    zaloOATrigger: {
       preset: 'webhook',
-      displayName: 'Zalo Triggers',
-      name: 'ZaloTrigger',
+      displayName: 'Zalo OA Trigger',
+      name: 'ZaloOATrigger',
       description: 'Zalo Triggers API',
+      icon: './icons/zalo.svg',
 
-      events: [{
-        name: 'message',
-        description: 'Message event',
-        register: {
-          type: 'manual',
+      webhooks: [
+        {
+          name: 'default',
+          httpMethod: 'POST',
+          responseMode: 'onReceived',
+          path: 'webhook',
         },
-        handler: {
-          route: {
-            path: '/webhook',
-            method: 'POST',
-          },
-          name: 'zaloTrigger',
-        },
-      }]
+      ],
+
+      resources: [
+        {
+          name: 'Message',
+          displayName: 'Message',
+          description: 'Message',
+
+          events: [{
+            name: 'onUserSendMessage',
+            displayName: 'User Send Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onUserOpenMessage',
+            displayName: 'User Open Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onUserReactionMessage',
+            displayName: 'User Reaction Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onMyReactionMessage',
+            displayName: 'My Reaction Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onMySendMessage',
+            displayName: 'My Send Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onMySendMessageAnonymous',
+            displayName: 'My Send Message Anonymous',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onAnonymousSendMessage',
+            displayName: 'Anonymous Send Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'onUserSeenMessage',
+            displayName: 'User Seen Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }, {
+            name: 'oneUserReceiveMessage',
+            displayName: 'User Receive Message',
+            filters: [{
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                }
+              }
+            }]
+          }]
+        }
+      ]
+
     },
   },
   // Nodes overwrite options
@@ -172,7 +313,7 @@ module.exports = {
   // Folders to delete when generating the nodes
   deleteFolders: [''],
 
-  normalizeFn: (name) => {
+  operationNameFn: (name) => {
     return removeVietnameseAccents.remove(name);
   }
 }

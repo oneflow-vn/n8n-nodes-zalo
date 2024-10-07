@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Disbanding A Group'],
+        resource: ['default'],
+        operation: ['Disbanding a group'],
       },
     },
   },
@@ -51,8 +51,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Disbanding A Group'],
+        resource: ['default'],
+        operation: ['Disbanding a group'],
       },
     },
   },
@@ -74,8 +74,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Disbanding A Group'],
+        resource: ['default'],
+        operation: ['Disbanding a group'],
       },
     },
   },

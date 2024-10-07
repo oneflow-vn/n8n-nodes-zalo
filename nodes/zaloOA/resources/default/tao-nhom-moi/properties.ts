@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },
@@ -39,7 +39,7 @@ export const properties: INodeProperties[] = [
     name: 'group_name',
     type: 'string',
     default: '',
-    description: 'Tên nhóm',
+    description: 'T n nh m',
     routing: {
       request: {
         body: {
@@ -52,8 +52,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },
@@ -62,7 +62,7 @@ export const properties: INodeProperties[] = [
     name: 'group_description',
     type: 'string',
     default: '',
-    description: 'Mô tả nhóm',
+    description: 'M t nh m',
     routing: {
       request: {
         body: {
@@ -75,8 +75,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },
@@ -85,7 +85,7 @@ export const properties: INodeProperties[] = [
     name: 'asset_id',
     type: 'string',
     default: '',
-    description: 'ID gói GMF, sử dụng để làm dịch vụ hoạt động của Nhóm',
+    description: 'ID g i GMF s d ng l m d ch v ho t ng c a Nh m',
     routing: {
       request: {
         body: {
@@ -98,8 +98,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },
@@ -111,7 +111,7 @@ export const properties: INodeProperties[] = [
     typeOptions: {
       multipleValues: true,
     },
-    description: 'Danh sách các user trong nhóm',
+    description: 'Danh s ch c c user trong nh m',
     placeholder: 'Add item',
     options: [
       {
@@ -139,8 +139,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },

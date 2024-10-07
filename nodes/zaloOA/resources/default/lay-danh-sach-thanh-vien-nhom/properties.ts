@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Lay Danh Sach Thanh Vien Nhom'],
+        resource: ['default'],
+        operation: ['Lay danh sach thanh vien nhom'],
       },
     },
   },
@@ -50,8 +50,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Lay Danh Sach Thanh Vien Nhom'],
+        resource: ['default'],
+        operation: ['Lay danh sach thanh vien nhom'],
       },
     },
   },
@@ -71,8 +71,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Lay Danh Sach Thanh Vien Nhom'],
+        resource: ['default'],
+        operation: ['Lay danh sach thanh vien nhom'],
       },
     },
   },
@@ -91,8 +91,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Lay Danh Sach Thanh Vien Nhom'],
+        resource: ['default'],
+        operation: ['Lay danh sach thanh vien nhom'],
       },
     },
   },
@@ -111,8 +111,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Lay Danh Sach Thanh Vien Nhom'],
+        resource: ['default'],
+        operation: ['Lay danh sach thanh vien nhom'],
       },
     },
   },

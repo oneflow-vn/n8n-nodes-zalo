@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Zalo Api'],
-        operation: ['Get User Info By Access Token'],
+        resource: ['Zalo API'],
+        operation: ['Get user info by access token'],
       },
     },
   },
@@ -49,8 +49,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Zalo Api'],
-        operation: ['Get User Info By Access Token'],
+        resource: ['Zalo API'],
+        operation: ['Get user info by access token'],
       },
     },
   },
@@ -69,8 +69,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Zalo Api'],
-        operation: ['Get User Info By Access Token'],
+        resource: ['Zalo API'],
+        operation: ['Get user info by access token'],
       },
     },
   },

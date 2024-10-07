@@ -21,14 +21,14 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Quota Check For Groups'
+export const name = 'Quota check for groups'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Quota Check For Groups',
-  value: 'Quota Check For Groups',
+  name: 'Quota check for groups',
+  value: 'Quota check for groups',
   action: 'Quota Check For Groups Quota Management',
   description:
-    'Check group quota. Note, application needs permission to manage group information',
+    'Check group quota  Note  application needs permission to manage group information',
   routing: {
     request: {
       method: 'POST',

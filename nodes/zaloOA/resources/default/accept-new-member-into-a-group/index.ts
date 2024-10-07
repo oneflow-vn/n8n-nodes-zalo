@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Accept New Member Into A Group'
+export const name = 'Accept new member into a group'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Accept New Member Into A Group',
-  value: 'Accept New Member Into A Group',
+  name: 'Accept new member into a group',
+  value: 'Accept new member into a group',
   action: 'Accept New Member Into A Group Default',
   description: 'Accept new member into a group',
   routing: {

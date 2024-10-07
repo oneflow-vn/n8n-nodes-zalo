@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Adds Admins To A Group'
+export const name = 'Adds admins to a group'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Adds Admins To A Group',
-  value: 'Adds Admins To A Group',
+  name: 'Adds admins to a group',
+  value: 'Adds admins to a group',
   action: 'Adds Admins To A Group Default',
   description: 'Adds admins to a group',
   routing: {

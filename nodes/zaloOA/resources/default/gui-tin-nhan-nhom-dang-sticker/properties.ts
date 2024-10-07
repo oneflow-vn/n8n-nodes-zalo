@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Gui Tin Nhan Nhom Dang Sticker'],
+        resource: ['default'],
+        operation: ['Gui tin nhan nhom dang Sticker'],
       },
     },
   },
@@ -40,7 +40,7 @@ export const properties: INodeProperties[] = [
     name: 'recipient',
     type: 'fixedCollection',
     default: {},
-    description: undefined,
+    description: '',
     options: [
       {
         displayName: 'Items',
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
             displayName: 'Group Id',
             type: 'string',
             default: '',
-            description: 'ID của nhóm',
+            description: 'ID c a nh m',
             name: 'group_id',
           },
         ],
@@ -68,8 +68,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Gui Tin Nhan Nhom Dang Sticker'],
+        resource: ['default'],
+        operation: ['Gui tin nhan nhom dang Sticker'],
       },
     },
   },
@@ -79,7 +79,7 @@ export const properties: INodeProperties[] = [
     name: 'message',
     type: 'fixedCollection',
     default: {},
-    description: undefined,
+    description: '',
     options: [
       {
         displayName: 'Items',
@@ -177,8 +177,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Gui Tin Nhan Nhom Dang Sticker'],
+        resource: ['default'],
+        operation: ['Gui tin nhan nhom dang Sticker'],
       },
     },
   },

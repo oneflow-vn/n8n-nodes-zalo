@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Information About A Group'],
+        resource: ['default'],
+        operation: ['Retrieve information about a group'],
       },
     },
   },
@@ -51,8 +51,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Information About A Group'],
+        resource: ['default'],
+        operation: ['Retrieve information about a group'],
       },
     },
   },
@@ -72,8 +72,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Information About A Group'],
+        resource: ['default'],
+        operation: ['Retrieve information about a group'],
       },
     },
   },

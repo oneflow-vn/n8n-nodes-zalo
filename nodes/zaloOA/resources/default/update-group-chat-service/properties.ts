@@ -29,7 +29,7 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group Chat Service'],
       },
     },
@@ -52,7 +52,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group Chat Service'],
       },
     },
@@ -75,7 +75,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group Chat Service'],
       },
     },

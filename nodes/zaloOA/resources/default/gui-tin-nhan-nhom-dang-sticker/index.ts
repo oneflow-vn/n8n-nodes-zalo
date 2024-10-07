@@ -21,13 +21,13 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Gui Tin Nhan Nhom Dang Sticker'
+export const name = 'Gui tin nhan nhom dang Sticker'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Gui Tin Nhan Nhom Dang Sticker',
-  value: 'Gui Tin Nhan Nhom Dang Sticker',
+  name: 'Gui tin nhan nhom dang Sticker',
+  value: 'Gui tin nhan nhom dang Sticker',
   action: 'Gui Tin Nhan Nhom Dang Sticker Default',
-  description: 'Ứng dụng cần được cấp quyền quản lý thông tin nhóm',
+  description: 'ng d ng c n    c c p quy n qu n l  th ng tin nh m',
   routing: {
     request: {
       method: 'POST',

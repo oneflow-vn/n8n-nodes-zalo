@@ -39,8 +39,8 @@ const resourceSelect: INodeProperties[] = [
         description: '',
       },
       {
-        name: 'Default',
-        value: 'Default',
+        name: 'default',
+        value: 'default',
         description: '',
       },
     ],
@@ -94,8 +94,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Accept New Member Into A Group'],
+        resource: ['default'],
+        operation: ['Accept new member into a group'],
       },
     },
   },
@@ -119,8 +119,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Rejects A Pending Membership Invite From A Group'],
+        resource: ['default'],
+        operation: ['Rejects a pending membership invite from a group.'],
       },
     },
   },
@@ -144,8 +144,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Adds Admins To A Group'],
+        resource: ['default'],
+        operation: ['Adds admins to a group'],
       },
     },
   },
@@ -168,7 +168,7 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Delete Subgroup'],
       },
     },
@@ -192,8 +192,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Disbanding A Group'],
+        resource: ['default'],
+        operation: ['Disbanding a group'],
       },
     },
   },
@@ -218,7 +218,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Quota Management'],
-        operation: ['Quota Check For Groups'],
+        operation: ['Quota check for groups'],
       },
     },
   },
@@ -242,8 +242,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Gui Tin Nhan Nhom Dang Sticker'],
+        resource: ['default'],
+        operation: ['Gui tin nhan nhom dang Sticker'],
       },
     },
   },
@@ -267,8 +267,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Send A Group Message'],
+        resource: ['default'],
+        operation: ['Send a group message'],
       },
     },
   },
@@ -292,8 +292,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Tao Nhom Moi'],
+        resource: ['default'],
+        operation: ['Tao nhom moi'],
       },
     },
   },
@@ -317,7 +317,7 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -341,7 +341,7 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group Chat Service'],
       },
     },
@@ -366,8 +366,8 @@ const extraProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         useCustomBody: [true],
-        resource: ['Default'],
-        operation: ['Invite Interested People To Group'],
+        resource: ['default'],
+        operation: ['Invite Interested People to Group'],
       },
     },
   },

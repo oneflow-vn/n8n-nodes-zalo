@@ -1,0 +1,81 @@
+apiVersion: 3.0.0
+info:
+  title: "ZNS API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /message/template:
+    post:
+      summary: "Send ZNS using development mode"
+      operationId: "sendZnsDevelopmentMode"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                mode:
+                  type: "string"
+                  example: "development"
+                phone:
+                  type: "string"
+                  example: "84987654321"
+                template_id:
+                  type: "string"
+                  example: "7895417a7d3f9461cd2e"
+                template_data:
+                  type: "object"
+                  properties:
+                    ky:
+                      type: "string"
+                    thang:
+                      type: "string"
+                      example: "4/2020"
+                    start_date:
+                      type: "string"
+                      example: "20/03/2020"
+                    end_date:
+                      type: "string"
+                      example: "20/04/2020"
+                    customer:
+                      type: "string"
+                      example: "Nguyễn Thị Hoàng Anh"
+                    cid:
+                      type: "string"
+                      example: "PE010299485"
+                    address:
+                      type: "string"
+                      example: "VNG Campus, TP.HCM"
+                    amount:
+                      type: "string"
+                      example: "100"
+                    total:
+                      type: "string"
+                      example: "100000"
+                tracking_id:
+                  type: "string"
+                  example: "tracking_id"
+      responses:
+        200:
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      sent_time:
+                        type: "string"
+                        description: "Thời gian gửi thông báo ZNS (định dạng timestamp)."
+                      msg_id:
+                        type: "string"
+                        description: "ID của thông báo ZNS."
+                  error:
+                    type: "integer"
+                    example: 0
+                  message:
+                    type: "string"
+                    example: "Success"

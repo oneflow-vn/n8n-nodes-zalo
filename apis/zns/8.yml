@@ -1,0 +1,85 @@
+apiVersion: 3.0.0
+info:
+  title: "Zalo Business API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /template/all:
+    get:
+      summary: "Lấy danh sách template"
+      operationId: "getTemplates"
+      parameters:
+        - name: "offset"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+          description: "Thứ tự của template đầu tiên trong danh sách trả về."
+        - name: "limit"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+          description: "Số lượng template muốn lấy."
+        - name: "status"
+          in: "query"
+          required: false
+          schema:
+            type: "integer"
+          description: |
+            Trạng thái của template muốn lấy.
+            Các giá trị:
+            - 1: Enable
+            - 2: Pending review
+            - 3: Reject
+            - 4: Disable
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+          description: "Đoạn mã cần truyền vào để xác minh quyền sử dụng API."
+      responses:
+        200:
+          description: "Danh sách template trả về thành công"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        templateId:
+                          type: "integer"
+                        templateName:
+                          type: "string"
+                        createdTime:
+                          type: "integer"
+                        status:
+                          type: "string"
+                        templateQuality:
+                          type: "string"
+                  metadata:
+                    type: "object"
+                    properties:
+                      total:
+                        type: "integer"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  - templateId: 900025
+                    templateName: "Template_1"
+                    createdTime: 0
+                    status: "PENDING_REVIEW"
+                    templateQuality: "UNDEFINED"
+                metadata:
+                  total: 300

@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Quota Management'],
-        operation: ['Quota Check For Groups'],
+        operation: ['Quota check for groups'],
       },
     },
   },
@@ -40,7 +40,7 @@ export const properties: INodeProperties[] = [
     type: 'string',
     default: '',
     description:
-      'Quota owner to retrieve. OA for Official Account and APP for application',
+      'Quota owner to retrieve OA for Official Account and APP for application',
     routing: {
       request: {
         body: {
@@ -54,7 +54,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Quota Management'],
-        operation: ['Quota Check For Groups'],
+        operation: ['Quota check for groups'],
       },
     },
   },
@@ -91,7 +91,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Quota Management'],
-        operation: ['Quota Check For Groups'],
+        operation: ['Quota check for groups'],
       },
     },
   },
@@ -128,7 +128,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Quota Management'],
-        operation: ['Quota Check For Groups'],
+        operation: ['Quota check for groups'],
       },
     },
   },

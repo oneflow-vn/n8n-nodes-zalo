@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Group Conversation Information'],
+        resource: ['default'],
+        operation: ['Retrieve group conversation information'],
       },
     },
   },
@@ -50,8 +50,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Group Conversation Information'],
+        resource: ['default'],
+        operation: ['Retrieve group conversation information'],
       },
     },
   },
@@ -70,8 +70,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Group Conversation Information'],
+        resource: ['default'],
+        operation: ['Retrieve group conversation information'],
       },
     },
   },
@@ -90,8 +90,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Group Conversation Information'],
+        resource: ['default'],
+        operation: ['Retrieve group conversation information'],
       },
     },
   },
@@ -112,8 +112,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Retrieve Group Conversation Information'],
+        resource: ['default'],
+        operation: ['Retrieve group conversation information'],
       },
     },
   },

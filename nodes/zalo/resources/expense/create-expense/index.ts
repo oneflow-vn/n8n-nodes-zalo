@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Create Expense'
+export const name = 'create expense'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Create Expense',
-  value: 'Create Expense',
+  name: 'create expense',
+  value: 'create expense',
   action: 'Create Expense Expense',
   description: 'create expense',
   routing: {

@@ -1,0 +1,57 @@
+apiVersion: 3.0.0
+info:
+  title: "ZNS Status Information API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /message/status:
+    get:
+      summary: "Retrieve ZNS message status"
+      operationId: "getZnsMessageStatus"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+          description: "Access token for API authentication."
+        - name: "message_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+          description: "ID of the message to retrieve status information."
+        - name: "phone"
+          in: "query"
+          required: false
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      delivery_time:
+                        type: "string"
+                      message:
+                        type: "string"
+                      status:
+                        type: "integer"
+                  error:
+                    type: "integer"
+              example:
+                message: "Success"
+                data:
+                  delivery_time: "1600328011517"
+                  message: "The message was delivered to the user's phone"
+                  status: 1
+                error: 0

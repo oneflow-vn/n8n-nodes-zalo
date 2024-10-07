@@ -1,0 +1,55 @@
+apiVersion: 3.0.0
+info:
+  title: "Zalo Business API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /template/sample-data:
+    get:
+      summary: "Get sample data of a template"
+      operationId: "getSampleData"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          description: "Token needed to validate the API request."
+          schema:
+            type: "string"
+        - name: "template_id"
+          in: "query"
+          required: true
+          description: "ID of the template to retrieve information for."
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      balance_debt:
+                        type: "integer"
+                      due_date:
+                        type: "string"
+                      number_debt:
+                        type: "integer"
+                      customer_name:
+                        type: "string"
+                  error:
+                    type: "integer"
+              example:
+                message: "Success"
+                data:
+                  balance_debt: 2000
+                  due_date: "01/01/1970"
+                  number_debt: 2000
+                  customer_name: "customer_name_sample"
+                error: 0

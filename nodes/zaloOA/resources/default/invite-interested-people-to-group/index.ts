@@ -21,14 +21,14 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Invite Interested People To Group'
+export const name = 'Invite Interested People to Group'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Invite Interested People To Group',
-  value: 'Invite Interested People To Group',
+  name: 'Invite Interested People to Group',
+  value: 'Invite Interested People to Group',
   action: 'Invite Interested People To Group Default',
   description:
-    'Used to invite people in a group, the app needs to be granted group information management',
+    'Used to invite people in a group  the app needs to be granted group information management',
   routing: {
     request: {
       method: 'POST',

@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Send A Group Message'],
+        resource: ['default'],
+        operation: ['Send a group message'],
       },
     },
   },
@@ -51,8 +51,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Send A Group Message'],
+        resource: ['default'],
+        operation: ['Send a group message'],
       },
     },
   },
@@ -62,7 +62,7 @@ export const properties: INodeProperties[] = [
     name: 'recipient',
     type: 'fixedCollection',
     default: {},
-    description: undefined,
+    description: '',
     options: [
       {
         displayName: 'Items',
@@ -90,8 +90,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Send A Group Message'],
+        resource: ['default'],
+        operation: ['Send a group message'],
       },
     },
   },
@@ -101,7 +101,7 @@ export const properties: INodeProperties[] = [
     name: 'message',
     type: 'fixedCollection',
     default: {},
-    description: undefined,
+    description: '',
     options: [
       {
         displayName: 'Items',
@@ -129,8 +129,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Send A Group Message'],
+        resource: ['default'],
+        operation: ['Send a group message'],
       },
     },
   },

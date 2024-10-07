@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Fetch The List Of Oa Managed Groups'
+export const name = 'Fetch the list of OA managed groups'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Fetch The List Of Oa Managed Groups',
-  value: 'Fetch The List Of Oa Managed Groups',
+  name: 'Fetch the list of OA managed groups',
+  value: 'Fetch the list of OA managed groups',
   action: 'Fetch The List Of Oa Managed Groups Default',
   description: 'Fetch the list of OA managed groups',
   routing: {

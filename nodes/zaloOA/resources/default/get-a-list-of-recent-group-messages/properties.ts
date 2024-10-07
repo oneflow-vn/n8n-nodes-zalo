@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Get A List Of Recent Group Messages'],
+        resource: ['default'],
+        operation: ['Get a list of recent group messages'],
       },
     },
   },
@@ -49,8 +49,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Get A List Of Recent Group Messages'],
+        resource: ['default'],
+        operation: ['Get a list of recent group messages'],
       },
     },
   },
@@ -69,8 +69,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Get A List Of Recent Group Messages'],
+        resource: ['default'],
+        operation: ['Get a list of recent group messages'],
       },
     },
   },

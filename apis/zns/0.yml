@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: "Zalo ZNS API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /message/template:
+    post:
+      summary: "Send ZNS Message"
+      operationId: "sendZnsMessage"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                phone:
+                  type: "string"
+                  description: "Recipient's phone number in international format."
+                template_id:
+                  type: "string"
+                  description: "ID of the template to use."
+                template_data:
+                  type: "object"
+                  description: "Attributes of the template registered with Zalo."
+                  properties:
+                    ky:
+                      type: "string"
+                    thang:
+                      type: "string"
+                    start_date:
+                      type: "string"
+                    end_date:
+                      type: "string"
+                    customer:
+                      type: "string"
+                    cid:
+                      type: "string"
+                    address:
+                      type: "string"
+                    amount:
+                      type: "string"
+                    total:
+                      type: "string"
+                tracking_id:
+                  type: "string"
+                  description: "Custom tracking ID defined by the partner."
+              required:
+                - phone
+                - template_id
+                - template_data
+                - tracking_id
+        required: true
+      parameters:
+        - name: "access_token"
+          in: header
+          required: true
+          schema:
+            type: "string"
+          description: "Token required to authenticate API usage."
+      responses:
+        200:
+          description: "Message sent successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      msg_id:
+                        type: "string"
+                      sent_time:
+                        type: "string"
+                      sending_mode:
+                        type: "string"
+                      quota:
+                        type: "object"
+                        properties:
+                          dailyQuota:
+                            type: "string"
+                          remainingQuota:
+                            type: "string"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  msg_id: "a4d0243feee163bd3af2"
+                  sent_time: "1626926349402"
+                  sending_mode: "1"
+                  quota:
+                    dailyQuota: "500"
+                    remainingQuota: "499"

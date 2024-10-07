@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Rejects A Pending Membership Invite From A Group'
+export const name = 'Rejects a pending membership invite from a group.'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Rejects A Pending Membership Invite From A Group',
-  value: 'Rejects A Pending Membership Invite From A Group',
+  name: 'Rejects a pending membership invite from a group.',
+  value: 'Rejects a pending membership invite from a group.',
   action: 'Rejects A Pending Membership Invite From A Group Default',
   description: 'Rejects a pending membership invite from a group',
   routing: {

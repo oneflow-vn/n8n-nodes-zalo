@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Get All Expenses By Group Id'
+export const name = 'Get all expenses by group id'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Get All Expenses By Group Id',
-  value: 'Get All Expenses By Group Id',
+  name: 'Get all expenses by group id',
+  value: 'Get all expenses by group id',
   action: 'Get All Expenses By Group Id Expense',
   description: 'Get all expenses by group id',
   routing: {

@@ -45,8 +45,8 @@ const resourceSelect: INodeProperties[] = [
         description: '',
       },
       {
-        name: 'Zalo Api',
-        value: 'Zalo Api',
+        name: 'Zalo API',
+        value: 'Zalo API',
         description: '',
       },
     ],
@@ -100,7 +100,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -125,7 +125,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -150,7 +150,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -175,7 +175,7 @@ const extraProperties: INodeProperties[] = [
       show: {
         useCustomBody: [true],
         resource: ['Expense'],
-        operation: ['Update Expense'],
+        operation: ['update expense'],
       },
     },
   },

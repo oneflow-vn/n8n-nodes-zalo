@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  title: "ZNS Quota API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /message/quota:
+    get:
+      summary: "Retrieve ZNS quota information"
+      operationId: "getZnsQuota"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+          description: "Đoạn mã cần truyền vào để xác minh quyền sử dụng API."
+      responses:
+        '200':
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      dailyQuota:
+                        type: "string"
+                        description: "Số thông báo ZNS OA được gửi trong 1 ngày."
+                      remainingQuota:
+                        type: "string"
+                        description: "Số thông báo ZNS OA được gửi trong ngày còn lại."
+                      dailyQuotaPromotion:
+                        type: "string"
+                        description: "Số tin ZNS hậu mãi OA được gửi trong ngày."
+                      remainingQuotaPromotion:
+                        type: "string"
+                        description: "Số tin ZNS hậu mãi còn lại OA được gửi trong ngày."
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+              example:
+                data:
+                  dailyQuota: "500"
+                  remainingQuota: "499"
+                  dailyQuotaPromotion: "125"
+                  remainingQuotaPromotion: "124"
+                error: 0
+                message: "success"

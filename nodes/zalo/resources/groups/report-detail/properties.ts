@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Report Detail'],
+        operation: ['report detail'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Report Detail'],
+        operation: ['report detail'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Report Detail'],
+        operation: ['report detail'],
       },
     },
   },

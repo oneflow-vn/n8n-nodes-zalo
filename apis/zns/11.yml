@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: "Customer Feedback API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /rating/get:
+    post:
+      summary: "Retrieve customer feedback information"
+      operationId: "getCustomerFeedback"
+      parameters:
+        - name: "template_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+        - name: "from_time"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "to_time"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+        - name: "offset"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+        - name: "limit"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      total:
+                        type: "integer"
+                      data:
+                        type: "array"
+                        items:
+                          type: "object"
+                          properties:
+                            note:
+                              type: "string"
+                            rate:
+                              type: "integer"
+                            submitDate:
+                              type: "string"
+                            msgId:
+                              type: "string"
+                            feedbacks:
+                              type: "array"
+                              items:
+                                type: "string"
+                            trackingId:
+                              type: "string"
+                  error:
+                    type: "integer"
+              example:
+                data:
+                  total: 3
+                  data:
+                    - note: "Tôi rất hài lòng."
+                      rate: 5
+                      submitDate: "1616673095659"
+                      msgId: "7e4c33cfc20b05575c18"
+                      feedbacks:
+                        - "Nhân viên vui vẻ"
+                        - "Quy trình đơn giản, hiệu quả"
+                        - "Xử lý nhanh nhẹn"
+                        - "Tác phong chuyên nghiệp"
+                        - "Hướng dẫn tận tình"
+                      trackingId: "1956"
+                    - note: "Phục vụ chưa tốt"
+                      rate: 4
+                      submitDate: "1616673164105"
+                      msgId: "4da9fb7506b1c1ed98a2"
+                      feedbacks:
+                        - "Cải thiện thái độ nhân viên"
+                        - "Xử lý nhanh hơn"
+                error: 0

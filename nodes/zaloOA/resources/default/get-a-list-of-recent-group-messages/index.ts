@@ -21,14 +21,14 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Get A List Of Recent Group Messages'
+export const name = 'Get a list of recent group messages'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Get A List Of Recent Group Messages',
-  value: 'Get A List Of Recent Group Messages',
+  name: 'Get a list of recent group messages',
+  value: 'Get a list of recent group messages',
   action: 'Get A List Of Recent Group Messages Default',
   description:
-    'This endpoint requires that the application is granted the permission to manage group information.',
+    'This endpoint requires that the application is granted the permission to manage group information',
   routing: {
     request: {
       method: 'GET',

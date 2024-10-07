@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Disbanding A Group'
+export const name = 'Disbanding a group'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Disbanding A Group',
-  value: 'Disbanding A Group',
+  name: 'Disbanding a group',
+  value: 'Disbanding a group',
   action: 'Disbanding A Group Default',
   description:
     'The application needs to be authorized to manage group information',

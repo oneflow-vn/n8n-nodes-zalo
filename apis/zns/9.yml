@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  title: "Zalo Business API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /template/info:
+    get:
+      summary: "Get template information V1"
+      operationId: "getTemplateInfoV1"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+        - name: "template_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      templateId:
+                        type: "string"
+                      templateName:
+                        type: "string"
+                      status:
+                        type: "string"
+                      listParams:
+                        type: "array"
+                        items:
+                          type: "object"
+                          properties:
+                            name:
+                              type: "string"
+                            require:
+                              type: "boolean"
+                            type:
+                              type: "string"
+                            maxLength:
+                              type: "integer"
+                            minLength:
+                              type: "integer"
+                            acceptNull:
+                              type: "boolean"
+                      timeout:
+                        type: "integer"
+                      previewUrl:
+                        type: "string"
+                      templateQuality:
+                        type: "string"
+                      templateTag:
+                        type: "string"
+                      price:
+                        type: "string"
+                      applyTemplateQuota:
+                        type: "boolean"
+                      templateDailyQuota:
+                        type: "string"
+                      templateRemainingQuota:
+                        type: "string"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  templateId: "12345"
+                  templateName: "Test tạo mẫu tin từ trang admin - dạng bảng"
+                  status: "ENABLE"
+                  listParams:
+                    - name: "payment_link"
+                      require: true
+                      type: "STRING"
+                      maxLength: 30
+                      minLength: 0
+                      acceptNull: false
+                  timeout: 7200000
+                  previewUrl: "https://account.zalo.cloud/znspreview/c1t6Wk43sxXTiLPyC__hXQ=="
+                  templateQuality: "HIGH"
+                  templateTag: "IN_TRANSACTION"
+                  price: "800.0"
+                  applyTemplateQuota: true
+                  templateDailyQuota: "8000"
+                  templateRemainingQuota: "8000"
+  /template/info/v2:
+    get:
+      summary: "Get template information V2"
+      operationId: "getTemplateInfoV2"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+        - name: "template_id"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      templateId:
+                        type: "string"
+                      templateName:
+                        type: "string"
+                      status:
+                        type: "string"
+                      listParams:
+                        type: "array"
+                        items:
+                          type: "object"
+                          properties:
+                            name:
+                              type: "string"
+                            require:
+                              type: "boolean"
+                            type:
+                              type: "string"
+                            maxLength:
+                              type: "integer"
+                            minLength:
+                              type: "integer"
+                            acceptNull:
+                              type: "boolean"
+                      timeout:
+                        type: "integer"
+                      previewUrl:
+                        type: "string"
+                      templateQuality:
+                        type: "string"
+                      templateTag:
+                        type: "string"
+                      price:
+                        type: "string"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  templateId: "12345"
+                  templateName: "Test tạo mẫu tin từ trang admin - dạng bảng"
+                  status: "ENABLE"
+                  listParams:
+                    - name: "payment_link"
+                      require: true
+                      type: "STRING"
+                      maxLength: 30
+                      minLength: 0
+                      acceptNull: false
+                  timeout: 7200000
+                  previewUrl: "https://account.zalo.cloud/znspreview/c1t6Wk43sxXTiLPyC__hXQ=="
+                  templateQuality: "HIGH"
+                  templateTag: "IN_TRANSACTION"
+                  price: "800.0"

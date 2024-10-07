@@ -54,7 +54,7 @@ const operations: INodePropertyOptions[] = [
   inviteInterestedPeopleToGroup.option,
 ]
 
-export const name = 'Default'
+export const name = 'default'
 
 const operationSelect: INodeProperties = {
   displayName: 'Operation',
@@ -63,7 +63,7 @@ const operationSelect: INodeProperties = {
   noDataExpression: true,
   displayOptions: {
     show: {
-      resource: ['Default'],
+      resource: ['default'],
     },
   },
   default: '',

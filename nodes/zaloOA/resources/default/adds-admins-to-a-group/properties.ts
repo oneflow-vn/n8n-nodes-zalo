@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Adds Admins To A Group'],
+        resource: ['default'],
+        operation: ['Adds admins to a group'],
       },
     },
   },
@@ -51,8 +51,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Adds Admins To A Group'],
+        resource: ['default'],
+        operation: ['Adds admins to a group'],
       },
     },
   },
@@ -75,8 +75,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Adds Admins To A Group'],
+        resource: ['default'],
+        operation: ['Adds admins to a group'],
       },
     },
   },
@@ -117,8 +117,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Adds Admins To A Group'],
+        resource: ['default'],
+        operation: ['Adds admins to a group'],
       },
     },
   },

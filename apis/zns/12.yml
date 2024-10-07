@@ -1,0 +1,47 @@
+openapi: 3.0.0
+info:
+  title: "Zalo Business API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /quality:
+    get:
+      summary: "Retrieve current ZNS quality of OA"
+      operationId: "getOaCurrentQuality"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          description: "Token used to authorize the API usage. Refer to authentication and authorization documentation."
+          schema:
+            type: "string"
+      responses:
+        '200':
+          description: "Quality information retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      oaCurrentQuality:
+                        type: "string"
+                        description: "ZNS quality sent in the past 48 hours by OA. Possible values: HIGH, MEDIUM, LOW, UNDEFINED."
+                      oa7dayQuality:
+                        type: "string"
+                        description: "ZNS quality sent in the past 7 days by OA. Possible values: HIGH, MEDIUM, LOW, UNDEFINED."
+                  error:
+                    type: "integer"
+                    description: "Error code."
+                  message:
+                    type: "string"
+                    description: "Response message."
+              example:
+                data:
+                  oaCurrentQuality: "HIGH"
+                  oa7dayQuality: "HIGH"
+                error: 0
+                message: "success"

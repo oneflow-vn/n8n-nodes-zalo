@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Invite Interested People To Group'],
+        resource: ['default'],
+        operation: ['Invite Interested People to Group'],
       },
     },
   },
@@ -51,8 +51,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Invite Interested People To Group'],
+        resource: ['default'],
+        operation: ['Invite Interested People to Group'],
       },
     },
   },
@@ -75,8 +75,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Invite Interested People To Group'],
+        resource: ['default'],
+        operation: ['Invite Interested People to Group'],
       },
     },
   },
@@ -117,8 +117,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Invite Interested People To Group'],
+        resource: ['default'],
+        operation: ['Invite Interested People to Group'],
       },
     },
   },

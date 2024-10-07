@@ -1,0 +1,2034 @@
+[
+  {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "hidden",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "default",
+        "value": "default",
+        "description": ""
+      }
+    ],
+    "default": "",
+    "routing": {
+      "send": {
+        "preSend": [
+          "${async function (this: any, options) {\n\t\t\t\t\t// @ts-ignore\n\t\t\t\t\tconst credentials = await this.getCredentials('zaloOath2Api');\n\n\t\t\t\t\toptions.headers = {\n\t\t\t\t\t\t...options.headers,\n\t\t\t\t\t\taccess_token: credentials.oauthTokenData.access_token,\n\t\t\t\t\t};\n\n\t\t\t\t\treturn Promise.resolve(options);\n\t\t\t\t}}"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Gui ZNS voi Journey Token",
+        "value": "Gui ZNS voi Journey Token",
+        "action": "Gui Zns Voi Journey Token Default",
+        "description": "G i ZNS v i Journey Token",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/message/template"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Send ZNS using hash phone",
+        "value": "Send ZNS using hash phone",
+        "action": "Send Zns Using Hash Phone Default",
+        "description": "Send ZNS using hash phone",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/message/template/hashphone"
+          }
+        }
+      },
+      {
+        "name": "Get sample data of a template",
+        "value": "Get sample data of a template",
+        "action": "Get Sample Data Of A Template Default",
+        "description": "Get sample data of a template",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/template/sample-data"
+          }
+        }
+      },
+      {
+        "name": "Retrieve customer feedback information",
+        "value": "Retrieve customer feedback information",
+        "action": "Retrieve Customer Feedback Information Default",
+        "description": "Retrieve customer feedback information",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/rating/get"
+          }
+        }
+      },
+      {
+        "name": "Retrieve current ZNS quality of OA",
+        "value": "Retrieve current ZNS quality of OA",
+        "action": "Retrieve Current Zns Quality Of Oa Default",
+        "description": "Retrieve current ZNS quality of OA",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/quality"
+          }
+        }
+      },
+      {
+        "name": "Generate RSA Public Key",
+        "value": "Generate RSA Public Key",
+        "action": "Generate Rsa Public Key Default",
+        "description": "Generate RSA Public Key",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/rsa/key/gen"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Retrieve RSA Public Key",
+        "value": "Retrieve RSA Public Key",
+        "action": "Retrieve Rsa Public Key Default",
+        "description": "Retrieve RSA Public Key",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/rsa/key/get"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Send Encrypted Message",
+        "value": "Send Encrypted Message",
+        "action": "Send Encrypted Message Default",
+        "description": "Send Encrypted Message",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/rsa/message/template"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Khoi tao Journey Token",
+        "value": "Khoi tao Journey Token",
+        "action": "Khoi Tao Journey Token Default",
+        "description": "Kh i t o Journey Token",
+        "routing": {
+          "request": {
+            "method": "POST",
+            "url": "=/journey/get-token"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Kiem tra Journey Token",
+        "value": "Kiem tra Journey Token",
+        "action": "Kiem Tra Journey Token Default",
+        "description": "Ki m tra Journey Token",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/journey/check-token"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Retrieve ZNS message status",
+        "value": "Retrieve ZNS message status",
+        "action": "Retrieve Zns Message Status Default",
+        "description": "Retrieve ZNS message status",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/message/status"
+          }
+        }
+      },
+      {
+        "name": "Retrieve ZNS quota information",
+        "value": "Retrieve ZNS quota information",
+        "action": "Retrieve Zns Quota Information Default",
+        "description": "Retrieve ZNS quota information",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/message/quota"
+          }
+        }
+      },
+      {
+        "name": "Get allowed ZNS content types",
+        "value": "Get allowed ZNS content types",
+        "action": "Get Allowed Zns Content Types Default",
+        "description": "Get allowed ZNS content types",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/message/template-tag"
+          },
+          "output": {
+            "postReceive": [
+              {
+                "type": "setKeyValue",
+                "properties": {
+                  "data": "={{$response.body}}"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Lay danh sach template",
+        "value": "Lay danh sach template",
+        "action": "Lay Danh Sach Template Default",
+        "description": "L y danh s ch template",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/template/all"
+          }
+        }
+      },
+      {
+        "name": "Get template information V1",
+        "value": "Get template information V1",
+        "action": "Get Template Information V1 Default",
+        "description": "Get template information V1",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/template/info"
+          }
+        }
+      },
+      {
+        "name": "Get template information V2",
+        "value": "Get template information V2",
+        "action": "Get Template Information V2 Default",
+        "description": "Get template information V2",
+        "routing": {
+          "request": {
+            "method": "GET",
+            "url": "=/template/info/v2"
+          }
+        }
+      }
+    ],
+    "default": ""
+  },
+  {
+    "displayName": "POST /message/template",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Đoạn mã cần truyền vào để xác minh quyền sử dụng API.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Journey Token",
+    "name": "journey_token",
+    "required": true,
+    "description": "Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "journey_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Phone",
+    "name": "phone",
+    "type": "string",
+    "default": "84987654321",
+    "description": "S T c a ng i nh n m u tin",
+    "routing": {
+      "request": {
+        "body": {
+          "phone": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Template Id",
+    "name": "template_id",
+    "type": "string",
+    "default": "7895417a7d3f9461cd2e",
+    "description": "ID c a template mu n s d ng",
+    "routing": {
+      "request": {
+        "body": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Template Data",
+    "name": "template_data",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "C c thu c t nh c a template",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "ky",
+            "displayName": "Ky"
+          },
+          {
+            "type": "string",
+            "default": "4/2020",
+            "description": "",
+            "name": "thang",
+            "displayName": "Thang"
+          },
+          {
+            "type": "string",
+            "default": "20/03/2020",
+            "description": "",
+            "name": "start_date",
+            "displayName": "Start Date"
+          },
+          {
+            "type": "string",
+            "default": "20/04/2020",
+            "description": "",
+            "name": "end_date",
+            "displayName": "End Date"
+          },
+          {
+            "type": "string",
+            "default": "Nguyễn Thị Hoàng Anh",
+            "description": "",
+            "name": "customer",
+            "displayName": "Customer"
+          },
+          {
+            "type": "string",
+            "default": "PE010299485",
+            "description": "",
+            "name": "cid",
+            "displayName": "Cid"
+          },
+          {
+            "type": "string",
+            "default": "VNG Campus, TP.HCM",
+            "description": "",
+            "name": "address",
+            "displayName": "Address"
+          },
+          {
+            "type": "string",
+            "default": "100",
+            "description": "",
+            "name": "amount",
+            "displayName": "Amount"
+          },
+          {
+            "type": "string",
+            "default": "100000",
+            "description": "",
+            "name": "total",
+            "displayName": "Total"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "template_data": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Tracking Id",
+    "name": "tracking_id",
+    "type": "string",
+    "default": "tracking_id",
+    "description": "Custom tracking ID defined by the partner",
+    "routing": {
+      "request": {
+        "body": {
+          "tracking_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Mode",
+    "name": "mode",
+    "type": "string",
+    "default": "development",
+    "description": "",
+    "routing": {
+      "request": {
+        "body": {
+          "mode": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"phone\": \"84987654321\",\n  \"template_id\": \"217489\",\n  \"template_data\": {}\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Gui ZNS voi Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /message/template/hashphone",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token for API access authorization.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Hash Phone",
+    "name": "hash_phone",
+    "type": "string",
+    "default": "",
+    "description": "SHA 256 hashed recipient phone number",
+    "routing": {
+      "request": {
+        "body": {
+          "hash_phone": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "type": "string",
+    "default": "",
+    "description": "Template ID provided by Zalo",
+    "routing": {
+      "request": {
+        "body": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Data",
+    "name": "template_data",
+    "type": "fixedCollection",
+    "default": {},
+    "description": "Attributes of the registered template with Zalo",
+    "options": [
+      {
+        "name": "items",
+        "displayName": "Items",
+        "values": [
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "ky",
+            "displayName": "Ky"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "thang",
+            "displayName": "Thang"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "start_date",
+            "displayName": "Start Date"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "end_date",
+            "displayName": "End Date"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "customer",
+            "displayName": "Customer"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "cid",
+            "displayName": "Cid"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "address",
+            "displayName": "Address"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "amount",
+            "displayName": "Amount"
+          },
+          {
+            "type": "string",
+            "default": "",
+            "description": "",
+            "name": "total",
+            "displayName": "Total"
+          }
+        ]
+      }
+    ],
+    "routing": {
+      "request": {
+        "body": {
+          "template_data": "={{$value.items}}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Tracking Id",
+    "name": "tracking_id",
+    "type": "string",
+    "default": "",
+    "description": "User defined tracking ID for API calls",
+    "routing": {
+      "request": {
+        "body": {
+          "tracking_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"hash_phone\": \"string\",\n  \"template_id\": \"string\",\n  \"template_data\": {\n    \"ky\": \"string\",\n    \"thang\": \"string\",\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"customer\": \"string\",\n    \"cid\": \"string\",\n    \"address\": \"string\",\n    \"amount\": \"string\",\n    \"total\": \"string\"\n  },\n  \"tracking_id\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send ZNS using hash phone"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /template/sample-data",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get sample data of a template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token needed to validate the API request.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get sample data of a template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "required": true,
+    "description": "ID of the template to retrieve information for.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get sample data of a template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /rating/get",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "required": true,
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "From Time",
+    "name": "from_time",
+    "required": true,
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "from_time": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "To Time",
+    "name": "to_time",
+    "required": true,
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "to_time": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "required": true,
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Limit",
+    "name": "limit",
+    "required": true,
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "limit": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve customer feedback information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /quality",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve current ZNS quality of OA"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Token used to authorize the API usage. Refer to authentication and authorization documentation.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve current ZNS quality of OA"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /rsa/key/gen",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Generate RSA Public Key"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /rsa/key/get",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve RSA Public Key"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /rsa/message/template",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Rsa Phone",
+    "name": "rsa_phone",
+    "type": "string",
+    "default": "",
+    "description": "Recipient s encrypted phone number using the public key",
+    "routing": {
+      "request": {
+        "body": {
+          "rsa_phone": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "type": "string",
+    "default": "",
+    "description": "ID of the message template to use",
+    "routing": {
+      "request": {
+        "body": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Data",
+    "name": "template_data",
+    "type": "json",
+    "default": "{}",
+    "description": "Encrypted template data using the public key",
+    "routing": {
+      "request": {
+        "body": {
+          "template_data": "={{ JSON.parse($value) }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Tracking Id",
+    "name": "tracking_id",
+    "type": "string",
+    "default": "",
+    "description": "Unique tracking ID from the partner",
+    "routing": {
+      "request": {
+        "body": {
+          "tracking_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"rsa_phone\": \"string\",\n  \"template_id\": \"string\",\n  \"template_data\": {},\n  \"tracking_id\": \"string\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Send Encrypted Message"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "POST /journey/get-token",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Khoi tao Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Đoạn mã cần truyền vào để xác minh quyền sử dụng API.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Khoi tao Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "required": true,
+    "displayName": "Phone",
+    "name": "phone",
+    "type": "string",
+    "default": "",
+    "description": "",
+    "routing": {
+      "request": {
+        "body": {
+          "phone": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Khoi tao Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Token Type",
+    "name": "token_type",
+    "type": "string",
+    "default": "",
+    "description": "",
+    "routing": {
+      "request": {
+        "body": {
+          "token_type": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "hide": {
+        "useCustomBody": [
+          true
+        ]
+      },
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Khoi tao Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Custom Body",
+    "name": "customBody",
+    "type": "json",
+    "default": "{\n  \"phone\": \"84987654321\",\n  \"token_type\": \"token_logistics_7\"\n}",
+    "description": "Custom body to send",
+    "routing": {
+      "request": {
+        "body": {
+          "customBody": "={{JSON.parse($value)}}"
+        }
+      },
+      "send": {
+        "preSend": [
+          "${helpers.hooks.preSendActionCustonBody}"
+        ]
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "useCustomBody": [
+          true
+        ],
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Khoi tao Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /journey/check-token",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Kiem tra Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Đoạn mã cần truyền vào để xác minh quyền sử dụng API.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Kiem tra Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Journey Token",
+    "name": "journey_token",
+    "required": true,
+    "description": "Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "headers": {
+          "journey_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Kiem tra Journey Token"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /message/status",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS message status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Access token for API authentication.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS message status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Message Id",
+    "name": "message_id",
+    "required": true,
+    "description": "ID of the message to retrieve status information.",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "message_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS message status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Phone",
+    "name": "phone",
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "phone": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS message status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /message/quota",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS quota information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Đoạn mã cần truyền vào để xác minh quyền sử dụng API.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Retrieve ZNS quota information"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /message/template-tag",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get allowed ZNS content types"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Access token to authorize API usage.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get allowed ZNS content types"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /template/all",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Lay danh sach template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Offset",
+    "name": "offset",
+    "required": true,
+    "description": "Thứ tự của template đầu tiên trong danh sách trả về.",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "offset": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Lay danh sach template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Limit",
+    "name": "limit",
+    "required": true,
+    "description": "Số lượng template muốn lấy.",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "limit": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Lay danh sach template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Status",
+    "name": "status",
+    "description": "Trạng thái của template muốn lấy.\nCác giá trị:\n- 1: Enable\n- 2: Pending review\n- 3: Reject\n- 4: Disable\n",
+    "default": 0,
+    "type": "number",
+    "routing": {
+      "request": {
+        "qs": {
+          "status": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Lay danh sach template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "description": "Đoạn mã cần truyền vào để xác minh quyền sử dụng API.",
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Lay danh sach template"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /template/info",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V1"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V1"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "required": true,
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V1"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "GET /template/info/v2",
+    "name": "operation",
+    "type": "notice",
+    "typeOptions": {
+      "theme": "info"
+    },
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V2"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Access Token",
+    "name": "access_token",
+    "required": true,
+    "default": "={{$credentials.oauthTokenData.accessToken}}",
+    "type": "hidden",
+    "routing": {
+      "request": {
+        "headers": {
+          "access_token": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V2"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "template_id",
+    "required": true,
+    "default": "",
+    "type": "string",
+    "routing": {
+      "request": {
+        "qs": {
+          "template_id": "={{ $value }}"
+        }
+      }
+    },
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "default"
+        ],
+        "operation": [
+          "Get template information V2"
+        ]
+      }
+    }
+  }
+]

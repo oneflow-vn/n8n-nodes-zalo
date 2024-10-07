@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Retrieve Group Conversation Information'
+export const name = 'Retrieve group conversation information'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Retrieve Group Conversation Information',
-  value: 'Retrieve Group Conversation Information',
+  name: 'Retrieve group conversation information',
+  value: 'Retrieve group conversation information',
   action: 'Retrieve Group Conversation Information Default',
   description: 'Retrieve group conversation information',
   routing: {

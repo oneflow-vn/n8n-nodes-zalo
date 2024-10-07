@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Update Expense Copy'],
+        operation: ['update expense Copy'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Update Expense Copy'],
+        operation: ['update expense Copy'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Update Expense Copy'],
+        operation: ['update expense Copy'],
       },
     },
   },
@@ -90,7 +90,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Update Expense Copy'],
+        operation: ['update expense Copy'],
       },
     },
   },

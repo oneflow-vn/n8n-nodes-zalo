@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -90,7 +90,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -99,7 +99,7 @@ export const properties: INodeProperties[] = [
     name: 'groupId',
     type: 'number',
     default: 0,
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -113,7 +113,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },
@@ -169,7 +169,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Groups'],
-        operation: ['Add Members To Group'],
+        operation: ['add members to group'],
       },
     },
   },

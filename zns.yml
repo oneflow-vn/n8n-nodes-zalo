@@ -1,0 +1,1031 @@
+openapi: 3.0.0
+info:
+  title: Zalo Business API
+  version: 1.0.0
+servers:
+  - url: https://business.openapi.zalo.me
+paths:
+  /message/template:
+    post:
+      summary: Gửi ZNS với Journey Token
+      operationId: sendZNSWithJourneyToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                  description: SĐT của người nhận mẫu tin.
+                  example: '84987654321'
+                template_id:
+                  type: string
+                  description: ID của template muốn sử dụng.
+                  example: 7895417a7d3f9461cd2e
+                template_data:
+                  type: object
+                  description: Các thuộc tính của template.
+                  properties:
+                    ky:
+                      type: string
+                    thang:
+                      type: string
+                      example: 4/2020
+                    start_date:
+                      type: string
+                      example: 20/03/2020
+                    end_date:
+                      type: string
+                      example: 20/04/2020
+                    customer:
+                      type: string
+                      example: Nguyễn Thị Hoàng Anh
+                    cid:
+                      type: string
+                      example: PE010299485
+                    address:
+                      type: string
+                      example: VNG Campus, TP.HCM
+                    amount:
+                      type: string
+                      example: '100'
+                    total:
+                      type: string
+                      example: '100000'
+                tracking_id:
+                  type: string
+                  description: Custom tracking ID defined by the partner.
+                  example: tracking_id
+                mode:
+                  type: string
+                  example: development
+              required:
+                - phone
+                - template_id
+                - template_data
+                - tracking_id
+              example:
+                phone: '84987654321'
+                template_id: '217489'
+                template_data: {}
+        required: true
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Đoạn mã cần truyền vào để xác minh quyền sử dụng API.
+        - name: journey_token
+          in: header
+          required: true
+          description: Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ZNS sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    example: 0
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      msg_id:
+                        type: string
+                        description: ID của thông báo ZNS.
+                      sent_time:
+                        type: string
+                        description: Thời gian gửi thông báo ZNS (định dạng timestamp).
+                      sending_mode:
+                        type: string
+                      quota:
+                        type: object
+                        properties:
+                          dailyQuota:
+                            type: string
+                          remainingQuota:
+                            type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  msg_id: a4d0243feee163bd3af2
+                  sent_time: '1626926349402'
+                  sending_mode: '1'
+                  quota:
+                    dailyQuota: '500'
+                    remainingQuota: '499'
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      sent_time:
+                        type: string
+                      msg_id:
+                        type: string
+                      quota:
+                        type: object
+                        properties:
+                          remainingQuota:
+                            type: string
+                          dailyQuota:
+                            type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  sent_time: '1640144305350'
+                  msg_id: 6e84304c259208ce5181
+                  quota:
+                    remainingQuota: '480'
+                    dailyQuota: '500'
+  /message/template/hashphone:
+    post:
+      summary: Send ZNS using hash phone
+      operationId: sendZNSHashPhone
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hash_phone:
+                  type: string
+                  description: SHA-256 hashed recipient phone number.
+                template_id:
+                  type: string
+                  description: Template ID provided by Zalo.
+                template_data:
+                  type: object
+                  description: Attributes of the registered template with Zalo.
+                  properties:
+                    ky:
+                      type: string
+                    thang:
+                      type: string
+                    start_date:
+                      type: string
+                    end_date:
+                      type: string
+                    customer:
+                      type: string
+                    cid:
+                      type: string
+                    address:
+                      type: string
+                    amount:
+                      type: string
+                    total:
+                      type: string
+                tracking_id:
+                  type: string
+                  description: User-defined tracking ID for API calls.
+      responses:
+        '200':
+          description: Successful ZNS message sent.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      msg_id:
+                        type: string
+                      sent_time:
+                        type: string
+                      sending_mode:
+                        type: string
+                      quota:
+                        type: object
+                        properties:
+                          dailyQuota:
+                            type: string
+                          remainingQuota:
+                            type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  msg_id: a4d0243feee163bd3af2
+                  sent_time: '1626926349402'
+                  sending_mode: '1'
+                  quota:
+                    dailyQuota: '500'
+                    remainingQuota: '499'
+      parameters:
+        - in: header
+          name: access_token
+          required: true
+          schema:
+            type: string
+          description: Token for API access authorization.
+  /template/sample-data:
+    get:
+      summary: Get sample data of a template
+      operationId: getSampleData
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Token needed to validate the API request.
+          schema:
+            type: string
+        - name: template_id
+          in: query
+          required: true
+          description: ID of the template to retrieve information for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      balance_debt:
+                        type: integer
+                      due_date:
+                        type: string
+                      number_debt:
+                        type: integer
+                      customer_name:
+                        type: string
+                  error:
+                    type: integer
+              example:
+                message: Success
+                data:
+                  balance_debt: 2000
+                  due_date: 01/01/1970
+                  number_debt: 2000
+                  customer_name: customer_name_sample
+                error: 0
+  /rating/get:
+    post:
+      summary: Retrieve customer feedback information
+      operationId: getCustomerFeedback
+      parameters:
+        - name: template_id
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: from_time
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: to_time
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: offset
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      data:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            note:
+                              type: string
+                            rate:
+                              type: integer
+                            submitDate:
+                              type: string
+                            msgId:
+                              type: string
+                            feedbacks:
+                              type: array
+                              items:
+                                type: string
+                            trackingId:
+                              type: string
+                  error:
+                    type: integer
+              example:
+                data:
+                  total: 3
+                  data:
+                    - note: Tôi rất hài lòng.
+                      rate: 5
+                      submitDate: '1616673095659'
+                      msgId: 7e4c33cfc20b05575c18
+                      feedbacks:
+                        - Nhân viên vui vẻ
+                        - Quy trình đơn giản, hiệu quả
+                        - Xử lý nhanh nhẹn
+                        - Tác phong chuyên nghiệp
+                        - Hướng dẫn tận tình
+                      trackingId: '1956'
+                    - note: Phục vụ chưa tốt
+                      rate: 4
+                      submitDate: '1616673164105'
+                      msgId: 4da9fb7506b1c1ed98a2
+                      feedbacks:
+                        - Cải thiện thái độ nhân viên
+                        - Xử lý nhanh hơn
+                error: 0
+  /quality:
+    get:
+      summary: Retrieve current ZNS quality of OA
+      operationId: getOaCurrentQuality
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: >-
+            Token used to authorize the API usage. Refer to authentication and
+            authorization documentation.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Quality information retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      oaCurrentQuality:
+                        type: string
+                        description: >-
+                          ZNS quality sent in the past 48 hours by OA. Possible
+                          values: HIGH, MEDIUM, LOW, UNDEFINED.
+                      oa7dayQuality:
+                        type: string
+                        description: >-
+                          ZNS quality sent in the past 7 days by OA. Possible
+                          values: HIGH, MEDIUM, LOW, UNDEFINED.
+                  error:
+                    type: integer
+                    description: Error code.
+                  message:
+                    type: string
+                    description: Response message.
+              example:
+                data:
+                  oaCurrentQuality: HIGH
+                  oa7dayQuality: HIGH
+                error: 0
+                message: success
+  /rsa/key/gen:
+    get:
+      summary: Generate RSA Public Key
+      operationId: generateRSAPublicKey
+      responses:
+        '200':
+          description: Public key generated
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      public_key:
+                        type: string
+                        description: Public key for encrypting messages
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  public_key: e6fa968f027
+                error: 0
+                message: Success
+  /rsa/key/get:
+    get:
+      summary: Retrieve RSA Public Key
+      operationId: retrieveRSAPublicKey
+      responses:
+        '200':
+          description: Public key retrieved
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      public_key:
+                        type: string
+                        description: Public key for encrypting messages
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  public_key: e6fa968f027
+                error: 0
+                message: Success
+  /rsa/message/template:
+    post:
+      summary: Send Encrypted Message
+      operationId: sendEncryptedMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rsa_phone:
+                  type: string
+                  description: Recipient's encrypted phone number using the public key
+                template_id:
+                  type: string
+                  description: ID of the message template to use
+                template_data:
+                  type: object
+                  description: Encrypted template data using the public key
+                tracking_id:
+                  type: string
+                  description: Unique tracking ID from the partner
+            example:
+              rsa_phone: >-
+                YxLw/6km7vSKUZg3zH21lJNL2OQ4NIkirMD8P3vj+Vl1PhEdC+Dlnyo4s1mlpN24BmLuxVU1FdmAebV0vqLzrB4S1G9nGIqHh0uxKhIL8uSKxLqIiR5F+EDTZ/GUFDb9WB63p9a831Nd0NkMNFJgiJ6juhZ8NByy81rGfM+9Mx89kafK4nIGtCjvLuPy7daXPwpWpIBRnL5em31OnSAZswKxXN7LQyLrBJPbhOMZEfWTMexY7GGkA3ua654nVUSc2vs+YaUHTi/sn+1iyio5wnNiRErHV5lhId588aPMtSSIJFIUBlHFhma+nyApAVRK57NkYKAF7YOos9CImbUD+yOhbajBDhi9gSMvfvt/amASbVVGv6YRnndS4+09cAbUwiH3OR2VHlPIqU4rTuSuPmmEwoDoeQbQO6HarUvgud9breXIsctct9vmsyN4oodjS1/djzwgiEggs4rHt7eJmm3sLjXCCmxr9bQLFm9J5RQCooTRUVnaoXw0UOSc9qhUev1rhkoOTe+hq9Ush1FhE9HHmOzJ37Mq+vro/k26F72xB8cnlEieeLqDTOSCL4E2rcmpdeov5bH8Mp4WarnqMR2oldhFc3tTwAt3jZlOGrN6RpvdteqYx0VOTLoGzuUVv4HJ4qgV5FylLNEEEWbQSoZIVXO3uaqj9Q2ugvQ5BeE=
+              template_id: '1234567'
+              template_data:
+                param_1: >-
+                  YxLw/6km7vSKUZg3zH21lJNL2OQ4NIkirMD8P3vj+Vl1PhEdC+Dlnyo4s1mlpN24BmLuxVU1FdmAebV0vqLzrB4S1G9nGIqHh0uxKhIL8uSKxLqIiR5F+EDTZ/GUFDb9WB63p9a831Nd0NkMNFJgiJ6juhZ8NByy81rGfM+9Mx89kafK4nIGtCjvLuPy7daXPwpWpIBRnL5em31OnSAZswKxXN7LQyLrBJPbhOMZEfWTMexY7GGkA3ua654nVUSc2vs+YaUHTi/sn+1iyio5wnNiRErHV5lhId588aPMtSSIJFIUBlHFhma+nyApAVRK57NkYKAF7YOos9CImbUD+yOhbajBDhi9gSMvfvt/amASbVVGv6YRnndS4+09cAbUwiH3OR2VHlPIqU4rTuSuPmmEwoDoeQbQO6HarUvgud9breXIsctct9vmsyN4oodjS1/djzwgiEggs4rHt7eJmm3sLjXCCmxr9bQLFm9J5RQCooTRUVnaoXw0UOSc9qhUev1rhkoOTe+hq9Ush1FhE9HHmOzJ37Mq+vro/k26F72xB8cnlEieeLqDTOSCL4E2rcmpdeov5bH8Mp4WarnqMR2oldhFc3tTwAt3jZlOGrN6RpvdteqYx0VOTLoGzuUVv4HJ4qgV5FylLNEEEWbQSoZIVXO3uaqj9Q2ugvQ5BeE=
+              tracking_id: your_tracking_id_here
+      responses:
+        '200':
+          description: Message sent successfully
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      sent_time:
+                        type: string
+                        description: Timestamp of when the ZNS was sent
+                      msg_id:
+                        type: string
+                        description: ID of the ZNS notification
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  sent_time: '1619595918601'
+                  msg_id: b15f0398cb7a1e264769
+                error: 0
+                message: Success
+  /journey/get-token:
+    post:
+      summary: Khởi tạo Journey Token
+      operationId: createJourneyToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone:
+                  type: string
+                token_type:
+                  type: string
+              required:
+                - phone
+              example:
+                phone: '84987654321'
+                token_type: token_logistics_7
+      responses:
+        '200':
+          description: Journey Token created successfully
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  token:
+                    type: string
+                  journey_id:
+                    type: string
+              example:
+                error: 0
+                message: Success
+                token: 8iCeIhJbTcPtLo0Kh1kS6rOVXl0Rgv2wZN...
+                journey_id: '123456789'
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Đoạn mã cần truyền vào để xác minh quyền sử dụng API.
+          schema:
+            type: string
+  /journey/check-token:
+    get:
+      summary: Kiểm tra Journey Token
+      operationId: checkJourneyToken
+      responses:
+        '200':
+          description: Journey Token status checked successfully
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      appId:
+                        type: string
+                      oaId:
+                        type: string
+                      tokenType:
+                        type: string
+                      createdAt:
+                        type: string
+                      expiredAt:
+                        type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  appId: '4349311699477619340'
+                  oaId: '3886651700907664415'
+                  tokenType: token_logistics_7
+                  createdAt: '1641269204370'
+                  expiredAt: '1641269384370'
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          description: Đoạn mã cần truyền vào để xác minh quyền sử dụng API.
+          schema:
+            type: string
+        - name: journey_token
+          in: header
+          required: true
+          description: Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt
+          schema:
+            type: string
+  /message/status:
+    get:
+      summary: Retrieve ZNS message status
+      operationId: getZnsMessageStatus
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Access token for API authentication.
+        - name: message_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: ID of the message to retrieve status information.
+        - name: phone
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      delivery_time:
+                        type: string
+                      message:
+                        type: string
+                      status:
+                        type: integer
+                  error:
+                    type: integer
+              example:
+                message: Success
+                data:
+                  delivery_time: '1600328011517'
+                  message: The message was delivered to the user's phone
+                  status: 1
+                error: 0
+  /message/quota:
+    get:
+      summary: Retrieve ZNS quota information
+      operationId: getZnsQuota
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Đoạn mã cần truyền vào để xác minh quyền sử dụng API.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      dailyQuota:
+                        type: string
+                        description: Số thông báo ZNS OA được gửi trong 1 ngày.
+                      remainingQuota:
+                        type: string
+                        description: Số thông báo ZNS OA được gửi trong ngày còn lại.
+                      dailyQuotaPromotion:
+                        type: string
+                        description: Số tin ZNS hậu mãi OA được gửi trong ngày.
+                      remainingQuotaPromotion:
+                        type: string
+                        description: Số tin ZNS hậu mãi còn lại OA được gửi trong ngày.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  dailyQuota: '500'
+                  remainingQuota: '499'
+                  dailyQuotaPromotion: '125'
+                  remainingQuotaPromotion: '124'
+                error: 0
+                message: success
+  /message/template-tag:
+    get:
+      summary: Get allowed ZNS content types
+      operationId: getTemplateTag
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Access token to authorize API usage.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of content types allowed for OA to send.
+                  error:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                data:
+                  - OTP
+                  - IN_TRANSACTION
+                  - POST_TRANSACTION
+                error: 0
+                message: success
+  /template/all:
+    get:
+      summary: Lấy danh sách template
+      operationId: getTemplates
+      parameters:
+        - name: offset
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Thứ tự của template đầu tiên trong danh sách trả về.
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: integer
+          description: Số lượng template muốn lấy.
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: |
+            Trạng thái của template muốn lấy.
+            Các giá trị:
+            - 1: Enable
+            - 2: Pending review
+            - 3: Reject
+            - 4: Disable
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Đoạn mã cần truyền vào để xác minh quyền sử dụng API.
+      responses:
+        '200':
+          description: Danh sách template trả về thành công
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        templateId:
+                          type: integer
+                        templateName:
+                          type: string
+                        createdTime:
+                          type: integer
+                        status:
+                          type: string
+                        templateQuality:
+                          type: string
+                  metadata:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+              example:
+                error: 0
+                message: Success
+                data:
+                  - templateId: 900025
+                    templateName: Template_1
+                    createdTime: 0
+                    status: PENDING_REVIEW
+                    templateQuality: UNDEFINED
+                metadata:
+                  total: 300
+  /template/info:
+    get:
+      summary: Get template information V1
+      operationId: getTemplateInfoV1
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: template_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      templateId:
+                        type: string
+                      templateName:
+                        type: string
+                      status:
+                        type: string
+                      listParams:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            require:
+                              type: boolean
+                            type:
+                              type: string
+                            maxLength:
+                              type: integer
+                            minLength:
+                              type: integer
+                            acceptNull:
+                              type: boolean
+                      timeout:
+                        type: integer
+                      previewUrl:
+                        type: string
+                      templateQuality:
+                        type: string
+                      templateTag:
+                        type: string
+                      price:
+                        type: string
+                      applyTemplateQuota:
+                        type: boolean
+                      templateDailyQuota:
+                        type: string
+                      templateRemainingQuota:
+                        type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  templateId: '12345'
+                  templateName: Test tạo mẫu tin từ trang admin - dạng bảng
+                  status: ENABLE
+                  listParams:
+                    - name: payment_link
+                      require: true
+                      type: STRING
+                      maxLength: 30
+                      minLength: 0
+                      acceptNull: false
+                  timeout: 7200000
+                  previewUrl: >-
+                    https://account.zalo.cloud/znspreview/c1t6Wk43sxXTiLPyC__hXQ==
+                  templateQuality: HIGH
+                  templateTag: IN_TRANSACTION
+                  price: '800.0'
+                  applyTemplateQuota: true
+                  templateDailyQuota: '8000'
+                  templateRemainingQuota: '8000'
+  /template/info/v2:
+    get:
+      summary: Get template information V2
+      operationId: getTemplateInfoV2
+      parameters:
+        - name: access_token
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: template_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: integer
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      templateId:
+                        type: string
+                      templateName:
+                        type: string
+                      status:
+                        type: string
+                      listParams:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            require:
+                              type: boolean
+                            type:
+                              type: string
+                            maxLength:
+                              type: integer
+                            minLength:
+                              type: integer
+                            acceptNull:
+                              type: boolean
+                      timeout:
+                        type: integer
+                      previewUrl:
+                        type: string
+                      templateQuality:
+                        type: string
+                      templateTag:
+                        type: string
+                      price:
+                        type: string
+              example:
+                error: 0
+                message: Success
+                data:
+                  templateId: '12345'
+                  templateName: Test tạo mẫu tin từ trang admin - dạng bảng
+                  status: ENABLE
+                  listParams:
+                    - name: payment_link
+                      require: true
+                      type: STRING
+                      maxLength: 30
+                      minLength: 0
+                      acceptNull: false
+                  timeout: 7200000
+                  previewUrl: >-
+                    https://account.zalo.cloud/znspreview/c1t6Wk43sxXTiLPyC__hXQ==
+                  templateQuality: HIGH
+                  templateTag: IN_TRANSACTION
+                  price: '800.0'
+apiVersion: 3.0.0

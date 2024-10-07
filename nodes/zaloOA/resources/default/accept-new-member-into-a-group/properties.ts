@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Accept New Member Into A Group'],
+        resource: ['default'],
+        operation: ['Accept new member into a group'],
       },
     },
   },
@@ -50,8 +50,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Accept New Member Into A Group'],
+        resource: ['default'],
+        operation: ['Accept new member into a group'],
       },
     },
   },
@@ -73,8 +73,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Accept New Member Into A Group'],
+        resource: ['default'],
+        operation: ['Accept new member into a group'],
       },
     },
   },
@@ -114,8 +114,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Accept New Member Into A Group'],
+        resource: ['default'],
+        operation: ['Accept new member into a group'],
       },
     },
   },

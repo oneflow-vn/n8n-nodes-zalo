@@ -1,0 +1,180 @@
+apiVersion: 3.0.0
+info:
+  title: "ZNS Journey API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /journey/get-token:
+    post:
+      summary: "Khởi tạo Journey Token"
+      operationId: "createJourneyToken"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                phone:
+                  type: "string"
+                token_type:
+                  type: "string"
+              required:
+                - phone
+              example:
+                phone: "84987654321"
+                token_type: "token_logistics_7"
+      responses:
+        200:
+          description: "Journey Token created successfully"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  token:
+                    type: "string"
+                  journey_id:
+                    type: "string"
+              example:
+                error: 0
+                message: "Success"
+                token: "8iCeIhJbTcPtLo0Kh1kS6rOVXl0Rgv2wZN..."
+                journey_id: "123456789"
+      parameters:
+        - name: "access_token"
+          in: header
+          required: true
+          description: "Đoạn mã cần truyền vào để xác minh quyền sử dụng API."
+          schema:
+            type: "string"
+  /message/template:
+    post:
+      summary: "Gửi ZNS với Journey Token"
+      operationId: "sendZNSWithJourneyToken"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                phone:
+                  type: "string"
+                  description: "SĐT của người nhận mẫu tin."
+                template_id:
+                  type: "string"
+                  description: "ID của template muốn sử dụng."
+                template_data:
+                  type: "object"
+                  description: "Các thuộc tính của template."
+              required:
+                - phone
+                - template_id
+                - template_data
+              example:
+                phone: "84987654321"
+                template_id: "217489"
+                template_data: {}
+      responses:
+        200:
+          description: "ZNS sent successfully"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      sent_time:
+                        type: "string"
+                      msg_id:
+                        type: "string"
+                      quota:
+                        type: "object"
+                        properties:
+                          remainingQuota:
+                            type: "string"
+                          dailyQuota:
+                            type: "string"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  sent_time: "1640144305350"
+                  msg_id: "6e84304c259208ce5181"
+                  quota:
+                    remainingQuota: "480"
+                    dailyQuota: "500"
+      parameters:
+        - name: "access_token"
+          in: header
+          required: true
+          description: "Đoạn mã cần truyền vào để xác minh quyền sử dụng API."
+          schema:
+            type: "string"
+        - name: "journey_token"
+          in: header
+          required: true
+          description: "Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt"
+          schema:
+            type: "string"
+  /journey/check-token:
+    get:
+      summary: "Kiểm tra Journey Token"
+      operationId: "checkJourneyToken"
+      responses:
+        200:
+          description: "Journey Token status checked successfully"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+                  data:
+                    type: "object"
+                    properties:
+                      appId:
+                        type: "string"
+                      oaId:
+                        type: "string"
+                      tokenType:
+                        type: "string"
+                      createdAt:
+                        type: "string"
+                      expiredAt:
+                        type: "string"
+              example:
+                error: 0
+                message: "Success"
+                data:
+                  appId: "4349311699477619340"
+                  oaId: "3886651700907664415"
+                  tokenType: "token_logistics_7"
+                  createdAt: "1641269204370"
+                  expiredAt: "1641269384370"
+      parameters:
+        - name: "access_token"
+          in: header
+          required: true
+          description: "Đoạn mã cần truyền vào để xác minh quyền sử dụng API."
+          schema:
+            type: "string"
+        - name: "journey_token"
+          in: header
+          required: true
+          description: "Đoạn mã xác minh mẫu tin thuộc hành trình vừa kích hoạt"
+          schema:
+            type: "string"

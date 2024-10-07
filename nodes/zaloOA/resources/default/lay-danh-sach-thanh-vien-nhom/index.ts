@@ -21,13 +21,13 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Lay Danh Sach Thanh Vien Nhom'
+export const name = 'Lay danh sach thanh vien nhom'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Lay Danh Sach Thanh Vien Nhom',
-  value: 'Lay Danh Sach Thanh Vien Nhom',
+  name: 'Lay danh sach thanh vien nhom',
+  value: 'Lay danh sach thanh vien nhom',
   action: 'Lay Danh Sach Thanh Vien Nhom Default',
-  description: 'Lấy danh sách thành viên nhóm',
+  description: 'L y danh s ch th nh vi n nh m',
   routing: {
     request: {
       method: 'GET',

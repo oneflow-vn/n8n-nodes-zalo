@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Get All Expenses By Group Id'],
+        operation: ['Get all expenses by group id'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Get All Expenses By Group Id'],
+        operation: ['Get all expenses by group id'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Get All Expenses By Group Id'],
+        operation: ['Get all expenses by group id'],
       },
     },
   },

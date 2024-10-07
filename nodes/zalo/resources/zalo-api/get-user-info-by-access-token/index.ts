@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Get User Info By Access Token'
+export const name = 'Get user info by access token'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Get User Info By Access Token',
-  value: 'Get User Info By Access Token',
+  name: 'Get user info by access token',
+  value: 'Get user info by access token',
   action: 'Get User Info By Access Token Zalo Api',
   description: 'Get user info by access token',
   routing: {

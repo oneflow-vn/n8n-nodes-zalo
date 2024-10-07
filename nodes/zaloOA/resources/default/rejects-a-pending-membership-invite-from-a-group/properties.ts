@@ -29,8 +29,8 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Rejects A Pending Membership Invite From A Group'],
+        resource: ['default'],
+        operation: ['Rejects a pending membership invite from a group.'],
       },
     },
   },
@@ -50,8 +50,8 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
-        operation: ['Rejects A Pending Membership Invite From A Group'],
+        resource: ['default'],
+        operation: ['Rejects a pending membership invite from a group.'],
       },
     },
   },
@@ -73,8 +73,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Rejects A Pending Membership Invite From A Group'],
+        resource: ['default'],
+        operation: ['Rejects a pending membership invite from a group.'],
       },
     },
   },
@@ -114,8 +114,8 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
-        operation: ['Rejects A Pending Membership Invite From A Group'],
+        resource: ['default'],
+        operation: ['Rejects a pending membership invite from a group.'],
       },
     },
   },

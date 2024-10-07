@@ -29,7 +29,7 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Delete Subgroup'],
       },
     },
@@ -51,7 +51,7 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Delete Subgroup'],
       },
     },
@@ -74,7 +74,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Delete Subgroup'],
       },
     },
@@ -97,7 +97,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Delete Subgroup'],
       },
     },

@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -90,7 +90,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -99,7 +99,7 @@ export const properties: INodeProperties[] = [
     name: 'category',
     type: 'string',
     default: '',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -113,7 +113,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },
@@ -122,7 +122,7 @@ export const properties: INodeProperties[] = [
     name: 'name',
     type: 'string',
     default: '',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -136,7 +136,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Groups'],
-        operation: ['Create Group'],
+        operation: ['Create group'],
       },
     },
   },

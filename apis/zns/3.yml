@@ -1,0 +1,118 @@
+apiVersion: 3.0.0
+info:
+  title: "Zalo Business API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /rsa/key/gen:
+    get:
+      summary: "Generate RSA Public Key"
+      operationId: "generateRSAPublicKey"
+      responses:
+        200:
+          description: "Public key generated"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      public_key:
+                        type: "string"
+                        description: "Public key for encrypting messages"
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+              example:
+                data:
+                  public_key: "e6fa968f027"
+                error: 0
+                message: "Success"
+
+  /rsa/key/get:
+    get:
+      summary: "Retrieve RSA Public Key"
+      operationId: "retrieveRSAPublicKey"
+      responses:
+        200:
+          description: "Public key retrieved"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      public_key:
+                        type: "string"
+                        description: "Public key for encrypting messages"
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+              example:
+                data:
+                  public_key: "e6fa968f027"
+                error: 0
+                message: "Success"
+
+  /rsa/message/template:
+    post:
+      summary: "Send Encrypted Message"
+      operationId: "sendEncryptedMessage"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                rsa_phone:
+                  type: "string"
+                  description: "Recipient's encrypted phone number using the public key"
+                template_id:
+                  type: "string"
+                  description: "ID of the message template to use"
+                template_data:
+                  type: "object"
+                  description: "Encrypted template data using the public key"
+                tracking_id:
+                  type: "string"
+                  description: "Unique tracking ID from the partner"
+            example:
+              rsa_phone: "YxLw/6km7vSKUZg3zH21lJNL2OQ4NIkirMD8P3vj+Vl1PhEdC+Dlnyo4s1mlpN24BmLuxVU1FdmAebV0vqLzrB4S1G9nGIqHh0uxKhIL8uSKxLqIiR5F+EDTZ/GUFDb9WB63p9a831Nd0NkMNFJgiJ6juhZ8NByy81rGfM+9Mx89kafK4nIGtCjvLuPy7daXPwpWpIBRnL5em31OnSAZswKxXN7LQyLrBJPbhOMZEfWTMexY7GGkA3ua654nVUSc2vs+YaUHTi/sn+1iyio5wnNiRErHV5lhId588aPMtSSIJFIUBlHFhma+nyApAVRK57NkYKAF7YOos9CImbUD+yOhbajBDhi9gSMvfvt/amASbVVGv6YRnndS4+09cAbUwiH3OR2VHlPIqU4rTuSuPmmEwoDoeQbQO6HarUvgud9breXIsctct9vmsyN4oodjS1/djzwgiEggs4rHt7eJmm3sLjXCCmxr9bQLFm9J5RQCooTRUVnaoXw0UOSc9qhUev1rhkoOTe+hq9Ush1FhE9HHmOzJ37Mq+vro/k26F72xB8cnlEieeLqDTOSCL4E2rcmpdeov5bH8Mp4WarnqMR2oldhFc3tTwAt3jZlOGrN6RpvdteqYx0VOTLoGzuUVv4HJ4qgV5FylLNEEEWbQSoZIVXO3uaqj9Q2ugvQ5BeE="
+              template_id: "1234567"
+              template_data:
+                param_1: "YxLw/6km7vSKUZg3zH21lJNL2OQ4NIkirMD8P3vj+Vl1PhEdC+Dlnyo4s1mlpN24BmLuxVU1FdmAebV0vqLzrB4S1G9nGIqHh0uxKhIL8uSKxLqIiR5F+EDTZ/GUFDb9WB63p9a831Nd0NkMNFJgiJ6juhZ8NByy81rGfM+9Mx89kafK4nIGtCjvLuPy7daXPwpWpIBRnL5em31OnSAZswKxXN7LQyLrBJPbhOMZEfWTMexY7GGkA3ua654nVUSc2vs+YaUHTi/sn+1iyio5wnNiRErHV5lhId588aPMtSSIJFIUBlHFhma+nyApAVRK57NkYKAF7YOos9CImbUD+yOhbajBDhi9gSMvfvt/amASbVVGv6YRnndS4+09cAbUwiH3OR2VHlPIqU4rTuSuPmmEwoDoeQbQO6HarUvgud9breXIsctct9vmsyN4oodjS1/djzwgiEggs4rHt7eJmm3sLjXCCmxr9bQLFm9J5RQCooTRUVnaoXw0UOSc9qhUev1rhkoOTe+hq9Ush1FhE9HHmOzJ37Mq+vro/k26F72xB8cnlEieeLqDTOSCL4E2rcmpdeov5bH8Mp4WarnqMR2oldhFc3tTwAt3jZlOGrN6RpvdteqYx0VOTLoGzuUVv4HJ4qgV5FylLNEEEWbQSoZIVXO3uaqj9Q2ugvQ5BeE="
+              tracking_id: "your_tracking_id_here"
+      responses:
+        200:
+          description: "Message sent successfully"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "object"
+                    properties:
+                      sent_time:
+                        type: "string"
+                        description: "Timestamp of when the ZNS was sent"
+                      msg_id:
+                        type: "string"
+                        description: "ID of the ZNS notification"
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+              example:
+                data:
+                  sent_time: "1619595918601"
+                  msg_id: "b15f0398cb7a1e264769"
+                error: 0
+                message: "Success"

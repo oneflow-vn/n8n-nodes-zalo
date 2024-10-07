@@ -1,0 +1,39 @@
+apiVersion: 3.0.0
+info:
+  title: "Zalo Notification Service API"
+  version: "1.0.0"
+servers:
+  - url: "https://business.openapi.zalo.me"
+paths:
+  /message/template-tag:
+    get:
+      summary: "Get allowed ZNS content types"
+      operationId: "getTemplateTag"
+      parameters:
+        - name: "access_token"
+          in: "header"
+          required: true
+          schema:
+            type: "string"
+          description: "Access token to authorize API usage."
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            text/json:
+              schema:
+                type: "object"
+                properties:
+                  data:
+                    type: "array"
+                    items:
+                      type: "string"
+                    description: "Array of content types allowed for OA to send."
+                  error:
+                    type: "integer"
+                  message:
+                    type: "string"
+              example:
+                data: ["OTP", "IN_TRANSACTION", "POST_TRANSACTION"]
+                error: 0
+                message: "success"

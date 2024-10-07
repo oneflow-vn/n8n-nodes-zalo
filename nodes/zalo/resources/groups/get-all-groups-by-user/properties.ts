@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Get All Groups By User'],
+        operation: ['get all groups by user'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Get All Groups By User'],
+        operation: ['get all groups by user'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Groups'],
-        operation: ['Get All Groups By User'],
+        operation: ['get all groups by user'],
       },
     },
   },

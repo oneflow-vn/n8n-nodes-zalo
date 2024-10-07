@@ -20,7 +20,7 @@ import * as getUserInfoByAccessToken from './get-user-info-by-access-token'
 
 const operations: INodePropertyOptions[] = [getUserInfoByAccessToken.option]
 
-export const name = 'Zalo Api'
+export const name = 'Zalo API'
 
 const operationSelect: INodeProperties = {
   displayName: 'Operation',
@@ -29,7 +29,7 @@ const operationSelect: INodeProperties = {
   noDataExpression: true,
   displayOptions: {
     show: {
-      resource: ['Zalo Api'],
+      resource: ['Zalo API'],
     },
   },
   default: '',

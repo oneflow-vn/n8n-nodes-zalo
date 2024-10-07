@@ -29,7 +29,7 @@ export const properties: INodeProperties[] = [
     default: '',
     displayOptions: {
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -51,7 +51,7 @@ export const properties: INodeProperties[] = [
     },
     displayOptions: {
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -74,7 +74,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -97,7 +97,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -120,7 +120,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -143,7 +143,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -154,7 +154,7 @@ export const properties: INodeProperties[] = [
     type: 'boolean',
     default: true,
     description:
-      "Set the send message functionality of members. 'true': Lock messaging, 'false': Unlock messaging",
+      'Set the send message functionality of members true Lock messaging false Unlock messaging',
     routing: {
       request: {
         body: {
@@ -167,7 +167,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -178,7 +178,7 @@ export const properties: INodeProperties[] = [
     type: 'boolean',
     default: true,
     description:
-      "Set approval mode for new member. 'true': New member must be approved, 'false': No need to approve new members",
+      'Set approval mode for new member true New member must be approved false No need to approve new members',
     routing: {
       request: {
         body: {
@@ -191,7 +191,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -202,7 +202,7 @@ export const properties: INodeProperties[] = [
     type: 'boolean',
     default: true,
     description:
-      "Allows new member to read the lastest messages of the group. 'true': Enable reading, 'false': Disable reading",
+      'Allows new member to read the lastest messages of the group true Enable reading false Disable reading',
     routing: {
       request: {
         body: {
@@ -215,7 +215,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },
@@ -226,7 +226,7 @@ export const properties: INodeProperties[] = [
     type: 'boolean',
     default: true,
     description:
-      "Enable/Disable joining the group using a link. 'true': Enable, 'false': Disable",
+      'Enable Disable joining the group using a link true Enable false Disable',
     routing: {
       request: {
         body: {
@@ -239,7 +239,7 @@ export const properties: INodeProperties[] = [
         useCustomBody: [true],
       },
       show: {
-        resource: ['Default'],
+        resource: ['default'],
         operation: ['Update Group'],
       },
     },

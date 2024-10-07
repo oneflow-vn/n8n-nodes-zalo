@@ -21,11 +21,11 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Get All Groups By User'
+export const name = 'get all groups by user'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Get All Groups By User',
-  value: 'Get All Groups By User',
+  name: 'get all groups by user',
+  value: 'get all groups by user',
   action: 'Get All Groups By User Groups',
   description: 'get all groups by user',
   routing: {

@@ -16,8 +16,8 @@
         "description": ""
       },
       {
-        "name": "Zalo Api",
-        "value": "Zalo Api",
+        "name": "Zalo API",
+        "value": "Zalo API",
         "description": ""
       }
     ],
@@ -44,8 +44,8 @@
     },
     "options": [
       {
-        "name": "Get All Groups By User",
-        "value": "Get All Groups By User",
+        "name": "get all groups by user",
+        "value": "get all groups by user",
         "action": "Get All Groups By User Groups",
         "description": "get all groups by user",
         "routing": {
@@ -56,8 +56,8 @@
         }
       },
       {
-        "name": "Create Group",
-        "value": "Create Group",
+        "name": "Create group",
+        "value": "Create group",
         "action": "Create Group Groups",
         "description": "Create group",
         "routing": {
@@ -68,8 +68,8 @@
         }
       },
       {
-        "name": "Add Members To Group",
-        "value": "Add Members To Group",
+        "name": "add members to group",
+        "value": "add members to group",
         "action": "Add Members To Group Groups",
         "description": "add members to group",
         "routing": {
@@ -80,8 +80,8 @@
         }
       },
       {
-        "name": "Report Detail",
-        "value": "Report Detail",
+        "name": "report detail",
+        "value": "report detail",
         "action": "Report Detail Groups",
         "description": "report detail",
         "routing": {
@@ -108,8 +108,8 @@
     },
     "options": [
       {
-        "name": "Create Expense",
-        "value": "Create Expense",
+        "name": "create expense",
+        "value": "create expense",
         "action": "Create Expense Expense",
         "description": "create expense",
         "routing": {
@@ -120,8 +120,8 @@
         }
       },
       {
-        "name": "Get All Expenses By Group Id",
-        "value": "Get All Expenses By Group Id",
+        "name": "Get all expenses by group id",
+        "value": "Get all expenses by group id",
         "action": "Get All Expenses By Group Id Expense",
         "description": "Get all expenses by group id",
         "routing": {
@@ -132,8 +132,8 @@
         }
       },
       {
-        "name": "Update Expense",
-        "value": "Update Expense",
+        "name": "update expense",
+        "value": "update expense",
         "action": "Update Expense Expense",
         "description": "update expense",
         "routing": {
@@ -144,8 +144,8 @@
         }
       },
       {
-        "name": "Update Expense Copy",
-        "value": "Update Expense Copy",
+        "name": "update expense Copy",
+        "value": "update expense Copy",
         "action": "Update Expense Copy Expense",
         "description": "update expense Copy",
         "routing": {
@@ -166,14 +166,14 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Zalo Api"
+          "Zalo API"
         ]
       }
     },
     "options": [
       {
-        "name": "Get User Info By Access Token",
-        "value": "Get User Info By Access Token",
+        "name": "Get user info by access token",
+        "value": "Get user info by access token",
         "action": "Get User Info By Access Token Zalo Api",
         "description": "Get user info by access token",
         "routing": {
@@ -200,7 +200,7 @@
           "Groups"
         ],
         "operation": [
-          "Get All Groups By User"
+          "get all groups by user"
         ]
       }
     }
@@ -223,7 +223,7 @@
           "Groups"
         ],
         "operation": [
-          "Get All Groups By User"
+          "get all groups by user"
         ]
       }
     }
@@ -246,7 +246,7 @@
           "Groups"
         ],
         "operation": [
-          "Get All Groups By User"
+          "get all groups by user"
         ]
       }
     }
@@ -265,7 +265,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -288,7 +288,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -311,7 +311,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -334,7 +334,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -344,6 +344,7 @@
     "name": "category",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -362,7 +363,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -372,6 +373,7 @@
     "name": "name",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -390,7 +392,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -422,7 +424,7 @@
           "Groups"
         ],
         "operation": [
-          "Create Group"
+          "Create group"
         ]
       }
     }
@@ -441,7 +443,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -464,7 +466,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -487,7 +489,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -510,7 +512,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -520,6 +522,7 @@
     "name": "groupId",
     "type": "number",
     "default": 0,
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -538,7 +541,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -600,7 +603,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -632,7 +635,7 @@
           "Groups"
         ],
         "operation": [
-          "Add Members To Group"
+          "add members to group"
         ]
       }
     }
@@ -651,7 +654,7 @@
           "Groups"
         ],
         "operation": [
-          "Report Detail"
+          "report detail"
         ]
       }
     }
@@ -674,7 +677,7 @@
           "Groups"
         ],
         "operation": [
-          "Report Detail"
+          "report detail"
         ]
       }
     }
@@ -697,7 +700,7 @@
           "Groups"
         ],
         "operation": [
-          "Report Detail"
+          "report detail"
         ]
       }
     }
@@ -716,7 +719,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -739,7 +742,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -762,7 +765,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -785,7 +788,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -795,6 +798,7 @@
     "name": "amount",
     "type": "number",
     "default": 0,
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -813,7 +817,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -823,6 +827,7 @@
     "name": "userId",
     "type": "number",
     "default": 0,
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -841,7 +846,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -851,6 +856,7 @@
     "name": "participants",
     "type": "json",
     "default": "[\n  null\n]",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -869,7 +875,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -879,6 +885,7 @@
     "name": "category",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -897,7 +904,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -907,6 +914,7 @@
     "name": "title",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -925,7 +933,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -935,6 +943,7 @@
     "name": "date",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -953,7 +962,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -985,7 +994,7 @@
           "Expense"
         ],
         "operation": [
-          "Create Expense"
+          "create expense"
         ]
       }
     }
@@ -1004,7 +1013,7 @@
           "Expense"
         ],
         "operation": [
-          "Get All Expenses By Group Id"
+          "Get all expenses by group id"
         ]
       }
     }
@@ -1027,7 +1036,7 @@
           "Expense"
         ],
         "operation": [
-          "Get All Expenses By Group Id"
+          "Get all expenses by group id"
         ]
       }
     }
@@ -1050,7 +1059,7 @@
           "Expense"
         ],
         "operation": [
-          "Get All Expenses By Group Id"
+          "Get all expenses by group id"
         ]
       }
     }
@@ -1069,7 +1078,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1092,7 +1101,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1115,7 +1124,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1138,7 +1147,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1148,6 +1157,7 @@
     "name": "amount",
     "type": "number",
     "default": 0,
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1166,7 +1176,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1176,6 +1186,7 @@
     "name": "category",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1194,7 +1205,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1204,6 +1215,7 @@
     "name": "date",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1222,7 +1234,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1232,6 +1244,7 @@
     "name": "participants",
     "type": "json",
     "default": "[\n  null\n]",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1250,7 +1263,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1260,6 +1273,7 @@
     "name": "title",
     "type": "string",
     "default": "",
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1278,7 +1292,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1288,6 +1302,7 @@
     "name": "userId",
     "type": "number",
     "default": 0,
+    "description": "",
     "routing": {
       "request": {
         "body": {
@@ -1306,7 +1321,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1338,7 +1353,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense"
+          "update expense"
         ]
       }
     }
@@ -1357,7 +1372,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense Copy"
+          "update expense Copy"
         ]
       }
     }
@@ -1380,7 +1395,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense Copy"
+          "update expense Copy"
         ]
       }
     }
@@ -1403,7 +1418,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense Copy"
+          "update expense Copy"
         ]
       }
     }
@@ -1426,7 +1441,7 @@
           "Expense"
         ],
         "operation": [
-          "Update Expense Copy"
+          "update expense Copy"
         ]
       }
     }
@@ -1442,10 +1457,10 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Zalo Api"
+          "Zalo API"
         ],
         "operation": [
-          "Get User Info By Access Token"
+          "Get user info by access token"
         ]
       }
     }
@@ -1465,10 +1480,10 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Zalo Api"
+          "Zalo API"
         ],
         "operation": [
-          "Get User Info By Access Token"
+          "Get user info by access token"
         ]
       }
     }
@@ -1488,10 +1503,10 @@
     "displayOptions": {
       "show": {
         "resource": [
-          "Zalo Api"
+          "Zalo API"
         ],
         "operation": [
-          "Get User Info By Access Token"
+          "Get user info by access token"
         ]
       }
     }

@@ -21,14 +21,14 @@ import * as helpers from '../../../helpers'
 import { properties as rawProperties } from './properties'
 import { runHooks } from './hooks'
 
-export const name = 'Send A Group Message'
+export const name = 'Send a group message'
 
 const rawOption: INodePropertyOptions = {
-  name: 'Send A Group Message',
-  value: 'Send A Group Message',
+  name: 'Send a group message',
+  value: 'Send a group message',
   action: 'Send A Group Message Default',
   description:
-    'This endpoint allows sending different types of messages (text, file, image, mention) to a group',
+    'This endpoint allows sending different types of messages  text  file  image  mention  to a group',
   routing: {
     request: {
       method: 'POST',

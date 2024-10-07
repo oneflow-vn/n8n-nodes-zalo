@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -50,7 +50,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -70,7 +70,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -90,7 +90,7 @@ export const properties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -99,7 +99,7 @@ export const properties: INodeProperties[] = [
     name: 'amount',
     type: 'number',
     default: 0,
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -113,7 +113,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -122,7 +122,7 @@ export const properties: INodeProperties[] = [
     name: 'userId',
     type: 'number',
     default: 0,
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -136,7 +136,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -145,7 +145,7 @@ export const properties: INodeProperties[] = [
     name: 'participants',
     type: 'json',
     default: '[\n  null\n]',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -159,7 +159,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -168,7 +168,7 @@ export const properties: INodeProperties[] = [
     name: 'category',
     type: 'string',
     default: '',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -182,7 +182,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -191,7 +191,7 @@ export const properties: INodeProperties[] = [
     name: 'title',
     type: 'string',
     default: '',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -205,7 +205,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
@@ -214,7 +214,7 @@ export const properties: INodeProperties[] = [
     name: 'date',
     type: 'string',
     default: '',
-    description: undefined,
+    description: '',
     routing: {
       request: {
         body: {
@@ -228,7 +228,7 @@ export const properties: INodeProperties[] = [
       },
       show: {
         resource: ['Expense'],
-        operation: ['Create Expense'],
+        operation: ['create expense'],
       },
     },
   },
