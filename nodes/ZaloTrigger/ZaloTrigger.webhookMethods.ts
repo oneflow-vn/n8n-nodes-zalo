@@ -1,4 +1,3 @@
-import { IDataObject, NodeApiError, JsonObject } from 'n8n-workflow'
 import { IHookFunctions } from 'n8n-workflow'
 import { NodeOperationError } from 'n8n-workflow/dist/errors/index.js'
 

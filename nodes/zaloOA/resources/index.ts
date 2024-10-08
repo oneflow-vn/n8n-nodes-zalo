@@ -45,23 +45,6 @@ const resourceSelect: INodeProperties[] = [
       },
     ],
     default: '',
-    routing: {
-      send: {
-        preSend: [
-          async function (this: any, options) {
-            // @ts-ignore
-            const credentials = await this.getCredentials('zaloOath2Api')
-
-            options.headers = {
-              ...options.headers,
-              access_token: credentials.oauthTokenData.access_token,
-            }
-
-            return Promise.resolve(options)
-          },
-        ],
-      },
-    },
   },
 ]
 

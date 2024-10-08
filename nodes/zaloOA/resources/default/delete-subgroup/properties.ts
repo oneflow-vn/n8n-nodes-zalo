@@ -40,8 +40,8 @@ export const properties: INodeProperties[] = [
     required: true,
     description:
       'The access token that allows an application to call API on behalf of OA.',
-    default: '={{$credentials.oauthTokenData.accessToken}}',
-    type: 'hidden',
+    default: '',
+    type: 'string',
     routing: {
       request: {
         headers: {

@@ -40,8 +40,8 @@ export const properties: INodeProperties[] = [
     required: true,
     description:
       'Token used to authorize the API usage. Refer to authentication and authorization documentation.',
-    default: '={{$credentials.oauthTokenData.accessToken}}',
-    type: 'hidden',
+    default: '',
+    type: 'string',
     routing: {
       request: {
         headers: {

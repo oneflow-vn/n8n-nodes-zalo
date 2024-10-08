@@ -11,9 +11,11 @@ export const resources = [
         name: 'onUserSendMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -24,9 +26,11 @@ export const resources = [
         name: 'onUserOpenMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -37,9 +41,11 @@ export const resources = [
         name: 'onUserReactionMessage',
         filters: [
           {
-            request: {
+            match: {
               body: {
-                event_name: 'user_send_text',
+                request: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -50,9 +56,11 @@ export const resources = [
         name: 'onMyReactionMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -63,9 +71,11 @@ export const resources = [
         name: 'onMySendMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -76,9 +86,11 @@ export const resources = [
         name: 'onMySendMessageAnonymous',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -89,9 +101,11 @@ export const resources = [
         name: 'onAnonymousSendMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -102,9 +116,11 @@ export const resources = [
         name: 'onUserSeenMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -115,9 +131,11 @@ export const resources = [
         name: 'oneUserReceiveMessage',
         filters: [
           {
-            request: {
-              body: {
-                event_name: 'user_send_text',
+            match: {
+              request: {
+                body: {
+                  event_name: 'user_send_text',
+                },
               },
             },
           },
@@ -151,23 +169,6 @@ export const resourceSelect: INodeProperties = {
     },
   ],
   default: 'Message',
-  routing: {
-    send: {
-      preSend: [
-        async function (this: any, options) {
-          // @ts-ignore
-          const credentials = await this.getCredentials('zaloOath2Api')
-
-          options.headers = {
-            ...options.headers,
-            access_token: credentials.oauthTokenData.access_token,
-          }
-
-          return Promise.resolve(options)
-        },
-      ],
-    },
-  },
 }
 
 export const events: INodeProperties[] = [
@@ -177,43 +178,48 @@ export const events: INodeProperties[] = [
     type: 'options',
     options: [
       {
-        name: 'onUserSendMessage',
+        name: 'User Send Message',
         value: 'onUserSendMessage',
       },
       {
-        name: 'onUserOpenMessage',
+        name: 'User Open Message',
         value: 'onUserOpenMessage',
       },
       {
-        name: 'onUserReactionMessage',
+        name: 'User Reaction Message',
         value: 'onUserReactionMessage',
       },
       {
-        name: 'onMyReactionMessage',
+        name: 'My Reaction Message',
         value: 'onMyReactionMessage',
       },
       {
-        name: 'onMySendMessage',
+        name: 'My Send Message',
         value: 'onMySendMessage',
       },
       {
-        name: 'onMySendMessageAnonymous',
+        name: 'My Send Message Anonymous',
         value: 'onMySendMessageAnonymous',
       },
       {
-        name: 'onAnonymousSendMessage',
+        name: 'Anonymous Send Message',
         value: 'onAnonymousSendMessage',
       },
       {
-        name: 'onUserSeenMessage',
+        name: 'User Seen Message',
         value: 'onUserSeenMessage',
       },
       {
-        name: 'oneUserReceiveMessage',
+        name: 'User Receive Message',
         value: 'oneUserReceiveMessage',
       },
     ],
     default: 'onUserSendMessage',
+    displayOptions: {
+      show: {
+        resource: ['Message'],
+      },
+    },
   },
 ]
 

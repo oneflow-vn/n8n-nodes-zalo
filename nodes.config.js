@@ -2,19 +2,6 @@ const path = require('path');
 const { RemoveVietnameseAccents } = require('remove-vietnamese-accents');
 const removeVietnameseAccents = new RemoveVietnameseAccents()
 
-const mockPresend = `async function (this: any, options) {
-					// @ts-ignore
-					const credentials = await this.getCredentials('zaloOath2Api');
-
-					options.headers = {
-						...options.headers,
-						access_token: credentials.oauthTokenData.access_token,
-					};
-
-					return Promise.resolve(options);
-				}`;
-
-
 module.exports = {
   packageName: 'n8n-nodes-zalo',
   credentials: {
@@ -30,7 +17,7 @@ module.exports = {
       preset: 'simple',
 
       displayName: 'Zalo OA',
-      name: 'zaloOA',
+      name: 'ZaloOA',
       description: 'Zalo OA API',
 
       // Openapi file path
@@ -162,11 +149,11 @@ module.exports = {
     }
   },
   triggers: {
-    zaloOATrigger: {
+    zaloTrigger: {
       preset: 'webhook',
-      displayName: 'Zalo OA Trigger',
-      name: 'ZaloOATrigger',
-      description: 'Zalo Triggers API',
+      displayName: 'Zalo Trigger',
+      name: 'ZaloTrigger',
+      description: 'Zalo Triggers',
       icon: './icons/zalo.svg',
 
       webhooks: [
@@ -188,9 +175,11 @@ module.exports = {
             name: 'onUserSendMessage',
             displayName: 'User Send Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -198,9 +187,11 @@ module.exports = {
             name: 'onUserOpenMessage',
             displayName: 'User Open Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -208,9 +199,11 @@ module.exports = {
             name: 'onUserReactionMessage',
             displayName: 'User Reaction Message',
             filters: [{
-              request: {
+              match: {
                 body: {
-                  event_name: 'user_send_text',
+                  request: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -218,9 +211,11 @@ module.exports = {
             name: 'onMyReactionMessage',
             displayName: 'My Reaction Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -228,9 +223,11 @@ module.exports = {
             name: 'onMySendMessage',
             displayName: 'My Send Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -238,9 +235,11 @@ module.exports = {
             name: 'onMySendMessageAnonymous',
             displayName: 'My Send Message Anonymous',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -248,9 +247,11 @@ module.exports = {
             name: 'onAnonymousSendMessage',
             displayName: 'Anonymous Send Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -258,9 +259,11 @@ module.exports = {
             name: 'onUserSeenMessage',
             displayName: 'User Seen Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -268,9 +271,11 @@ module.exports = {
             name: 'oneUserReceiveMessage',
             displayName: 'User Receive Message',
             filters: [{
-              request: {
-                body: {
-                  event_name: 'user_send_text',
+              match: {
+                request: {
+                  body: {
+                    event_name: 'user_send_text',
+                  }
                 }
               }
             }]
@@ -279,35 +284,6 @@ module.exports = {
       ]
 
     },
-  },
-  // Nodes overwrite options
-  overwrites: {
-    // overwrite operation options
-    operations: [
-      {
-        match: {
-          name: 'access_token',
-        },
-        set: {
-          type: 'hidden',
-          default: '=\{\{$credentials.oauthTokenData.accessToken\}\}',
-        }
-      },
-      {
-        match: {
-          name: 'resource',
-        },
-        set: {
-          routing: {
-            send: {
-              preSend: [
-                '${' + mockPresend + '}',
-              ],
-            }
-          }
-        }
-      }
-    ],
   },
 
   // Folders to delete when generating the nodes

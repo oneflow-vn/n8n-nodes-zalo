@@ -1,22 +1,10 @@
-import type {
-  IHookFunctions,
-  IWebhookFunctions,
-  IDataObject,
-  INodeType,
-  INodeTypeDescription,
-  IWebhookResponseData,
-  JsonObject,
-} from 'n8n-workflow'
-import {
-  NodeConnectionType,
-  NodeApiError,
-  NodeOperationError,
-} from 'n8n-workflow'
-import { methods } from './ZaloOATrigger.methods'
-import { webhookMethods } from './ZaloOATrigger.webhookMethods'
-import { webhook } from './ZaloOATrigger.webhook'
+import type { INodeType, INodeTypeDescription } from 'n8n-workflow'
+import { methods } from './ZaloTrigger.methods'
+import { webhookMethods } from './ZaloTrigger.webhookMethods'
+import { webhook } from './ZaloTrigger.webhook'
+import { properties } from './ZaloTrigger.properties'
 
-export class ZaloOATrigger implements INodeType {
+export class ZaloTrigger implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Github Trigger',
     name: 'githubTrigger',
@@ -30,7 +18,7 @@ export class ZaloOATrigger implements INodeType {
       name: 'Github Trigger',
     },
     inputs: [],
-    outputs: [NodeConnectionType.Main],
+    outputs: ['main'],
     credentials: [],
     webhooks: [
       {
@@ -40,7 +28,7 @@ export class ZaloOATrigger implements INodeType {
         path: 'webhook',
       },
     ],
-    properties: [],
+    properties,
   }
 
   webhookMethods = webhookMethods

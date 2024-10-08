@@ -102,8 +102,8 @@ export const properties: INodeProperties[] = [
     name: 'access_token',
     required: true,
     description: 'Đoạn mã cần truyền vào để xác minh quyền sử dụng API.',
-    default: '={{$credentials.oauthTokenData.accessToken}}',
-    type: 'hidden',
+    default: '',
+    type: 'string',
     routing: {
       request: {
         headers: {

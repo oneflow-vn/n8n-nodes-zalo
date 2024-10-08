@@ -38,8 +38,9 @@ export const properties: INodeProperties[] = [
     displayName: 'Access Token',
     name: 'access_token',
     description: undefined,
-    default: '={{$credentials.oauthTokenData.accessToken}}',
-    type: 'hidden',
+    default:
+      '12Qc7-LNvae19weLwb3dGG4aenlbJ-uTUqp-8jvPxtX1MV0jyNN_65flmng-KjicNYJ_3yKNsZn92_WJgm7xIqW8-6BQFki-Gnh8FFyDwYPsCjKomqNXD5bGynVm9k1CIb3ZSC1iv7vWUjXV-bB9LcT7_Nc1CRr-6nwWVemqjdOz4x9BcJwoRIqKyLlJFE9KJ1MdUj8TfrTcDuHvW1cTSnyNc2UR0Bex4HUdPV5ZksH1R_fPmtZ9Udz7_KR6STzTO6xpOjLnv3vn3UGmmolW5rO3tWomD_m2CDD5TMpZJU13',
+    type: 'string',
     routing: {
       request: {
         headers: {
