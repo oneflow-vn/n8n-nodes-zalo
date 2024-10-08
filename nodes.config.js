@@ -74,7 +74,7 @@ module.exports = {
       preset: 'simple',
 
       displayName: 'Zalo',
-      name: 'zalo',
+      name: 'Zalo',
       description: 'Zalo API',
 
       // Openapi file path

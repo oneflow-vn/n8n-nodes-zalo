@@ -1,8 +1,8 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow'
-import { properties } from './zalo.properties'
-import { methods } from './zalo.methods'
+import { properties } from './Zalo.properties'
+import { methods } from './Zalo.methods'
 
-export class zalo implements INodeType {
+export class Zalo implements INodeType {
   description: INodeTypeDescription = {
     displayName: 'Zalo',
     name: 'zalo',

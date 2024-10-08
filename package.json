@@ -44,7 +44,7 @@
     ],
     "nodes": [
       "dist/nodes/zaloOA/zaloOA.node.js",
-      "dist/nodes/zalo/zalo.node.js",
+      "dist/nodes/Zalo/Zalo.node.js",
       "dist/nodes/ZaloZNS/ZaloZNS.node.js"
     ]
   },
