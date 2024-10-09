@@ -4,8 +4,10 @@ const webhookEvents = [
         "value": "user_send_location",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_location"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_location"
+                    }
                 }
             }
         ]
@@ -15,8 +17,10 @@ const webhookEvents = [
         "value": "user_send_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_image"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_image"
+                    }
                 }
             }
         ]
@@ -26,8 +30,10 @@ const webhookEvents = [
         "value": "user_send_link",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_link"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_link"
+                    }
                 }
             }
         ]
@@ -37,8 +43,10 @@ const webhookEvents = [
         "value": "user_send_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_text"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_text"
+                    }
                 }
             }
         ]
@@ -48,8 +56,10 @@ const webhookEvents = [
         "value": "user_send_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_sticker"
+                    }
                 }
             }
         ]
@@ -59,8 +69,10 @@ const webhookEvents = [
         "value": "user_send_gif",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_gif"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_gif"
+                    }
                 }
             }
         ]
@@ -70,8 +82,10 @@ const webhookEvents = [
         "value": "user_received_message",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_received_message"
+                "match": {
+                    "body": {
+                        "event_name": "user_received_message"
+                    }
                 }
             }
         ]
@@ -81,8 +95,10 @@ const webhookEvents = [
         "value": "user_seen_message",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_seen_message"
+                "match": {
+                    "body": {
+                        "event_name": "user_seen_message"
+                    }
                 }
             }
         ]
@@ -92,8 +108,10 @@ const webhookEvents = [
         "value": "user_send_audio",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_audio"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_audio"
+                    }
                 }
             }
         ]
@@ -103,8 +121,10 @@ const webhookEvents = [
         "value": "follow",
         "filters": [
             {
-                "body": {
-                    "event_name": "follow"
+                "match": {
+                    "body": {
+                        "event_name": "follow"
+                    }
                 }
             }
         ]
@@ -114,8 +134,10 @@ const webhookEvents = [
         "value": "unfollow",
         "filters": [
             {
-                "body": {
-                    "event_name": "unfollow"
+                "match": {
+                    "body": {
+                        "event_name": "unfollow"
+                    }
                 }
             }
         ]
@@ -125,8 +147,10 @@ const webhookEvents = [
         "value": "user_submit_info",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_submit_info"
+                "match": {
+                    "body": {
+                        "event_name": "user_submit_info"
+                    }
                 }
             }
         ]
@@ -136,8 +160,10 @@ const webhookEvents = [
         "value": "shop_has_order",
         "filters": [
             {
-                "body": {
-                    "event_name": "shop_has_order"
+                "match": {
+                    "body": {
+                        "event_name": "shop_has_order"
+                    }
                 }
             }
         ]
@@ -147,8 +173,10 @@ const webhookEvents = [
         "value": "oa_send_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_text"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_text"
+                    }
                 }
             }
         ]
@@ -158,8 +186,10 @@ const webhookEvents = [
         "value": "oa_send_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_image"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_image"
+                    }
                 }
             }
         ]
@@ -169,8 +199,10 @@ const webhookEvents = [
         "value": "oa_send_list",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_list"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_list"
+                    }
                 }
             }
         ]
@@ -180,8 +212,10 @@ const webhookEvents = [
         "value": "oa_send_gif",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_gif"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_gif"
+                    }
                 }
             }
         ]
@@ -191,8 +225,10 @@ const webhookEvents = [
         "value": "user_send_video",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_video"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_video"
+                    }
                 }
             }
         ]
@@ -202,8 +238,10 @@ const webhookEvents = [
         "value": "add_user_to_tag",
         "filters": [
             {
-                "body": {
-                    "event_name": "add_user_to_tag"
+                "match": {
+                    "body": {
+                        "event_name": "add_user_to_tag"
+                    }
                 }
             }
         ]
@@ -213,8 +251,10 @@ const webhookEvents = [
         "value": "user_send_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_file"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_file"
+                    }
                 }
             }
         ]
@@ -224,8 +264,10 @@ const webhookEvents = [
         "value": "oa_send_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_file"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_file"
+                    }
                 }
             }
         ]
@@ -235,8 +277,10 @@ const webhookEvents = [
         "value": "user_click_chatnow",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_click_chatnow"
+                "match": {
+                    "body": {
+                        "event_name": "user_click_chatnow"
+                    }
                 }
             }
         ]
@@ -246,8 +290,10 @@ const webhookEvents = [
         "value": "user_reacted_message",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_reacted_message"
+                "match": {
+                    "body": {
+                        "event_name": "user_reacted_message"
+                    }
                 }
             }
         ]
@@ -257,8 +303,10 @@ const webhookEvents = [
         "value": "oa_reacted_message",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_reacted_message"
+                "match": {
+                    "body": {
+                        "event_name": "oa_reacted_message"
+                    }
                 }
             }
         ]
@@ -268,8 +316,10 @@ const webhookEvents = [
         "value": "oa_send_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_sticker"
+                    }
                 }
             }
         ]
@@ -279,8 +329,10 @@ const webhookEvents = [
         "value": "oa_send_consent",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_consent"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_consent"
+                    }
                 }
             }
         ]
@@ -290,8 +342,10 @@ const webhookEvents = [
         "value": "user_reply_consent",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_reply_consent"
+                "match": {
+                    "body": {
+                        "event_name": "user_reply_consent"
+                    }
                 }
             }
         ]
@@ -301,8 +355,10 @@ const webhookEvents = [
         "value": "anonymous_send_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "anonymous_send_text"
+                "match": {
+                    "body": {
+                        "event_name": "anonymous_send_text"
+                    }
                 }
             }
         ]
@@ -312,8 +368,10 @@ const webhookEvents = [
         "value": "anonymous_send_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "anonymous_send_image"
+                "match": {
+                    "body": {
+                        "event_name": "anonymous_send_image"
+                    }
                 }
             }
         ]
@@ -323,8 +381,10 @@ const webhookEvents = [
         "value": "anonymous_send_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "anonymous_send_file"
+                "match": {
+                    "body": {
+                        "event_name": "anonymous_send_file"
+                    }
                 }
             }
         ]
@@ -334,8 +394,10 @@ const webhookEvents = [
         "value": "anonymous_send_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "anonymous_send_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "anonymous_send_sticker"
+                    }
                 }
             }
         ]
@@ -345,8 +407,10 @@ const webhookEvents = [
         "value": "oa_send_anonymous_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_anonymous_text"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_anonymous_text"
+                    }
                 }
             }
         ]
@@ -356,8 +420,10 @@ const webhookEvents = [
         "value": "oa_send_anonymous_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_anonymous_image"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_anonymous_image"
+                    }
                 }
             }
         ]
@@ -367,8 +433,10 @@ const webhookEvents = [
         "value": "oa_send_anonymous_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_anonymous_file"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_anonymous_file"
+                    }
                 }
             }
         ]
@@ -378,8 +446,10 @@ const webhookEvents = [
         "value": "oa_send_anonymous_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_anonymous_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_anonymous_sticker"
+                    }
                 }
             }
         ]
@@ -389,8 +459,10 @@ const webhookEvents = [
         "value": "oa_call_user",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_call_user"
+                "match": {
+                    "body": {
+                        "event_name": "oa_call_user"
+                    }
                 }
             }
         ]
@@ -400,8 +472,10 @@ const webhookEvents = [
         "value": "user_call_oa",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_call_oa"
+                "match": {
+                    "body": {
+                        "event_name": "user_call_oa"
+                    }
                 }
             }
         ]
@@ -411,8 +485,10 @@ const webhookEvents = [
         "value": "oa_send_template",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_template"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_template"
+                    }
                 }
             }
         ]
@@ -422,8 +498,10 @@ const webhookEvents = [
         "value": "user_send_business_card",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_business_card"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_business_card"
+                    }
                 }
             }
         ]
@@ -433,8 +511,10 @@ const webhookEvents = [
         "value": "user_feedback",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_feedback"
+                "match": {
+                    "body": {
+                        "event_name": "user_feedback"
+                    }
                 }
             }
         ]
@@ -444,8 +524,10 @@ const webhookEvents = [
         "value": "change_oa_daily_quota",
         "filters": [
             {
-                "body": {
-                    "event_name": "change_oa_daily_quota"
+                "match": {
+                    "body": {
+                        "event_name": "change_oa_daily_quota"
+                    }
                 }
             }
         ]
@@ -455,8 +537,10 @@ const webhookEvents = [
         "value": "change_oa_template_tags",
         "filters": [
             {
-                "body": {
-                    "event_name": "change_oa_template_tags"
+                "match": {
+                    "body": {
+                        "event_name": "change_oa_template_tags"
+                    }
                 }
             }
         ]
@@ -466,8 +550,10 @@ const webhookEvents = [
         "value": "change_template_quality",
         "filters": [
             {
-                "body": {
-                    "event_name": "change_template_quality"
+                "match": {
+                    "body": {
+                        "event_name": "change_template_quality"
+                    }
                 }
             }
         ]
@@ -477,8 +563,10 @@ const webhookEvents = [
         "value": "change_template_quota",
         "filters": [
             {
-                "body": {
-                    "event_name": "change_template_quota"
+                "match": {
+                    "body": {
+                        "event_name": "change_template_quota"
+                    }
                 }
             }
         ]
@@ -488,8 +576,10 @@ const webhookEvents = [
         "value": "event_journey_time_out",
         "filters": [
             {
-                "body": {
-                    "event_name": "event_journey_time_out"
+                "match": {
+                    "body": {
+                        "event_name": "event_journey_time_out"
+                    }
                 }
             }
         ]
@@ -499,8 +589,10 @@ const webhookEvents = [
         "value": "event_journey_acknowledged",
         "filters": [
             {
-                "body": {
-                    "event_name": "event_journey_acknowledged"
+                "match": {
+                    "body": {
+                        "event_name": "event_journey_acknowledged"
+                    }
                 }
             }
         ]
@@ -510,8 +602,10 @@ const webhookEvents = [
         "value": "user_received_message",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_received_message"
+                "match": {
+                    "body": {
+                        "event_name": "user_received_message"
+                    }
                 }
             }
         ]
@@ -521,8 +615,10 @@ const webhookEvents = [
         "value": "create_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "create_group"
+                "match": {
+                    "body": {
+                        "event_name": "create_group"
+                    }
                 }
             }
         ]
@@ -532,8 +628,10 @@ const webhookEvents = [
         "value": "user_join_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_join_group"
+                "match": {
+                    "body": {
+                        "event_name": "user_join_group"
+                    }
                 }
             }
         ]
@@ -543,8 +641,10 @@ const webhookEvents = [
         "value": "user_request_join_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_request_join_group"
+                "match": {
+                    "body": {
+                        "event_name": "user_request_join_group"
+                    }
                 }
             }
         ]
@@ -554,8 +654,10 @@ const webhookEvents = [
         "value": "react_request_join_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "react_request_join_group"
+                "match": {
+                    "body": {
+                        "event_name": "react_request_join_group"
+                    }
                 }
             }
         ]
@@ -565,8 +667,10 @@ const webhookEvents = [
         "value": "reject_request_join_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "reject_request_join_group"
+                "match": {
+                    "body": {
+                        "event_name": "reject_request_join_group"
+                    }
                 }
             }
         ]
@@ -576,8 +680,10 @@ const webhookEvents = [
         "value": "add_group_admin",
         "filters": [
             {
-                "body": {
-                    "event_name": "add_group_admin"
+                "match": {
+                    "body": {
+                        "event_name": "add_group_admin"
+                    }
                 }
             }
         ]
@@ -587,8 +693,10 @@ const webhookEvents = [
         "value": "remove_group_admin",
         "filters": [
             {
-                "body": {
-                    "event_name": "remove_group_admin"
+                "match": {
+                    "body": {
+                        "event_name": "remove_group_admin"
+                    }
                 }
             }
         ]
@@ -598,8 +706,10 @@ const webhookEvents = [
         "value": "update_group_info",
         "filters": [
             {
-                "body": {
-                    "event_name": "update_group_info"
+                "match": {
+                    "body": {
+                        "event_name": "update_group_info"
+                    }
                 }
             }
         ]
@@ -609,8 +719,10 @@ const webhookEvents = [
         "value": "user_out_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_out_group"
+                "match": {
+                    "body": {
+                        "event_name": "user_out_group"
+                    }
                 }
             }
         ]
@@ -620,8 +732,10 @@ const webhookEvents = [
         "value": "disperse_group",
         "filters": [
             {
-                "body": {
-                    "event_name": "disperse_group"
+                "match": {
+                    "body": {
+                        "event_name": "disperse_group"
+                    }
                 }
             }
         ]
@@ -631,8 +745,10 @@ const webhookEvents = [
         "value": "oa_send_group_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_text"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_text"
+                    }
                 }
             }
         ]
@@ -642,8 +758,10 @@ const webhookEvents = [
         "value": "oa_send_group_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_image"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_image"
+                    }
                 }
             }
         ]
@@ -653,8 +771,10 @@ const webhookEvents = [
         "value": "oa_send_group_link",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_link"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_link"
+                    }
                 }
             }
         ]
@@ -664,8 +784,10 @@ const webhookEvents = [
         "value": "oa_send_group_audio",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_audio"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_audio"
+                    }
                 }
             }
         ]
@@ -675,8 +797,10 @@ const webhookEvents = [
         "value": "oa_send_group_location",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_location"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_location"
+                    }
                 }
             }
         ]
@@ -686,8 +810,10 @@ const webhookEvents = [
         "value": "oa_send_group_video",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_video"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_video"
+                    }
                 }
             }
         ]
@@ -697,8 +823,10 @@ const webhookEvents = [
         "value": "oa_send_group_business_card",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_business_card"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_business_card"
+                    }
                 }
             }
         ]
@@ -708,8 +836,10 @@ const webhookEvents = [
         "value": "oa_send_group_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_sticker"
+                    }
                 }
             }
         ]
@@ -719,8 +849,10 @@ const webhookEvents = [
         "value": "oa_send_group_gif",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_gif"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_gif"
+                    }
                 }
             }
         ]
@@ -730,8 +862,10 @@ const webhookEvents = [
         "value": "oa_send_group_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "oa_send_group_file"
+                "match": {
+                    "body": {
+                        "event_name": "oa_send_group_file"
+                    }
                 }
             }
         ]
@@ -741,8 +875,10 @@ const webhookEvents = [
         "value": "user_send_group_text",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_text"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_text"
+                    }
                 }
             }
         ]
@@ -752,8 +888,10 @@ const webhookEvents = [
         "value": "user_send_group_image",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_image"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_image"
+                    }
                 }
             }
         ]
@@ -763,8 +901,10 @@ const webhookEvents = [
         "value": "user_send_group_link",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_link"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_link"
+                    }
                 }
             }
         ]
@@ -774,8 +914,10 @@ const webhookEvents = [
         "value": "user_send_group_audio",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_audio"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_audio"
+                    }
                 }
             }
         ]
@@ -785,8 +927,10 @@ const webhookEvents = [
         "value": "user_send_group_location",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_location"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_location"
+                    }
                 }
             }
         ]
@@ -796,8 +940,10 @@ const webhookEvents = [
         "value": "user_send_group_video",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_video"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_video"
+                    }
                 }
             }
         ]
@@ -807,8 +953,10 @@ const webhookEvents = [
         "value": "user_send_group_business_card",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_business_card"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_business_card"
+                    }
                 }
             }
         ]
@@ -818,8 +966,10 @@ const webhookEvents = [
         "value": "user_send_group_sticker",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_sticker"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_sticker"
+                    }
                 }
             }
         ]
@@ -829,8 +979,10 @@ const webhookEvents = [
         "value": "user_send_group_gif",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_gif"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_gif"
+                    }
                 }
             }
         ]
@@ -840,8 +992,10 @@ const webhookEvents = [
         "value": "user_send_group_file",
         "filters": [
             {
-                "body": {
-                    "event_name": "user_send_group_file"
+                "match": {
+                    "body": {
+                        "event_name": "user_send_group_file"
+                    }
                 }
             }
         ]
@@ -851,8 +1005,10 @@ const webhookEvents = [
         "value": "change_template_status",
         "filters": [
             {
-                "body": {
-                    "event_name": "change_template_status"
+                "match": {
+                    "body": {
+                        "event_name": "change_template_status"
+                    }
                 }
             }
         ]
@@ -862,8 +1018,10 @@ const webhookEvents = [
         "value": "permission_revoked",
         "filters": [
             {
-                "body": {
-                    "event_name": "permission_revoked"
+                "match": {
+                    "body": {
+                        "event_name": "permission_revoked"
+                    }
                 }
             }
         ]

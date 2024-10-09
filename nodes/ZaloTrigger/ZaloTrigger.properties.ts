@@ -12,8 +12,10 @@ export const resources = [
         value: 'user_send_location',
         filters: [
           {
-            body: {
-              event_name: 'user_send_location',
+            match: {
+              body: {
+                event_name: 'user_send_location',
+              },
             },
           },
         ],
@@ -23,8 +25,10 @@ export const resources = [
         value: 'user_send_image',
         filters: [
           {
-            body: {
-              event_name: 'user_send_image',
+            match: {
+              body: {
+                event_name: 'user_send_image',
+              },
             },
           },
         ],
@@ -34,8 +38,10 @@ export const resources = [
         value: 'user_send_link',
         filters: [
           {
-            body: {
-              event_name: 'user_send_link',
+            match: {
+              body: {
+                event_name: 'user_send_link',
+              },
             },
           },
         ],
@@ -45,8 +51,10 @@ export const resources = [
         value: 'user_send_text',
         filters: [
           {
-            body: {
-              event_name: 'user_send_text',
+            match: {
+              body: {
+                event_name: 'user_send_text',
+              },
             },
           },
         ],
@@ -56,8 +64,10 @@ export const resources = [
         value: 'user_send_sticker',
         filters: [
           {
-            body: {
-              event_name: 'user_send_sticker',
+            match: {
+              body: {
+                event_name: 'user_send_sticker',
+              },
             },
           },
         ],
@@ -67,8 +77,10 @@ export const resources = [
         value: 'user_send_gif',
         filters: [
           {
-            body: {
-              event_name: 'user_send_gif',
+            match: {
+              body: {
+                event_name: 'user_send_gif',
+              },
             },
           },
         ],
@@ -78,8 +90,10 @@ export const resources = [
         value: 'user_received_message',
         filters: [
           {
-            body: {
-              event_name: 'user_received_message',
+            match: {
+              body: {
+                event_name: 'user_received_message',
+              },
             },
           },
         ],
@@ -89,8 +103,10 @@ export const resources = [
         value: 'user_seen_message',
         filters: [
           {
-            body: {
-              event_name: 'user_seen_message',
+            match: {
+              body: {
+                event_name: 'user_seen_message',
+              },
             },
           },
         ],
@@ -100,8 +116,10 @@ export const resources = [
         value: 'user_send_audio',
         filters: [
           {
-            body: {
-              event_name: 'user_send_audio',
+            match: {
+              body: {
+                event_name: 'user_send_audio',
+              },
             },
           },
         ],
@@ -111,8 +129,10 @@ export const resources = [
         value: 'follow',
         filters: [
           {
-            body: {
-              event_name: 'follow',
+            match: {
+              body: {
+                event_name: 'follow',
+              },
             },
           },
         ],
@@ -122,8 +142,10 @@ export const resources = [
         value: 'unfollow',
         filters: [
           {
-            body: {
-              event_name: 'unfollow',
+            match: {
+              body: {
+                event_name: 'unfollow',
+              },
             },
           },
         ],
@@ -133,8 +155,10 @@ export const resources = [
         value: 'user_submit_info',
         filters: [
           {
-            body: {
-              event_name: 'user_submit_info',
+            match: {
+              body: {
+                event_name: 'user_submit_info',
+              },
             },
           },
         ],
@@ -144,8 +168,10 @@ export const resources = [
         value: 'shop_has_order',
         filters: [
           {
-            body: {
-              event_name: 'shop_has_order',
+            match: {
+              body: {
+                event_name: 'shop_has_order',
+              },
             },
           },
         ],
@@ -155,8 +181,10 @@ export const resources = [
         value: 'oa_send_text',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_text',
+            match: {
+              body: {
+                event_name: 'oa_send_text',
+              },
             },
           },
         ],
@@ -166,8 +194,10 @@ export const resources = [
         value: 'oa_send_image',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_image',
+            match: {
+              body: {
+                event_name: 'oa_send_image',
+              },
             },
           },
         ],
@@ -177,8 +207,10 @@ export const resources = [
         value: 'oa_send_list',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_list',
+            match: {
+              body: {
+                event_name: 'oa_send_list',
+              },
             },
           },
         ],
@@ -188,8 +220,10 @@ export const resources = [
         value: 'oa_send_gif',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_gif',
+            match: {
+              body: {
+                event_name: 'oa_send_gif',
+              },
             },
           },
         ],
@@ -199,8 +233,10 @@ export const resources = [
         value: 'user_send_video',
         filters: [
           {
-            body: {
-              event_name: 'user_send_video',
+            match: {
+              body: {
+                event_name: 'user_send_video',
+              },
             },
           },
         ],
@@ -210,8 +246,10 @@ export const resources = [
         value: 'add_user_to_tag',
         filters: [
           {
-            body: {
-              event_name: 'add_user_to_tag',
+            match: {
+              body: {
+                event_name: 'add_user_to_tag',
+              },
             },
           },
         ],
@@ -221,8 +259,10 @@ export const resources = [
         value: 'user_send_file',
         filters: [
           {
-            body: {
-              event_name: 'user_send_file',
+            match: {
+              body: {
+                event_name: 'user_send_file',
+              },
             },
           },
         ],
@@ -232,8 +272,10 @@ export const resources = [
         value: 'oa_send_file',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_file',
+            match: {
+              body: {
+                event_name: 'oa_send_file',
+              },
             },
           },
         ],
@@ -243,8 +285,10 @@ export const resources = [
         value: 'user_click_chatnow',
         filters: [
           {
-            body: {
-              event_name: 'user_click_chatnow',
+            match: {
+              body: {
+                event_name: 'user_click_chatnow',
+              },
             },
           },
         ],
@@ -254,8 +298,10 @@ export const resources = [
         value: 'user_reacted_message',
         filters: [
           {
-            body: {
-              event_name: 'user_reacted_message',
+            match: {
+              body: {
+                event_name: 'user_reacted_message',
+              },
             },
           },
         ],
@@ -265,8 +311,10 @@ export const resources = [
         value: 'oa_reacted_message',
         filters: [
           {
-            body: {
-              event_name: 'oa_reacted_message',
+            match: {
+              body: {
+                event_name: 'oa_reacted_message',
+              },
             },
           },
         ],
@@ -276,8 +324,10 @@ export const resources = [
         value: 'oa_send_sticker',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_sticker',
+            match: {
+              body: {
+                event_name: 'oa_send_sticker',
+              },
             },
           },
         ],
@@ -287,8 +337,10 @@ export const resources = [
         value: 'oa_send_consent',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_consent',
+            match: {
+              body: {
+                event_name: 'oa_send_consent',
+              },
             },
           },
         ],
@@ -298,8 +350,10 @@ export const resources = [
         value: 'user_reply_consent',
         filters: [
           {
-            body: {
-              event_name: 'user_reply_consent',
+            match: {
+              body: {
+                event_name: 'user_reply_consent',
+              },
             },
           },
         ],
@@ -309,8 +363,10 @@ export const resources = [
         value: 'anonymous_send_text',
         filters: [
           {
-            body: {
-              event_name: 'anonymous_send_text',
+            match: {
+              body: {
+                event_name: 'anonymous_send_text',
+              },
             },
           },
         ],
@@ -320,8 +376,10 @@ export const resources = [
         value: 'anonymous_send_image',
         filters: [
           {
-            body: {
-              event_name: 'anonymous_send_image',
+            match: {
+              body: {
+                event_name: 'anonymous_send_image',
+              },
             },
           },
         ],
@@ -331,8 +389,10 @@ export const resources = [
         value: 'anonymous_send_file',
         filters: [
           {
-            body: {
-              event_name: 'anonymous_send_file',
+            match: {
+              body: {
+                event_name: 'anonymous_send_file',
+              },
             },
           },
         ],
@@ -342,8 +402,10 @@ export const resources = [
         value: 'anonymous_send_sticker',
         filters: [
           {
-            body: {
-              event_name: 'anonymous_send_sticker',
+            match: {
+              body: {
+                event_name: 'anonymous_send_sticker',
+              },
             },
           },
         ],
@@ -353,8 +415,10 @@ export const resources = [
         value: 'oa_send_anonymous_text',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_anonymous_text',
+            match: {
+              body: {
+                event_name: 'oa_send_anonymous_text',
+              },
             },
           },
         ],
@@ -364,8 +428,10 @@ export const resources = [
         value: 'oa_send_anonymous_image',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_anonymous_image',
+            match: {
+              body: {
+                event_name: 'oa_send_anonymous_image',
+              },
             },
           },
         ],
@@ -375,8 +441,10 @@ export const resources = [
         value: 'oa_send_anonymous_file',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_anonymous_file',
+            match: {
+              body: {
+                event_name: 'oa_send_anonymous_file',
+              },
             },
           },
         ],
@@ -386,8 +454,10 @@ export const resources = [
         value: 'oa_send_anonymous_sticker',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_anonymous_sticker',
+            match: {
+              body: {
+                event_name: 'oa_send_anonymous_sticker',
+              },
             },
           },
         ],
@@ -397,8 +467,10 @@ export const resources = [
         value: 'oa_call_user',
         filters: [
           {
-            body: {
-              event_name: 'oa_call_user',
+            match: {
+              body: {
+                event_name: 'oa_call_user',
+              },
             },
           },
         ],
@@ -408,8 +480,10 @@ export const resources = [
         value: 'user_call_oa',
         filters: [
           {
-            body: {
-              event_name: 'user_call_oa',
+            match: {
+              body: {
+                event_name: 'user_call_oa',
+              },
             },
           },
         ],
@@ -419,8 +493,10 @@ export const resources = [
         value: 'oa_send_template',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_template',
+            match: {
+              body: {
+                event_name: 'oa_send_template',
+              },
             },
           },
         ],
@@ -430,8 +506,10 @@ export const resources = [
         value: 'user_send_business_card',
         filters: [
           {
-            body: {
-              event_name: 'user_send_business_card',
+            match: {
+              body: {
+                event_name: 'user_send_business_card',
+              },
             },
           },
         ],
@@ -441,8 +519,10 @@ export const resources = [
         value: 'user_feedback',
         filters: [
           {
-            body: {
-              event_name: 'user_feedback',
+            match: {
+              body: {
+                event_name: 'user_feedback',
+              },
             },
           },
         ],
@@ -452,8 +532,10 @@ export const resources = [
         value: 'change_oa_daily_quota',
         filters: [
           {
-            body: {
-              event_name: 'change_oa_daily_quota',
+            match: {
+              body: {
+                event_name: 'change_oa_daily_quota',
+              },
             },
           },
         ],
@@ -463,8 +545,10 @@ export const resources = [
         value: 'change_oa_template_tags',
         filters: [
           {
-            body: {
-              event_name: 'change_oa_template_tags',
+            match: {
+              body: {
+                event_name: 'change_oa_template_tags',
+              },
             },
           },
         ],
@@ -474,8 +558,10 @@ export const resources = [
         value: 'change_template_quality',
         filters: [
           {
-            body: {
-              event_name: 'change_template_quality',
+            match: {
+              body: {
+                event_name: 'change_template_quality',
+              },
             },
           },
         ],
@@ -485,8 +571,10 @@ export const resources = [
         value: 'change_template_quota',
         filters: [
           {
-            body: {
-              event_name: 'change_template_quota',
+            match: {
+              body: {
+                event_name: 'change_template_quota',
+              },
             },
           },
         ],
@@ -496,8 +584,10 @@ export const resources = [
         value: 'event_journey_time_out',
         filters: [
           {
-            body: {
-              event_name: 'event_journey_time_out',
+            match: {
+              body: {
+                event_name: 'event_journey_time_out',
+              },
             },
           },
         ],
@@ -507,8 +597,10 @@ export const resources = [
         value: 'event_journey_acknowledged',
         filters: [
           {
-            body: {
-              event_name: 'event_journey_acknowledged',
+            match: {
+              body: {
+                event_name: 'event_journey_acknowledged',
+              },
             },
           },
         ],
@@ -518,8 +610,10 @@ export const resources = [
         value: 'user_received_message',
         filters: [
           {
-            body: {
-              event_name: 'user_received_message',
+            match: {
+              body: {
+                event_name: 'user_received_message',
+              },
             },
           },
         ],
@@ -529,8 +623,10 @@ export const resources = [
         value: 'create_group',
         filters: [
           {
-            body: {
-              event_name: 'create_group',
+            match: {
+              body: {
+                event_name: 'create_group',
+              },
             },
           },
         ],
@@ -540,8 +636,10 @@ export const resources = [
         value: 'user_join_group',
         filters: [
           {
-            body: {
-              event_name: 'user_join_group',
+            match: {
+              body: {
+                event_name: 'user_join_group',
+              },
             },
           },
         ],
@@ -551,8 +649,10 @@ export const resources = [
         value: 'user_request_join_group',
         filters: [
           {
-            body: {
-              event_name: 'user_request_join_group',
+            match: {
+              body: {
+                event_name: 'user_request_join_group',
+              },
             },
           },
         ],
@@ -562,8 +662,10 @@ export const resources = [
         value: 'react_request_join_group',
         filters: [
           {
-            body: {
-              event_name: 'react_request_join_group',
+            match: {
+              body: {
+                event_name: 'react_request_join_group',
+              },
             },
           },
         ],
@@ -573,8 +675,10 @@ export const resources = [
         value: 'reject_request_join_group',
         filters: [
           {
-            body: {
-              event_name: 'reject_request_join_group',
+            match: {
+              body: {
+                event_name: 'reject_request_join_group',
+              },
             },
           },
         ],
@@ -584,8 +688,10 @@ export const resources = [
         value: 'add_group_admin',
         filters: [
           {
-            body: {
-              event_name: 'add_group_admin',
+            match: {
+              body: {
+                event_name: 'add_group_admin',
+              },
             },
           },
         ],
@@ -595,8 +701,10 @@ export const resources = [
         value: 'remove_group_admin',
         filters: [
           {
-            body: {
-              event_name: 'remove_group_admin',
+            match: {
+              body: {
+                event_name: 'remove_group_admin',
+              },
             },
           },
         ],
@@ -606,8 +714,10 @@ export const resources = [
         value: 'update_group_info',
         filters: [
           {
-            body: {
-              event_name: 'update_group_info',
+            match: {
+              body: {
+                event_name: 'update_group_info',
+              },
             },
           },
         ],
@@ -617,8 +727,10 @@ export const resources = [
         value: 'user_out_group',
         filters: [
           {
-            body: {
-              event_name: 'user_out_group',
+            match: {
+              body: {
+                event_name: 'user_out_group',
+              },
             },
           },
         ],
@@ -628,8 +740,10 @@ export const resources = [
         value: 'disperse_group',
         filters: [
           {
-            body: {
-              event_name: 'disperse_group',
+            match: {
+              body: {
+                event_name: 'disperse_group',
+              },
             },
           },
         ],
@@ -639,8 +753,10 @@ export const resources = [
         value: 'oa_send_group_text',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_text',
+            match: {
+              body: {
+                event_name: 'oa_send_group_text',
+              },
             },
           },
         ],
@@ -650,8 +766,10 @@ export const resources = [
         value: 'oa_send_group_image',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_image',
+            match: {
+              body: {
+                event_name: 'oa_send_group_image',
+              },
             },
           },
         ],
@@ -661,8 +779,10 @@ export const resources = [
         value: 'oa_send_group_link',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_link',
+            match: {
+              body: {
+                event_name: 'oa_send_group_link',
+              },
             },
           },
         ],
@@ -672,8 +792,10 @@ export const resources = [
         value: 'oa_send_group_audio',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_audio',
+            match: {
+              body: {
+                event_name: 'oa_send_group_audio',
+              },
             },
           },
         ],
@@ -683,8 +805,10 @@ export const resources = [
         value: 'oa_send_group_location',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_location',
+            match: {
+              body: {
+                event_name: 'oa_send_group_location',
+              },
             },
           },
         ],
@@ -694,8 +818,10 @@ export const resources = [
         value: 'oa_send_group_video',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_video',
+            match: {
+              body: {
+                event_name: 'oa_send_group_video',
+              },
             },
           },
         ],
@@ -705,8 +831,10 @@ export const resources = [
         value: 'oa_send_group_business_card',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_business_card',
+            match: {
+              body: {
+                event_name: 'oa_send_group_business_card',
+              },
             },
           },
         ],
@@ -716,8 +844,10 @@ export const resources = [
         value: 'oa_send_group_sticker',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_sticker',
+            match: {
+              body: {
+                event_name: 'oa_send_group_sticker',
+              },
             },
           },
         ],
@@ -727,8 +857,10 @@ export const resources = [
         value: 'oa_send_group_gif',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_gif',
+            match: {
+              body: {
+                event_name: 'oa_send_group_gif',
+              },
             },
           },
         ],
@@ -738,8 +870,10 @@ export const resources = [
         value: 'oa_send_group_file',
         filters: [
           {
-            body: {
-              event_name: 'oa_send_group_file',
+            match: {
+              body: {
+                event_name: 'oa_send_group_file',
+              },
             },
           },
         ],
@@ -749,8 +883,10 @@ export const resources = [
         value: 'user_send_group_text',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_text',
+            match: {
+              body: {
+                event_name: 'user_send_group_text',
+              },
             },
           },
         ],
@@ -760,8 +896,10 @@ export const resources = [
         value: 'user_send_group_image',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_image',
+            match: {
+              body: {
+                event_name: 'user_send_group_image',
+              },
             },
           },
         ],
@@ -771,8 +909,10 @@ export const resources = [
         value: 'user_send_group_link',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_link',
+            match: {
+              body: {
+                event_name: 'user_send_group_link',
+              },
             },
           },
         ],
@@ -782,8 +922,10 @@ export const resources = [
         value: 'user_send_group_audio',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_audio',
+            match: {
+              body: {
+                event_name: 'user_send_group_audio',
+              },
             },
           },
         ],
@@ -793,8 +935,10 @@ export const resources = [
         value: 'user_send_group_location',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_location',
+            match: {
+              body: {
+                event_name: 'user_send_group_location',
+              },
             },
           },
         ],
@@ -804,8 +948,10 @@ export const resources = [
         value: 'user_send_group_video',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_video',
+            match: {
+              body: {
+                event_name: 'user_send_group_video',
+              },
             },
           },
         ],
@@ -815,8 +961,10 @@ export const resources = [
         value: 'user_send_group_business_card',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_business_card',
+            match: {
+              body: {
+                event_name: 'user_send_group_business_card',
+              },
             },
           },
         ],
@@ -826,8 +974,10 @@ export const resources = [
         value: 'user_send_group_sticker',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_sticker',
+            match: {
+              body: {
+                event_name: 'user_send_group_sticker',
+              },
             },
           },
         ],
@@ -837,8 +987,10 @@ export const resources = [
         value: 'user_send_group_gif',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_gif',
+            match: {
+              body: {
+                event_name: 'user_send_group_gif',
+              },
             },
           },
         ],
@@ -848,8 +1000,10 @@ export const resources = [
         value: 'user_send_group_file',
         filters: [
           {
-            body: {
-              event_name: 'user_send_group_file',
+            match: {
+              body: {
+                event_name: 'user_send_group_file',
+              },
             },
           },
         ],
@@ -859,8 +1013,10 @@ export const resources = [
         value: 'change_template_status',
         filters: [
           {
-            body: {
-              event_name: 'change_template_status',
+            match: {
+              body: {
+                event_name: 'change_template_status',
+              },
             },
           },
         ],
@@ -870,8 +1026,10 @@ export const resources = [
         value: 'permission_revoked',
         filters: [
           {
-            body: {
-              event_name: 'permission_revoked',
+            match: {
+              body: {
+                event_name: 'permission_revoked',
+              },
             },
           },
         ],
