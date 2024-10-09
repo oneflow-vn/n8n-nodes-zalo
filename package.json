@@ -46,7 +46,6 @@
       "dist/nodes/ZaloOA/ZaloOA.node.js",
       "dist/nodes/Zalo/Zalo.node.js",
       "dist/nodes/ZaloZNS/ZaloZNS.node.js",
-      "dist/nodes/ZaloOATrigger/ZaloOATrigger.node.js",
       "dist/nodes/ZaloTrigger/ZaloTrigger.node.js"
     ]
   },

@@ -6,16 +6,16 @@ import { properties } from './ZaloTrigger.properties'
 
 export class ZaloTrigger implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'Github Trigger',
-    name: 'githubTrigger',
-    icon: { light: 'file:github.svg', dark: 'file:github.dark.svg' },
+    displayName: 'Zalo Trigger',
+    name: 'zaloTrigger',
+    icon: 'file:zalo.svg',
     group: ['trigger'],
     version: 1,
     subtitle:
-      '={{$parameter["owner"] + "/" + $parameter["repository"] + ": " + $parameter["events"].join(", ")}}',
-    description: 'Starts the workflow when Github events occur',
+      '={{$parameter["resource"] + ": " + $parameter["event"].join(", ")}}',
+    description: 'Zalo Triggers',
     defaults: {
-      name: 'Github Trigger',
+      name: 'Zalo Trigger',
     },
     inputs: [],
     outputs: ['main'],
@@ -25,7 +25,7 @@ export class ZaloTrigger implements INodeType {
         name: 'default',
         httpMethod: 'POST',
         responseMode: 'onReceived',
-        path: 'webhook',
+        path: 'zalo',
       },
     ],
     properties,

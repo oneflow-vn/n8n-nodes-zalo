@@ -1,4 +1,5 @@
 const path = require('path');
+const { webhookEvents } = require('./webhookEvents');
 const { RemoveVietnameseAccents } = require('remove-vietnamese-accents');
 const removeVietnameseAccents = new RemoveVietnameseAccents()
 
@@ -161,125 +162,17 @@ module.exports = {
           name: 'default',
           httpMethod: 'POST',
           responseMode: 'onReceived',
-          path: 'webhook',
+          path: 'zalo',
         },
       ],
 
       resources: [
         {
-          name: 'Message',
-          displayName: 'Message',
-          description: 'Message',
-
-          events: [{
-            name: 'onUserSendMessage',
-            displayName: 'User Send Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onUserOpenMessage',
-            displayName: 'User Open Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onUserReactionMessage',
-            displayName: 'User Reaction Message',
-            filters: [{
-              match: {
-                body: {
-                  request: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onMyReactionMessage',
-            displayName: 'My Reaction Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onMySendMessage',
-            displayName: 'My Send Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onMySendMessageAnonymous',
-            displayName: 'My Send Message Anonymous',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onAnonymousSendMessage',
-            displayName: 'Anonymous Send Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'onUserSeenMessage',
-            displayName: 'User Seen Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }, {
-            name: 'oneUserReceiveMessage',
-            displayName: 'User Receive Message',
-            filters: [{
-              match: {
-                request: {
-                  body: {
-                    event_name: 'user_send_text',
-                  }
-                }
-              }
-            }]
-          }]
+          name: 'Default',
+          value: 'default',
+          displayName: 'Default',
+          description: 'Default Resource',
+          events: webhookEvents,
         }
       ]
 
